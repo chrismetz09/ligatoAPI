@@ -1,0 +1,8 @@
+{
+  "mode": 1,
+  "scan_interval": 1,
+  "max_proc_time": 20,
+  "max_update": 10,
+  "scan_int_delay": 1,
+  "stale_threshold": 4
+}

@@ -1,0 +1,47 @@
+{
+  "1": {
+    "interface": {
+      "name": "GigabitEthernet0/8/0",
+      "type": "DPDK",
+      "enabled": true,
+      "physAddress": "08:00:27:da:0d:6b",
+      "ipAddresses": [
+        "192.168.16.1/24"
+      ],
+      "mtu": 9206,
+      "rxModes": [
+        {
+          "mode": "POLLING"
+        }
+      ],
+      "rxPlacements": [
+        {
+          "mainThread": true
+        }
+      ]
+    },
+    "interface_meta": {
+      "sw_if_index": 1,
+      "sub_sw_if_index": 1,
+      "l2_address": "CAAn2g1r",
+      "internal_name": "GigabitEthernet0/8/0",
+      "is_admin_state_up": true,
+      "is_link_state_up": true,
+      "link_duplex": 2,
+      "link_mtu": 9206,
+      "mtu": [
+        9000,
+        0,
+        0,
+        0
+      ],
+      "link_speed": 1000000,
+      "sub_id": 0,
+      "tag": "",
+      "dhcp": null,
+      "vrf_ipv4": 0,
+      "vrf_ipv6": 0,
+      "pci": 0
+    }
+  }
+}

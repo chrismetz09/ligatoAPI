@@ -1,0 +1,27 @@
+{
+  "12:2b:00:00:00:01": {
+    "fib": {
+      "phys_address": "12:2b:00:00:00:01",
+      "bridge_domain": "vxlanBD",
+      "outgoing_interface": "vxlanBVI",
+      "static_config": true,
+      "bridged_virtual_interface": true
+    },
+    "fib_meta": {
+      "bridge_domain_id": 1,
+      "outgoing_interface_sw_if_idx": 5
+    }
+  },
+  "12:2b:00:00:00:02": {
+    "fib": {
+      "phys_address": "12:2b:00:00:00:02",
+      "bridge_domain": "vxlanBD",
+      "outgoing_interface": "vxlan-default-2",
+      "static_config": true
+    },
+    "fib_meta": {
+      "bridge_domain_id": 1,
+      "outgoing_interface_sw_if_idx": 4
+    }
+  }
+}

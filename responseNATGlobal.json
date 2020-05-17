@@ -1,0 +1,8 @@
+{
+  "forwarding": true,
+  "virtual_reassembly": {
+    "timeout": 2,
+    "max_reassemblies": 1024,
+    "max_fragments": 5
+  }
+}

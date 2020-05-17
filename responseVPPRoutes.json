@@ -1,0 +1,1180 @@
+[
+  {
+    "Route": {
+      "dst_network": "0.0.0.0/0",
+      "next_hop_addr": "192.168.16.100",
+      "outgoing_interface": "GigabitEthernet0/8/0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 1,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "240.0.0.0/4",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "224.0.0.0/4",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 1,
+      "dst_network": "10.1.0.0/16",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1,
+      "via_vrf_id": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 1,
+      "dst_network": "172.30.0.0/16",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1,
+      "via_vrf_id": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "192.168.16.1/24",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "GigabitEthernet0/8/0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 1,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "172.30.1.1/24",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "tap-vpp2",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 3,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "172.30.1.2/32",
+      "next_hop_addr": "172.30.1.2",
+      "outgoing_interface": "tap-vpp2",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 3,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "192.168.16.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "192.168.16.2/32",
+      "next_hop_addr": "192.168.16.2",
+      "outgoing_interface": "GigabitEthernet0/8/0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 1,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "172.30.1.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "172.30.1.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "10.0.2.15/32",
+      "next_hop_addr": "172.30.1.2",
+      "outgoing_interface": "tap-vpp2",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 3,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "192.168.16.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 1,
+      "dst_network": "10.20.0.10/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1,
+      "via_vrf_id": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "0.0.0.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "10.20.0.2/32",
+      "next_hop_addr": "172.30.1.2",
+      "outgoing_interface": "tap-vpp2",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 3,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "255.255.255.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "172.30.1.1/32",
+      "next_hop_addr": "172.30.1.1",
+      "outgoing_interface": "tap-vpp2",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 3,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": true,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "192.168.16.1/32",
+      "next_hop_addr": "192.168.16.1",
+      "outgoing_interface": "GigabitEthernet0/8/0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 1,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": true,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "dst_network": "::/0",
+      "next_hop_addr": "::",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": true,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "dst_network": "fe80::/10",
+      "next_hop_addr": "::",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": true,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 1,
+      "vrf_id": 1,
+      "dst_network": "0.0.0.0/0",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "240.0.0.0/4",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "224.0.0.0/4",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "10.1.0.0/16",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "UNTAGGED-local0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 0,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "172.30.0.0/16",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "UNTAGGED-local0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 0,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "172.30.2.0/24",
+      "next_hop_addr": "192.168.30.2",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "192.168.30.1/24",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 1,
+      "vrf_id": 1,
+      "dst_network": "172.30.1.0/24",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.1.1/24",
+      "next_hop_addr": "0.0.0.0",
+      "outgoing_interface": "podGwLoop",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 2,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.2.0/24",
+      "next_hop_addr": "192.168.30.2",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "192.168.30.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "192.168.30.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.1.2/32",
+      "next_hop_addr": "10.1.1.2",
+      "outgoing_interface": "vpp-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff32",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 8,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.20.0.10/32",
+      "next_hop_addr": "192.168.30.2",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "10.1.1.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "10.1.1.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "0.0.0.0/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.1.1/32",
+      "next_hop_addr": "10.1.1.1",
+      "outgoing_interface": "podGwLoop",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 2,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": true,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.1.5/32",
+      "next_hop_addr": "10.1.1.5",
+      "outgoing_interface": "vpp-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3eacb",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 7,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "type": 2,
+      "vrf_id": 1,
+      "dst_network": "255.255.255.255/32",
+      "next_hop_addr": "0.0.0.0",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 4294967295,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "192.168.30.2/32",
+      "next_hop_addr": "192.168.30.2",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "192.168.30.1/32",
+      "next_hop_addr": "192.168.30.1",
+      "outgoing_interface": "vxlanBVI",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 5,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": true,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "192.168.16.1/32",
+      "next_hop_addr": "192.168.16.1",
+      "outgoing_interface": "vpp-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff32",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 8,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": true,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  },
+  {
+    "Route": {
+      "vrf_id": 1,
+      "dst_network": "10.1.1.3/32",
+      "next_hop_addr": "10.1.1.3",
+      "outgoing_interface": "vpp-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a816",
+      "weight": 1
+    },
+    "Meta": {
+      "TableName": "id/1/protocol/IPV4",
+      "OutgoingIfIdx": 6,
+      "IsIPv6": false,
+      "Afi": 0,
+      "IsLocal": false,
+      "IsUDPEncap": false,
+      "IsUnreach": false,
+      "IsProhibit": false,
+      "IsResolveHost": false,
+      "IsResolveAttached": false,
+      "IsDvr": false,
+      "IsSourceLookup": false,
+      "NextHopID": 0,
+      "RpfID": 0,
+      "LabelStack": []
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "bridge_domain": {
+      "name": "vxlanBD",
+      "forward": true,
+      "interfaces": [
+        {
+          "name": "vxlanBVI",
+          "bridged_virtual_interface": true,
+          "split_horizon_group": 1
+        },
+        {
+          "name": "vxlan-default-2",
+          "split_horizon_group": 1
+        }
+      ]
+    },
+    "bridge_domain_meta": {
+      "bridge_domain_id": 1
+    }
+  }
+]

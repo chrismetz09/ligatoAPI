@@ -1,0 +1,74 @@
+[
+  {
+    "linux_arp": {
+      "interface": "linux-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a8",
+      "ip_address": "10.1.1.1",
+      "hw_address": "02:fe:af:aa:51:e6"
+    },
+    "linux_arp_meta": {
+      "interface_index": 7,
+      "ip_family": 2,
+      "vni": 0
+    }
+  },
+  {
+    "linux_arp": {
+      "interface": "linux-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3ea",
+      "ip_address": "10.1.1.1",
+      "hw_address": "02:fe:1b:0d:d5:29"
+    },
+    "linux_arp_meta": {
+      "interface_index": 8,
+      "ip_family": 2,
+      "vni": 0
+    }
+  },
+  {
+    "linux_arp": {
+      "interface": "linux-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff",
+      "ip_address": "10.1.1.1",
+      "hw_address": "02:fe:63:8c:a0:9e"
+    },
+    "linux_arp_meta": {
+      "interface_index": 9,
+      "ip_family": 2,
+      "vni": 0
+    }
+  },
+  {
+    "linux_arp": {
+      "interface": "linux-loop-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a",
+      "ip_address": "127.0.0.1",
+      "hw_address": "00:00:00:00:00:00"
+    },
+    "linux_arp_meta": {
+      "interface_index": 1,
+      "ip_family": 2,
+      "vni": 0
+    }
+  },
+  {
+    "linux_arp": {
+      "interface": "linux-loop-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01f",
+      "ip_address": "127.0.0.1",
+      "hw_address": "00:00:00:00:00:00"
+    },
+    "linux_arp_meta": {
+      "interface_index": 1,
+      "ip_family": 2,
+      "vni": 0
+    }
+  },
+  {
+    "linux_arp": {
+      "interface": "tap-vpp1",
+      "ip_address": "172.30.1.1",
+      "hw_address": "34:3c:00:00:00:01"
+    },
+    "linux_arp_meta": {
+      "interface_index": 6,
+      "ip_family": 2,
+      "vni": 0
+    }
+  }
+]

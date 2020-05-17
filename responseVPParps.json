@@ -1,0 +1,66 @@
+[
+  {
+    "Arp": {
+      "interface": "GigabitEthernet0/8/0",
+      "ip_address": "192.168.16.2",
+      "phys_address": "08:00:27:c0:65:46"
+    },
+    "Meta": {
+      "SwIfIndex": 1
+    }
+  },
+  {
+    "Arp": {
+      "interface": "vxlanBVI",
+      "ip_address": "192.168.30.2",
+      "phys_address": "12:2b:00:00:00:02",
+      "static": true
+    },
+    "Meta": {
+      "SwIfIndex": 5
+    }
+  },
+  {
+    "Arp": {
+      "interface": "tap-vpp2",
+      "ip_address": "172.30.1.2",
+      "phys_address": "ca:aa:bc:5d:76:9c"
+    },
+    "Meta": {
+      "SwIfIndex": 3
+    }
+  },
+  {
+    "Arp": {
+      "interface": "vpp-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a816",
+      "ip_address": "10.1.1.3",
+      "phys_address": "02:fe:50:55:ae:19",
+      "static": true
+    },
+    "Meta": {
+      "SwIfIndex": 6
+    }
+  },
+  {
+    "Arp": {
+      "interface": "vpp-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3eacb",
+      "ip_address": "10.1.1.5",
+      "phys_address": "02:fe:e4:f2:2a:d6",
+      "static": true
+    },
+    "Meta": {
+      "SwIfIndex": 7
+    }
+  },
+  {
+    "Arp": {
+      "interface": "vpp-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff32",
+      "ip_address": "10.1.1.2",
+      "phys_address": "02:fe:9c:73:5f:61",
+      "static": true
+    },
+    "Meta": {
+      "SwIfIndex": 8
+    }
+  }
+]

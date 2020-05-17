@@ -1,0 +1,206 @@
+[
+  {
+    "interface": {
+      "name": "tap-vpp1",
+      "type": "TAP_TO_VPP",
+      "hostIfName": "vpp1",
+      "enabled": true,
+      "ipAddresses": [
+        "172.30.1.2/24"
+      ],
+      "physAddress": "ca:aa:bc:5d:76:9c",
+      "mtu": 1450,
+      "tap": {
+        "vppTapIfName": "tap-vpp2"
+      }
+    },
+    "interface_meta": {
+      "linux_if_index": 6,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 69699,
+      "encapsulation": "ether",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 500
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-loop-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3e",
+      "type": "LOOPBACK",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12661/ns/net"
+      },
+      "hostIfName": "lo",
+      "enabled": true,
+      "ipAddresses": [
+        "127.0.0.1/8",
+        "::1/128"
+      ],
+      "mtu": 65536
+    },
+    "interface_meta": {
+      "linux_if_index": 1,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 65609,
+      "encapsulation": "loopback",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 1
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3ea",
+      "type": "TAP_TO_VPP",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12661/ns/net"
+      },
+      "hostIfName": "eth0",
+      "enabled": true,
+      "ipAddresses": [
+        "10.1.1.5/32"
+      ],
+      "physAddress": "02:fe:e4:f2:2a:d6",
+      "mtu": 1450,
+      "tap": {
+        "vppTapIfName": "vpp-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3eacb"
+      }
+    },
+    "interface_meta": {
+      "linux_if_index": 8,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 69699,
+      "encapsulation": "ether",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 500
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-loop-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01f",
+      "type": "LOOPBACK",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12729/ns/net"
+      },
+      "hostIfName": "lo",
+      "enabled": true,
+      "ipAddresses": [
+        "127.0.0.1/8",
+        "::1/128"
+      ],
+      "mtu": 65536
+    },
+    "interface_meta": {
+      "linux_if_index": 1,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 65609,
+      "encapsulation": "loopback",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 1
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff",
+      "type": "TAP_TO_VPP",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12729/ns/net"
+      },
+      "hostIfName": "eth0",
+      "enabled": true,
+      "ipAddresses": [
+        "10.1.1.2/32"
+      ],
+      "physAddress": "02:fe:9c:73:5f:61",
+      "mtu": 1450,
+      "tap": {
+        "vppTapIfName": "vpp-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff32"
+      }
+    },
+    "interface_meta": {
+      "linux_if_index": 9,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 69699,
+      "encapsulation": "ether",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 500
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-loop-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a",
+      "type": "LOOPBACK",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12611/ns/net"
+      },
+      "hostIfName": "lo",
+      "enabled": true,
+      "ipAddresses": [
+        "127.0.0.1/8",
+        "::1/128"
+      ],
+      "mtu": 65536
+    },
+    "interface_meta": {
+      "linux_if_index": 1,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 65609,
+      "encapsulation": "loopback",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 1
+    }
+  },
+  {
+    "interface": {
+      "name": "linux-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a8",
+      "type": "TAP_TO_VPP",
+      "namespace": {
+        "type": "FD",
+        "reference": "/proc/12611/ns/net"
+      },
+      "hostIfName": "eth0",
+      "enabled": true,
+      "ipAddresses": [
+        "10.1.1.3/32"
+      ],
+      "physAddress": "02:fe:50:55:ae:19",
+      "mtu": 1450,
+      "tap": {
+        "vppTapIfName": "vpp-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a816"
+      }
+    },
+    "interface_meta": {
+      "linux_if_index": 7,
+      "parent_index": 0,
+      "master_index": 0,
+      "oper_state": 0,
+      "flags": 69699,
+      "encapsulation": "ether",
+      "num_rx_queue": 0,
+      "num_tx_queue": 0,
+      "tx_queue_len": 500
+    }
+  }
+]

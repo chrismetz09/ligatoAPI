@@ -1,0 +1,49 @@
+{
+  "7": {
+    "interface": {
+      "name": "vpp-tap-62f8046d16f91b8c430da4d768cdbfce732843a87247bef6136982b",
+      "type": "TAP",
+      "enabled": true,
+      "physAddress": "02:fe:6e:a5:85:5e",
+      "vrf": 1,
+      "mtu": 1450,
+      "unnumbered": {
+        "interfaceWithIp": "podGwLoop"
+      },
+      "rxModes": [
+        {
+          "mode": "POLLING"
+        }
+      ],
+      "rxPlacements": [
+        {
+          "mainThread": true
+        }
+      ],
+      "tap": {
+        "version": 2,
+        "hostIfName": "tap-4024539640",
+        "rxRingSize": 1024,
+        "txRingSize": 1024
+      }
+    },
+    "interface_meta": {
+      "sw_if_index": 7,
+      "sub_sw_if_index": 7,
+      "l2_address": "Av5upYVe",
+      "internal_name": "tap3",
+      "is_admin_state_up": true,
+      "is_link_state_up": true,
+      "link_duplex": 0,
+      "link_mtu": 1450,
+      "mtu": [1450, 0, 0, 0],
+      "link_speed": 0,
+      "sub_id": 0,
+      "tag": "vpp-tap-62f8046d16f91b8c430da4d768cdbfce732843a87247bef6136982b",
+      "dhcp": null,
+      "vrf_ipv4": 1,
+      "vrf_ipv6": 0,
+      "pci": 0
+    }
+  }
+}

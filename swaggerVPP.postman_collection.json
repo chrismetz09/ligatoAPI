@@ -1,0 +1,695 @@
+{
+	"info": {
+		"_postman_id": "619fbc0f-a5c5-488c-9f0e-c625a87eb721",
+		"name": "swaggerVPP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/tap?vswitch=10.20.0.2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/tap?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"tap"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getContivInterfacesTap",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/tap?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"tap"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppIF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppLoopback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/loopback?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"loopback"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppRoutes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/routes?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"routes"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppNatGlobal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/nat/global?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"nat",
+						"global"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppNatDnat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/nat/dnat?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"nat",
+						"dnat"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppNatInterfaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/nat/interfaces?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"nat",
+						"interfaces"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppNatPools",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/nat/pools?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"nat",
+						"pools"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppInterfaceVxlan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/vxlan?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"vxlan"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppArps",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/arps?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"arps"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppInterfaceEthernet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/interfaces/ethernet?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"ethernet"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppBD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/bd?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"bd"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppFIB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/fib?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"fib"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppIPScan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/vpp/v2/ipscanneigh?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"vpp",
+						"v2",
+						"ipscanneigh"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppStatsConfig",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/stats/configurator?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"stats",
+						"configurator"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppLinuxIFStats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/stats/linux/interfaces?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"stats",
+						"linux",
+						"interfaces"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppLinuxInterfaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/linux/v2/interfaces?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"linux",
+						"v2",
+						"interfaces"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppLinuxRoutes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/linux/v2/routes?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"linux",
+						"v2",
+						"routes"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vppLinuxArps",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:32500/api/contiv/dump/linux/v2/arps?vswitch=10.20.0.2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32500",
+					"path": [
+						"api",
+						"contiv",
+						"dump",
+						"linux",
+						"v2",
+						"arps"
+					],
+					"query": [
+						{
+							"key": "vswitch",
+							"value": "10.20.0.2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

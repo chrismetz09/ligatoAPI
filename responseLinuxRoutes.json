@@ -1,0 +1,115 @@
+[
+  {
+    "Route": {
+      "outgoing_interface": "tap-vpp1",
+      "dst_network": "10.1.0.0/16",
+      "gw_addr": "172.30.1.1"
+    },
+    "Meta": {
+      "interface_index": 6,
+      "link_scope": 0,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "tap-vpp1",
+      "dst_network": "10.96.0.0/12",
+      "gw_addr": "172.30.1.1"
+    },
+    "Meta": {
+      "interface_index": 6,
+      "link_scope": 0,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "tap-vpp1",
+      "dst_network": "172.30.1.0/24"
+    },
+    "Meta": {
+      "interface_index": 6,
+      "link_scope": 253,
+      "protocol": 2,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a8",
+      "dst_network": "0.0.0.0/0",
+      "gw_addr": "10.1.1.1"
+    },
+    "Meta": {
+      "interface_index": 7,
+      "link_scope": 0,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a8",
+      "dst_network": "10.1.1.1/32"
+    },
+    "Meta": {
+      "interface_index": 7,
+      "link_scope": 253,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3ea",
+      "dst_network": "0.0.0.0/0",
+      "gw_addr": "10.1.1.1"
+    },
+    "Meta": {
+      "interface_index": 8,
+      "link_scope": 0,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-860ca2dd92a3a4bf0e330affcedbe17135b7695e6ccd70e06c3ea",
+      "dst_network": "10.1.1.1/32"
+    },
+    "Meta": {
+      "interface_index": 8,
+      "link_scope": 253,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff",
+      "dst_network": "0.0.0.0/0",
+      "gw_addr": "10.1.1.1"
+    },
+    "Meta": {
+      "interface_index": 9,
+      "link_scope": 0,
+      "protocol": 3,
+      "mtu": 0
+    }
+  },
+  {
+    "Route": {
+      "outgoing_interface": "linux-tap-9653fece511f2e658bcb95ec986b52532acdf540bece3652e01ff",
+      "dst_network": "10.1.1.1/32"
+    },
+    "Meta": {
+      "interface_index": 9,
+      "link_scope": 253,
+      "protocol": 3,
+      "mtu": 0
+    }
+  }
+]

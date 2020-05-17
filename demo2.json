@@ -1,0 +1,32 @@
+{
+  "8": {
+    "interface": {
+      "name": "vxlan-default-2",
+      "type": "VXLAN_TUNNEL",
+      "enabled": true,
+      "vxlan": {
+        "srcAddress": "192.168.16.1",
+        "dstAddress": "192.168.16.2",
+        "vni": 10
+      }
+    },
+    "interface_meta": {
+      "sw_if_index": 8,
+      "sub_sw_if_index": 8,
+      "l2_address": "",
+      "internal_name": "vxlan_tunnel0",
+      "is_admin_state_up": true,
+      "is_link_state_up": true,
+      "link_duplex": 0,
+      "link_mtu": 0,
+      "mtu": [0, 0, 0, 0],
+      "link_speed": 0,
+      "sub_id": 0,
+      "tag": "vxlan-default-2",
+      "dhcp": null,
+      "vrf_ipv4": 0,
+      "vrf_ipv6": 0,
+      "pci": 0
+    }
+  }
+}
