@@ -26,6 +26,12 @@
                   <Item>
                     <option name="path" value="demo2.json" />
                   </Item>
+                  <Item>
+                    <option name="path" value="responseNatIF.json" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="responseLinuxInterfaceStats.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

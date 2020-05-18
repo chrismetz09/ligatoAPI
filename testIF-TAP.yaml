@@ -1,0 +1,87 @@
+openapi: 3.0.1
+info:
+  title: REST VPP Interface Tap
+  description: OAS spec for REST VPP Interface Tap
+  version: 0.9
+servers:
+  - url: 'http://localhost:9191'
+    description: VPP Agent
+paths:
+  /dump/vpp/v2/interfaces/tap:
+    get:
+      summary: Returns a list of VPP Tap Interfaces
+      description: VPP Agent TAP interfaces
+      tags:
+        - Interface Plugin
+      responses:
+        '200':
+          description: List of VPP Agent TAP interfaces
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                type: array
+                description: TAP Interface List
+                items:
+                  type: object
+                  description: individual Interface
+                  properties:
+                    Interface_index:
+                      type: integer
+                      minimum: 0
+                      example: 7
+                    interface:
+                          type: object
+                          description: interface info
+                          properties:
+                            name:
+                              type: string
+                              example: vpp-tap1
+                            type:
+                              enum:
+                                - UNDEFINED_TYPE
+                                - SUB_INTERFACE
+                                - SOFTWARE_LOOPBACK
+                                - DPDK
+                                - MEMIF
+                                - TAP
+                                - AF_PACKET
+                                - VXLAN_TUNNEL
+                                - VMXNET3_INTERFACE
+                                - BOND_INTERFACE
+                                - GRE_TUNNEL
+                                - GTPU_TUNNEL
+                                - IPIP_TUNNEL
+                              example: TAP
+                            enabled:
+                              type: boolean
+                              example: true
+                            physAddress:
+                              type: string
+                              example: 02:fe:1b:0d:d5:29
+                            vrf:
+                              type: integer
+                              minimum: 0
+                              example: 1
+                            mtu:
+                              type: integer
+                              example: 1450
+                            unnumbered:
+                              type: string
+                              description: unnumbered IF
+                              properties:
+                                interfaceWithIp:
+                                  type: string
+                            rxModes:
+                              enum:
+                                - UNKNOWN
+                                - POLLING
+                                - INTERRUPT
+                                - ADAPTIVE
+                                - DEFAULT
+
+
+
+
+
+                      
+

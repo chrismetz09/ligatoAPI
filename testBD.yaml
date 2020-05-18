@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: testBridgeDomain
+  description: First OAS test API
+  version: '0.9'
+  contact:
+    name: chris metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://localhost:9191'
+    description: Local VPP agent
+paths:
+  /dump/vpp/v2/bd:
+    get:
+      summary: Returns a list of configured L2 Bridge Domains
+      description: VPP agent bridge domain info
+      tags:
+        - L2 Plugin
+      parameters:
+        - name: vswitch
+          allowEmptyValue: true
+          in: query
+          schema:
+            type: string
+          description: name of vswitch to query for bridge domains
+      responses:
+        '200':
+          description: List of configured bridge domains
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                type: array
+                description: BD list
+                items:
+                  type: object
+                  description: an individual bridge domain with BD and BD meta data properties
+                  properties:
+                    bridge_domain:
+                      type: object
+                      properties:
+                          name:
+                            type: string
+                            example: bd1
+                          forward:
+                            type: boolean
+                            example: true
+                          learn:
+                            type: boolean
+                            example: true
+                          interfaces:
+                            type: object
+                            description: interface that BD is assigned to
+                            properties:
+                              name:
+                                type: string
+                                example: loop1
+                    bridge_domain_meta:
+                      type: object
+                      properties:
+                        bridge_domain_id:
+                          type: integer
+                          example: 1
+        servers:
+        - url: 'http://localhost:9191'
+    servers:
+      - url: 'http://localhost:9191'
