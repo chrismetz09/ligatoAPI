@@ -37,6 +37,9 @@ paths:
                               type: string
                               example: vpp-tap1
                             type:
+                              type: string
+                              required: boolean
+                              description: interface type
                               enum:
                                 - UNDEFINED_TYPE
                                 - SUB_INTERFACE
@@ -59,25 +62,124 @@ paths:
                               type: string
                               example: 02:fe:1b:0d:d5:29
                             vrf:
-                              type: integer
-                              minimum: 0
-                              example: 1
+                              type: uint32
+                              description: VRF table of interface
+                            set_dhcp_client:
+                              type: bool
                             mtu:
                               type: integer
                               example: 1450
+                              description: maximum frame size on wire
                             unnumbered:
                               type: string
                               description: unnumbered IF
                               properties:
                                 interfaceWithIp:
                                   type: string
+                                  description: name of interface to borrow IP address from
                             rxModes:
-                              enum:
-                                - UNKNOWN
-                                - POLLING
-                                - INTERRUPT
-                                - ADAPTIVE
-                                - DEFAULT
+                              type: object
+                              description: rx mode for interface
+                              properties:
+                                  mode:
+                                    type: string
+                                    enum:
+                                      - UNKNOWN
+                                      - POLLING
+                                      - INTERRUPT
+                                      - ADAPTIVE
+                                      - DEFAULT
+                            rxPlacements:
+                              type: object
+                              description: rxPlacement
+                              properties:
+                                queue:
+                                  type: uint32
+                                worker:
+                                  type: uint32
+                                mainThread:
+                                  type: boolean
+                            tap:
+                              type: object
+                              description: taplink data from interface.proto
+                              properties:
+                                version:
+                                  type: uint32
+                                  example: 2
+                                host_if_name:
+                                  type: string
+                                  example: tap-283567301
+                                to_microservice:
+                                  type: string
+                                  description: a target microservice name
+                                rx_ring_size:
+                                  type: uint32
+                                  description: power of 2
+                                tx_ring_size:
+                                  type: uint32
+                                  description: power of 2
+                                enable_gso:
+                                  type: bool
+                            interface_meta:
+                                  $ref: '#/components/schemas/interface_meta'
+components:
+  schemas:
+    interface_meta:
+      type: object
+      properties:
+        sw_if_index:
+          type: uint32
+          example: 3
+        sub_sw_if_index:
+          type: uint32
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: tap0
+        is_admin_state_up:
+          type: boolean
+          example: true
+        is_link_state_up:
+          type: boolean
+          example: true
+        link_duplex:
+          type: uint32
+          example: 0
+        link_mtu:
+          type: uint32
+          example: 1450
+        mtu:
+          type: object
+          description: per-protocol mtu for L2,
+          example: [1450, 0,0,0]
+        link_speed:
+          type: uint32
+          example: 0
+        sub_id:
+          type: uint32
+          example: 0
+        tag:
+          type: string
+          example: tap-vpp2
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: uint32
+          example: 0
+        vrf_ipv6:
+          type: uint32
+          example: 0
+        pci:
+          type: uin32
+          example: 0
+
+
+    
 
 
 
