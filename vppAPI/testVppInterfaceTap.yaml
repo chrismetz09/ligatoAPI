@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: VPP Agent interfaces/tap
   description: VPP Agent REST API for vpp.interfaces.tap
-  version: 0.9
+  version: '0.9'
 servers:
   - url: 'http://{hostServer}:9191'
     variables:
@@ -40,7 +40,6 @@ paths:
                               example: vpp-tap1
                             type:
                               type: string
-                              required: boolean
                               description: interface type
                               enum:
                                 - UNDEFINED_TYPE

@@ -1,0 +1,44 @@
+{
+  "PreRecord": false,
+  "WithSimulation": false,
+  "Start": "2020-05-25T13:39:46.412140859Z",
+  "Stop": "2020-05-25T13:39:46.413884785Z",
+  "SeqNum": 1,
+  "TxnType": 0,
+  "ResyncType": 0,
+  "Description": "",
+  "RetryForTxn": 0,
+  "RetryAttempt": 0,
+  "Values": [
+    {
+      "Key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+      "Value": {
+        "ProtoMsgName": "google.protobuf.Empty",
+        "ProtoMsgData": "{}"
+      },
+      "Origin": 2
+    }
+  ],
+  "Planned": null,
+  "Executed": [
+    {
+      "Operation": 2,
+      "Key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+      "PrevValue": null,
+      "NewValue": {
+        "ProtoMsgName": "google.protobuf.Empty",
+        "ProtoMsgData": "{}"
+      },
+      "PrevState": 0,
+      "NewState": 5,
+      "PrevErr": null,
+      "NewErr": null,
+      "NOOP": false,
+      "IsDerived": false,
+      "IsProperty": false,
+      "IsRevert": false,
+      "IsRetry": false,
+      "IsRecreate": false
+    }
+  ]
+}

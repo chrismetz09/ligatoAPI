@@ -1,0 +1,497 @@
+// curl http://localhost:9999/scheduler/key-timeline?key=config/vpp/nat/v2/nat44-global
+[
+  {
+    "Since": "2020-05-25T13:39:46.410900953Z",
+    "Until": "2020-05-25T13:39:46.986953203Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"tap-vpp2\"},{\"name\":\"vxlanBVI\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986954996Z",
+    "Until": "2020-05-25T13:39:48.669096235Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\"},{\"name\":\"tap-vpp2\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669097152Z",
+    "Until": "2020-05-25T13:39:48.757978686Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757980204Z",
+    "Until": "2020-05-25T13:39:51.021933365Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.021935482Z",
+    "Until": "2020-05-25T13:39:51.078599609Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true},{\"name\":\"vxlanBVI\",\"isInside\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-12",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078601217Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"isInside\":true},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  }
+]

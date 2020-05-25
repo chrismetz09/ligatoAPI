@@ -1,0 +1,20 @@
+// curl http://localhost:9999/scheduler/status?key=config/linux/interfaces/v2/interface/tap-vpp1
+{
+  "value": {
+    "key": "config/linux/interfaces/v2/interface/tap-vpp1",
+    "state": "CONFIGURED",
+    "lastOperation": "CREATE"
+  },
+  "derived_values": [
+    {
+      "key": "linux/interface/state/tap-vpp1/UP",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    {
+      "key": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  ]
+}

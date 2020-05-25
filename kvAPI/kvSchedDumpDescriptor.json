@@ -1,0 +1,20 @@
+[
+  {
+    "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:01",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.FIBEntry",
+      "ProtoMsgData": "{\"physAddress\":\"12:2b:00:00:00:01\",\"bridgeDomain\":\"vxlanBD\",\"outgoingInterface\":\"vxlanBVI\",\"staticConfig\":true,\"bridgedVirtualInterface\":true}"
+    },
+    "Metadata": null,
+    "Origin": 0
+  },
+  {
+    "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:02",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.FIBEntry",
+      "ProtoMsgData": "{\"physAddress\":\"12:2b:00:00:00:02\",\"bridgeDomain\":\"vxlanBD\",\"outgoingInterface\":\"vxlan-default-2\",\"staticConfig\":true}"
+    },
+    "Metadata": null,
+    "Origin": 0
+  }
+]

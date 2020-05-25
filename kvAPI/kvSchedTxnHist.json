@@ -1,0 +1,3799 @@
+// curl http://localhost:9999/scheduler/txn-history
+[
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.084562583Z",
+    "Stop": "2020-05-25T13:39:46.410954456Z",
+    "SeqNum": 0,
+    "TxnType": 1,
+    "ResyncType": 1,
+    "Description": "Database Resync",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/linux/interfaces/v2/interface/tap-vpp1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp1\",\"type\":\"TAP_TO_VPP\",\"hostIfName\":\"vpp1\",\"enabled\":true,\"ipAddresses\":[\"172.30.1.2/24\"],\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"tap-vpp2\"}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/10.1.0.0/16/tap-vpp1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.1.0.0/16\",\"gwAddr\":\"172.30.1.1\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/10.96.0.0/12/tap-vpp1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.96.0.0/12\",\"gwAddr\":\"172.30.1.1\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/l2/v2/bridge-domain/vxlanBD",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l2.BridgeDomain",
+          "ProtoMsgData": "{\"name\":\"vxlanBD\",\"forward\":true,\"interfaces\":[{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/dnat44/DNAT-identities",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"DNAT-identities\",\"idMappings\":[{\"ipAddress\":\"192.168.16.1\",\"port\":4789,\"protocol\":\"UDP\"},{\"vrfId\":1,\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"},{\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"tap-vpp2\"},{\"name\":\"vxlanBVI\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"type\":\"DPDK\",\"enabled\":true,\"ipAddresses\":[\"192.168.16.1/24\"]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/UNTAGGED-local0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"UNTAGGED-local0\",\"type\":\"SOFTWARE_LOOPBACK\"}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/podGwLoop",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"podGwLoop\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.1/24\"],\"vrf\":1}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/tap-vpp2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"34:3c:00:00:00:01\",\"ipAddresses\":[\"172.30.1.1/24\"],\"mtu\":1450,\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/vxlanBVI",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"physAddress\":\"12:2b:00:00:00:01\",\"ipAddresses\":[\"192.168.30.1/24\"],\"vrf\":1}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/ipscanneigh-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.IPScanNeighbor",
+          "ProtoMsgData": "{\"mode\":\"IPV4\",\"scanInterval\":1,\"staleThreshold\":4}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/proxyarp-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.ProxyARP",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/if/GigabitEthernet0/8/0/vrf/0/dst/0.0.0.0/0/gw/192.168.16.100",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"192.168.16.100\",\"outgoingInterface\":\"GigabitEthernet0/8/0\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.0.2.15/32/gw/172.30.1.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"10.0.2.15/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.20.0.2/32/gw/172.30.1.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"10.20.0.2/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/0/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/32/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"0.0.0.0/32\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/10.1.0.0/16/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/172.30.0.0/16/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/224.0.0.0/4/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"224.0.0.0/4\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/240.0.0.0/4/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"240.0.0.0/4\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/255.255.255.255/32/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"255.255.255.255/32\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/::/0/gw/::",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"::/0\",\"nextHopAddr\":\"::\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/fe80::/10/gw/::",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"fe80::/10\",\"nextHopAddr\":\"::\",\"weight\":1}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/1/dst/0.0.0.0/0/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/1/dst/10.1.0.0/16/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/1/dst/172.30.0.0/16/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/1/dst/172.30.1.0/24/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"172.30.1.0/24\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/vrf-table/id/0/protocol/IPV4",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"label\":\"mainVRF-IPv4\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/vrf-table/id/0/protocol/IPV6",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"protocol\":\"IPV6\",\"label\":\"ipv6-VRF:0\"}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"id\":1,\"label\":\"podVRF-IPv4\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "linux/interface/host-name/docker0",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "linux/interface/host-name/enp0s3",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "linux/interface/host-name/enp0s9",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "linux/interface/host-name/lo",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "linux/microservice/k8s-master",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      },
+      {
+        "Key": "vpp/interface/UNTAGGED-local0/link-state/DOWN",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/l2/v2/bridge-domain/vxlanBD",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l2.BridgeDomain",
+          "ProtoMsgData": "{\"name\":\"vxlanBD\",\"forward\":true,\"interfaces\":[{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"type\":\"DPDK\",\"enabled\":true,\"ipAddresses\":[\"192.168.16.1/24\"]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/podGwLoop",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"podGwLoop\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.1/24\"],\"vrf\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/tap-vpp2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"34:3c:00:00:00:01\",\"ipAddresses\":[\"172.30.1.1/24\"],\"mtu\":1450,\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/tap-vpp1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp1\",\"type\":\"TAP_TO_VPP\",\"hostIfName\":\"vpp1\",\"enabled\":true,\"ipAddresses\":[\"172.30.1.2/24\"],\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"tap-vpp2\"}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/tap-vpp1/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/10.1.0.0/16/tap-vpp1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.1.0.0/16\",\"gwAddr\":\"172.30.1.1\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/10.96.0.0/12/tap-vpp1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.96.0.0/12\",\"gwAddr\":\"172.30.1.1\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/rx-modes",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}]}"
+        },
+        "PrevState": 0,
+        "NewState": 7,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": true,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/has-IP-address",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/vxlanBVI",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"physAddress\":\"12:2b:00:00:00:01\",\"ipAddresses\":[\"192.168.30.1/24\"],\"vrf\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/bd/vxlanBD/interface/vxlanBVI",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l2.BridgeDomain.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/GigabitEthernet0/8/0/vrf/0/dst/0.0.0.0/0/gw/192.168.16.100",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"192.168.16.100\",\"outgoingInterface\":\"GigabitEthernet0/8/0\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.0.2.15/32/gw/172.30.1.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"10.0.2.15/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.20.0.2/32/gw/172.30.1.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"dstNetwork\":\"10.20.0.2/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"id\":1,\"label\":\"podVRF-IPv4\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/nat/v2/dnat44/DNAT-identities",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"DNAT-identities\",\"idMappings\":[{\"ipAddress\":\"192.168.16.1\",\"port\":4789,\"protocol\":\"UDP\"},{\"vrfId\":1,\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"},{\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/0/dst/10.1.0.0/16/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/0/dst/172.30.0.0/16/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/1/dst/0.0.0.0/0/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/1/dst/10.1.0.0/16/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/1/dst/172.30.0.0/16/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/1/dst/172.30.1.0/24/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"172.30.1.0/24\",\"nextHopAddr\":\"0.0.0.0\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/podGwLoop/has-IP-address",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlanBVI/has-IP-address",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"virtualReassembly\":{\"timeout\":2,\"maxReassemblies\":1024,\"maxFragments\":5}}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"tap-vpp2\"},{\"name\":\"vxlanBVI\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "PrevState": 5,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Address",
+          "ProtoMsgData": "{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Address",
+          "ProtoMsgData": "{\"address\":\"192.168.16.1\",\"vrfId\":4294967295}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"isInside\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"isInside\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlanBVI\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/v2/ipscanneigh-global",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.l3.IPScanNeighbor",
+          "ProtoMsgData": "{\"scanInterval\":1,\"maxProcTime\":20,\"maxUpdate\":10,\"scanIntDelay\":1,\"staleThreshold\":4}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.IPScanNeighbor",
+          "ProtoMsgData": "{\"mode\":\"IPV4\",\"scanInterval\":1,\"staleThreshold\":4}"
+        },
+        "PrevState": 5,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/v2/vrf-table/id/0/protocol/IPV4",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"label\":\"ipv4-VRF:0\"}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+          "ProtoMsgData": "{\"label\":\"mainVRF-IPv4\"}"
+        },
+        "PrevState": 6,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.412140859Z",
+    "Stop": "2020-05-25T13:39:46.413884785Z",
+    "SeqNum": 1,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.414395169Z",
+    "Stop": "2020-05-25T13:39:46.415301093Z",
+    "SeqNum": 2,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/podGwLoop/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/podGwLoop/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.416006065Z",
+    "Stop": "2020-05-25T13:39:46.418579966Z",
+    "SeqNum": 3,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/tap-vpp2/link-state/DOWN",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/link-state/DOWN",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.418657197Z",
+    "Stop": "2020-05-25T13:39:46.418773082Z",
+    "SeqNum": 4,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vxlanBVI/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlanBVI/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.877102764Z",
+    "Stop": "2020-05-25T13:39:46.877265803Z",
+    "SeqNum": 5,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "linux/interface/host-name/vpp1",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "linux/interface/host-name/vpp1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.907437363Z",
+    "Stop": "2020-05-25T13:39:46.986971725Z",
+    "SeqNum": 6,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Add Pod kube-system/coredns-576cbf47c7-tlvwf\n* ipnet: configure IP connectivity\n* service: update frontends",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.2/32\"],\"physAddress\":\"02:fe:70:3c:46:30\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/arp/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/10.1.1.1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:8f:c3:b9:cf\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\"},{\"name\":\"tap-vpp2\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/arp/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/10.1.1.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"ipAddress\":\"10.1.1.2\",\"physAddress\":\"02:fe:70:3c:46:30\",\"static\":true}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:8f:c3:b9:cf\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/1/dst/10.1.1.2/32/gw/10.1.1.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.2/32\",\"nextHopAddr\":\"10.1.1.2\",\"outgoingInterface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:8f:c3:b9:cf\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.2/32\"],\"physAddress\":\"02:fe:70:3c:46:30\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/arp/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/10.1.1.1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:8f:c3:b9:cf\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/arp/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/10.1.1.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"ipAddress\":\"10.1.1.2\",\"physAddress\":\"02:fe:70:3c:46:30\",\"static\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+          "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/1/dst/10.1.1.2/32/gw/10.1.1.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.2/32\",\"nextHopAddr\":\"10.1.1.2\",\"outgoingInterface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:46.987546084Z",
+    "Stop": "2020-05-25T13:39:46.988166313Z",
+    "SeqNum": 7,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/DOWN",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/DOWN",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:48.46607495Z",
+    "Stop": "2020-05-25T13:39:48.669100679Z",
+    "SeqNum": 8,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Add Pod kube-system/contiv-ui-7cd697dd66-n5txp\n* service: update frontends\n* ipnet: configure IP connectivity",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.3/32\"],\"physAddress\":\"02:fe:10:48:34:d3\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/arp/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/10.1.1.1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:ef:b7:cb:2c\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/arp/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/10.1.1.3",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"ipAddress\":\"10.1.1.3\",\"physAddress\":\"02:fe:10:48:34:d3\",\"static\":true}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:ef:b7:cb:2c\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/1/dst/10.1.1.3/32/gw/10.1.1.3",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.3/32\",\"nextHopAddr\":\"10.1.1.3\",\"outgoingInterface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:ef:b7:cb:2c\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.3/32\"],\"physAddress\":\"02:fe:10:48:34:d3\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/arp/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/10.1.1.1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:ef:b7:cb:2c\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/arp/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/10.1.1.3",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"ipAddress\":\"10.1.1.3\",\"physAddress\":\"02:fe:10:48:34:d3\",\"static\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+          "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/1/dst/10.1.1.3/32/gw/10.1.1.3",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.3/32\",\"nextHopAddr\":\"10.1.1.3\",\"outgoingInterface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:48.672460999Z",
+    "Stop": "2020-05-25T13:39:48.67258352Z",
+    "SeqNum": 9,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/DOWN",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/DOWN",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:48.681080619Z",
+    "Stop": "2020-05-25T13:39:48.758005322Z",
+    "SeqNum": 10,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Add Pod kube-system/coredns-576cbf47c7-ldmf4\n* service: update frontends\n* ipnet: configure IP connectivity",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.4/32\"],\"physAddress\":\"02:fe:ac:44:fe:28\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/arp/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/10.1.1.1",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:53:bb:01:d7\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "Value": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/arp/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/10.1.1.4",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"ipAddress\":\"10.1.1.4\",\"physAddress\":\"02:fe:ac:44:fe:28\",\"static\":true}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:53:bb:01:d7\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/1/dst/10.1.1.4/32/gw/10.1.1.4",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.4/32\",\"nextHopAddr\":\"10.1.1.4\",\"outgoingInterface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:53:bb:01:d7\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.4/32\"],\"physAddress\":\"02:fe:ac:44:fe:28\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/arp/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/10.1.1.1",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:53:bb:01:d7\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": true,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.linux.l3.Route",
+          "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/arp/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/10.1.1.4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"ipAddress\":\"10.1.1.4\",\"physAddress\":\"02:fe:ac:44:fe:28\",\"static\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+          "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/1/dst/10.1.1.4/32/gw/10.1.1.4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.4/32\",\"nextHopAddr\":\"10.1.1.4\",\"outgoingInterface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:48.759381549Z",
+    "Stop": "2020-05-25T13:39:48.759663354Z",
+    "SeqNum": 11,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/DOWN",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/DOWN",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:51.016470844Z",
+    "Stop": "2020-05-25T13:39:51.021947103Z",
+    "SeqNum": 12,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Kubernetes State Change\n* service: add service 'kube-system/contiv-ui-svc', update backends",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true},{\"name\":\"vxlanBVI\",\"isInside\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:51.025836837Z",
+    "Stop": "2020-05-25T13:39:51.027067559Z",
+    "SeqNum": 13,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Node Update\n* service: update nodeport services",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 4,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:51.038252263Z",
+    "Stop": "2020-05-25T13:39:51.039307275Z",
+    "SeqNum": 14,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Kubernetes State Change\n* service: add service 'default/kubernetes'",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/default/kubernetes",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"default/kubernetes\",\"stMappings\":[{\"externalIp\":\"10.96.0.1\",\"externalPort\":443,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":6443}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/nat/v2/dnat44/default/kubernetes",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"default/kubernetes\",\"stMappings\":[{\"externalIp\":\"10.96.0.1\",\"externalPort\":443,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":6443}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:51.064081089Z",
+    "Stop": "2020-05-25T13:39:51.065663257Z",
+    "SeqNum": 15,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Kubernetes State Change\n* service: add service 'kube-system/contiv-etcd'",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:51.075105651Z",
+    "Stop": "2020-05-25T13:39:51.078610477Z",
+    "SeqNum": 16,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Kubernetes State Change\n* service: add service 'kube-system/kube-dns', update backends",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/kube-dns",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/kube-dns\",\"stMappings\":[{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"protocol\":\"UDP\",\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/nat44-global",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+          "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"isInside\":true},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/kube-dns",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/kube-dns\",\"stMappings\":[{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"protocol\":\"UDP\",\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"isInside\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+          "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"isInside\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:54.530517869Z",
+    "Stop": "2020-05-25T13:39:54.530635701Z",
+    "SeqNum": 17,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/DOWN",
+        "Value": null,
+        "Origin": 2
+      },
+      {
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 4,
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/DOWN",
+        "PrevValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "NewValue": null,
+        "PrevState": 5,
+        "NewState": 3,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:54.531024842Z",
+    "Stop": "2020-05-25T13:39:54.53109862Z",
+    "SeqNum": 18,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/DOWN",
+        "Value": null,
+        "Origin": 2
+      },
+      {
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 4,
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/DOWN",
+        "PrevValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "NewValue": null,
+        "PrevState": 5,
+        "NewState": 3,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:54.531325518Z",
+    "Stop": "2020-05-25T13:39:54.532148776Z",
+    "SeqNum": 19,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/tap-vpp2/link-state/DOWN",
+        "Value": null,
+        "Origin": 2
+      },
+      {
+        "Key": "vpp/interface/tap-vpp2/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 4,
+        "Key": "vpp/interface/tap-vpp2/link-state/DOWN",
+        "PrevValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "NewValue": null,
+        "PrevState": 5,
+        "NewState": 3,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/tap-vpp2/rx-modes",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}]}"
+        },
+        "PrevState": 7,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:39:54.532263701Z",
+    "Stop": "2020-05-25T13:39:54.532333311Z",
+    "SeqNum": 20,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/DOWN",
+        "Value": null,
+        "Origin": 2
+      },
+      {
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 4,
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/DOWN",
+        "PrevValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "NewValue": null,
+        "PrevState": 5,
+        "NewState": 3,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:41:01.064669165Z",
+    "Stop": "2020-05-25T13:41:01.066295321Z",
+    "SeqNum": 21,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Node Update\n* ipnet:  node ID=2\n* service: update nodeport services",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 4,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 4,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:41:01.077331101Z",
+    "Stop": "2020-05-25T13:41:01.08480438Z",
+    "SeqNum": 22,
+    "TxnType": 1,
+    "ResyncType": 0,
+    "Description": "Node Update\n* ipnet: connect/update node ID=2\n* service: update nodeport services",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "config/vpp/l2/v2/bridge-domain/vxlanBD",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l2.BridgeDomain",
+          "ProtoMsgData": "{\"name\":\"vxlanBD\",\"forward\":true,\"interfaces\":[{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1},{\"name\":\"vxlan-default-2\",\"splitHorizonGroup\":1}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:02",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l2.FIBEntry",
+          "ProtoMsgData": "{\"physAddress\":\"12:2b:00:00:00:02\",\"bridgeDomain\":\"vxlanBD\",\"outgoingInterface\":\"vxlan-default-2\",\"staticConfig\":true}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/arp/vxlanBVI/192.168.30.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vxlanBVI\",\"ipAddress\":\"192.168.30.2\",\"physAddress\":\"12:2b:00:00:00:02\",\"static\":true}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/interfaces/vxlan-default-2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"type\":\"VXLAN_TUNNEL\",\"enabled\":true,\"vxlan\":{\"srcAddress\":\"192.168.16.1\",\"dstAddress\":\"192.168.16.2\",\"vni\":10}}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.1.2.0/24/gw/192.168.30.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.20.0.10/32/gw/192.168.30.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/172.30.2.0/24/gw/192.168.30.2",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"172.30.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "Origin": 1
+      },
+      {
+        "Key": "config/vpp/v2/route/vrf/0/dst/10.20.0.10/32/gw/0.0.0.0",
+        "Value": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "Origin": 1
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/arp/vxlanBVI/192.168.30.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+          "ProtoMsgData": "{\"interface\":\"vxlanBVI\",\"ipAddress\":\"192.168.30.2\",\"physAddress\":\"12:2b:00:00:00:02\",\"static\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/interfaces/vxlan-default-2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"type\":\"VXLAN_TUNNEL\",\"enabled\":true,\"vxlan\":{\"srcAddress\":\"192.168.16.1\",\"dstAddress\":\"192.168.16.2\",\"vni\":10}}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.1.2.0/24/gw/192.168.30.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.20.0.10/32/gw/192.168.30.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/172.30.2.0/24/gw/192.168.30.2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"172.30.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/v2/route/vrf/0/dst/10.20.0.10/32/gw/0.0.0.0",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l3.Route",
+          "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l2.BridgeDomain.Interface",
+          "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"splitHorizonGroup\":1}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": true,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 2,
+        "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:02",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.l2.FIBEntry",
+          "ProtoMsgData": "{\"physAddress\":\"12:2b:00:00:00:02\",\"bridgeDomain\":\"vxlanBD\",\"outgoingInterface\":\"vxlan-default-2\",\"staticConfig\":true}"
+        },
+        "PrevState": 0,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 4,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      },
+      {
+        "Operation": 3,
+        "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+        "PrevValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "NewValue": {
+          "ProtoMsgName": "ligato.vpp.nat.DNat44",
+          "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+        },
+        "PrevState": 4,
+        "NewState": 4,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  },
+  {
+    "PreRecord": false,
+    "WithSimulation": false,
+    "Start": "2020-05-25T13:41:01.085092067Z",
+    "Stop": "2020-05-25T13:41:01.085148894Z",
+    "SeqNum": 23,
+    "TxnType": 0,
+    "ResyncType": 0,
+    "Description": "",
+    "RetryForTxn": 0,
+    "RetryAttempt": 0,
+    "Values": [
+      {
+        "Key": "vpp/interface/vxlan-default-2/link-state/UP",
+        "Value": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "Origin": 2
+      }
+    ],
+    "Planned": null,
+    "Executed": [
+      {
+        "Operation": 2,
+        "Key": "vpp/interface/vxlan-default-2/link-state/UP",
+        "PrevValue": null,
+        "NewValue": {
+          "ProtoMsgName": "google.protobuf.Empty",
+          "ProtoMsgData": "{}"
+        },
+        "PrevState": 0,
+        "NewState": 5,
+        "PrevErr": null,
+        "NewErr": null,
+        "NOOP": false,
+        "IsDerived": false,
+        "IsProperty": false,
+        "IsRevert": false,
+        "IsRetry": false,
+        "IsRecreate": false
+      }
+    ]
+  }
+]
