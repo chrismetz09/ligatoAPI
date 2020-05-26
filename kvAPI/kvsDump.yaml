@@ -4,7 +4,7 @@ info:
   description: KV Scheduler Dump API
   version: '0.9'
 servers:
-  -  url: 'http://{hostServer}:9191'
+  -  url: 'http://{hostServer}:9999'
      variables:
        hostServer:
          default: localhost
@@ -31,6 +31,7 @@ paths:
                     $ref: '#/components/schemas/KeyPrefixes'
                   Views:
                     $ref: '#/components/schemas/Views'
+
 components:
   schemas:
     Descriptors:
@@ -49,11 +50,13 @@ components:
         example: config/vpp/v2/interfaces/
     Views:
       type: array
-      description: filter option based on data origin
+      description: describes KV Scheduler's view of data
       items:
         type: string
-        description: northbound, southbound or cached
+        description: northbound is look at the key-value space from NB point of view; southbound is look directly into SB via Retrieve methods of descriptors to learn the real and up-to-date state of the systemo; cached is look at KV Scheduler's current view of SB
         example: NB
+
+
 
 
 

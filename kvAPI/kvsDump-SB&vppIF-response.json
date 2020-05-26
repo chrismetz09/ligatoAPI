@@ -1,0 +1,130 @@
+// curl -sSlf "http://localhost:9999/scheduler/dump?view=SB&key-prefix=config/vpp/v2/interfaces/"
+// key-prefix IS a prefix, not a key
+[
+  {
+    "Key": "config/vpp/v2/interfaces/UNTAGGED-local0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"UNTAGGED-local0\",\"type\":\"SOFTWARE_LOOPBACK\",\"rxModes\":[]}"
+    },
+    "Metadata": {
+      "SwIfIndex": 0,
+      "Vrf": 0,
+      "IPAddresses": null,
+      "TAPHostIfName": ""
+    },
+    "Origin": 2
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"type\":\"DPDK\",\"enabled\":true,\"physAddress\":\"08:00:27:de:9e:45\",\"ipAddresses\":[\"192.168.16.1/24\"],\"mtu\":9206,\"rxModes\":[],\"rxPlacements\":[]}"
+    },
+    "Metadata": {
+      "SwIfIndex": 1,
+      "Vrf": 0,
+      "IPAddresses": ["192.168.16.1/24"],
+      "TAPHostIfName": ""
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/podGwLoop",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"podGwLoop\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"physAddress\":\"de:ad:00:00:00:00\",\"ipAddresses\":[\"10.1.1.1/24\"],\"vrf\":1,\"rxModes\":[]}"
+    },
+    "Metadata": {
+      "SwIfIndex": 2,
+      "Vrf": 1,
+      "IPAddresses": ["10.1.1.1/24"],
+      "TAPHostIfName": ""
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/vxlanBVI",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"physAddress\":\"12:2b:00:00:00:01\",\"ipAddresses\":[\"192.168.30.1/24\"],\"vrf\":1,\"rxModes\":[]}"
+    },
+    "Metadata": {
+      "SwIfIndex": 4,
+      "Vrf": 1,
+      "IPAddresses": ["192.168.30.1/24"],
+      "TAPHostIfName": ""
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/vpp-tap-c7a66cbf02295c8c517e620bb51899daceced503208f5c5772b2b03",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-c7a66cbf02295c8c517e620bb51899daceced503208f5c5772b2b03\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:dc:a8:5d:4a\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"rxModes\":[],\"rxPlacements\":[],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024}}"
+    },
+    "Metadata": {
+      "SwIfIndex": 6,
+      "Vrf": 1,
+      "IPAddresses": null,
+      "TAPHostIfName": "tap-122520517"
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/tap-vpp2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"34:3c:00:00:00:01\",\"ipAddresses\":[\"172.30.1.1/24\"],\"mtu\":1450,\"rxModes\":[{\"mode\":\"POLLING\"}],\"rxPlacements\":[],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024}}"
+    },
+    "Metadata": {
+      "SwIfIndex": 3,
+      "Vrf": 0,
+      "IPAddresses": ["172.30.1.1/24"],
+      "TAPHostIfName": "tap-1755813745"
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/vpp-tap-a16bd6a87aeb44dedcc5247caca70d9f0a5995e685bccb6625be6e7",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-a16bd6a87aeb44dedcc5247caca70d9f0a5995e685bccb6625be6e7\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:34:78:73:b2\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"rxModes\":[],\"rxPlacements\":[],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024}}"
+    },
+    "Metadata": {
+      "SwIfIndex": 5,
+      "Vrf": 1,
+      "IPAddresses": null,
+      "TAPHostIfName": "tap-3202028632"
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/vpp-tap-9b7d2793b7dae18701c04629e86206e6ff13b2af2b569a0f9b8692b",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-9b7d2793b7dae18701c04629e86206e6ff13b2af2b569a0f9b8692b\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:f2:21:0f:63\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"rxModes\":[],\"rxPlacements\":[],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024}}"
+    },
+    "Metadata": {
+      "SwIfIndex": 7,
+      "Vrf": 1,
+      "IPAddresses": null,
+      "TAPHostIfName": "tap-524330729"
+    },
+    "Origin": 1
+  },
+  {
+    "Key": "config/vpp/v2/interfaces/vxlan-default-2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"type\":\"VXLAN_TUNNEL\",\"enabled\":true,\"rxModes\":[],\"vxlan\":{\"srcAddress\":\"192.168.16.1\",\"dstAddress\":\"192.168.16.2\",\"vni\":10}}"
+    },
+    "Metadata": {
+      "SwIfIndex": 8,
+      "Vrf": 0,
+      "IPAddresses": null,
+      "TAPHostIfName": ""
+    },
+    "Origin": 1
+  }
+]

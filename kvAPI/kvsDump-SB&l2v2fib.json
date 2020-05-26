@@ -1,3 +1,4 @@
+// curl -sSlf "http://localhost:9999/scheduler/dump?view=SB&key-prefix=config/vpp/l2/v2/fib/"
 [
   {
     "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:01",
