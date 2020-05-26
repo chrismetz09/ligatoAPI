@@ -30,28 +30,30 @@ paths:
                   KeyPrefixes:
                     $ref: '#/components/schemas/KeyPrefixes'
                   Views:
-                    type: string
-                    description: data location
-                    enum:
-                      - SB
-                      - NB
-                      - cached
+                    $ref: '#/components/schemas/Views'
 components:
   schemas:
     Descriptors:
       type: array
+      description: KV Descriptors registered with the KV Scheduler
       items:
-        $ref: '#/components/schemas/Descriptor'
-    Descriptor:
-      type: string
-      example: vpp-interface-address
+        type: string
+        description: KV Descriptor name
+        example: vpp-interface-address
     KeyPrefixes:
       type: array
+      description: key prefixes being watched (e.g. etcd)
       items:
-        $ref: '#/components/schemas/KeyPrefix'
-    KeyPrefix:
-      type: string
-      example: config/vpp/v2/interfaces/
+        type: string
+        description: specific short form key prefix
+        example: config/vpp/v2/interfaces/
+    Views:
+      type: array
+      description: filter option based on data origin
+      items:
+        type: string
+        description: northbound, southbound or cached
+        example: NB
 
 
 
