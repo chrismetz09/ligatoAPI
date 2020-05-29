@@ -690,6 +690,110 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:9191/dump/vpp/v2/interfaces/loopback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/dump/vpp/v2/interfaces/loopback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"loopback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/dump/vpp/v2/interfaces/memif",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/dump/vpp/v2/interfaces/memif",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"dump",
+						"vpp",
+						"v2",
+						"interfaces",
+						"memif"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/vpp/telemetry/runtime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/vpp/telemetry/runtime",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"vpp",
+						"telemetry",
+						"runtime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/vpp/telemetry/nodecount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/vpp/telemetry/nodecount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"vpp",
+						"telemetry",
+						"nodecount"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

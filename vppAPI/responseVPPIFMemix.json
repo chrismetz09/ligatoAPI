@@ -1,0 +1,41 @@
+{
+"2": {
+    "interface": {
+        "name": "mem01",
+        "type": "MEMIF",
+        "enabled": true,
+        "physAddress": "02:00:00:00:00:03",
+        "ipAddresses": [
+            "100.100.100.102/24"
+        ],
+        "mtu": 1500,
+        "memif": {
+            "id": 2,
+            "socketFilename": "/run/vpp/memif.sock",
+            "ringSize": 1
+        }
+    },
+    "interface_meta": {
+        "sw_if_index": 2,
+        "sub_sw_if_index": 2,
+        "l2_address": "AgAAAAAD",
+        "internal_name": "memif0/2",
+        "is_admin_state_up": true,
+        "is_link_state_up": false,
+        "link_duplex": 0,
+        "link_mtu": 1500,
+        "mtu": [
+            1500,
+            0,
+            0,
+            0
+        ],
+        "link_speed": 0,
+        "sub_id": 0,
+        "tag": "mem01",
+        "dhcp": null,
+        "vrf_ipv4": 0,
+        "vrf_ipv6": 0,
+        "pci": 0
+    },
+}

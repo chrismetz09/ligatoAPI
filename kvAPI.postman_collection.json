@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "178fccb6-c5c7-4833-b21b-9c8fb89a0c0d",
+		"name": "kvAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "kvsSchedulerDdump",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/dump",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"dump"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/txn-history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/txn-history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"txn-history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/txn-history?seq-num=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/txn-history?seq-num=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"txn-history"
+					],
+					"query": [
+						{
+							"key": "seq-num",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/dump?view=SB&key-prefix=config/vpp/v2/interfaces/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/dump?view=SB&key-prefix=config/vpp/v2/interfaces/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"dump"
+					],
+					"query": [
+						{
+							"key": "view",
+							"value": "SB"
+						},
+						{
+							"key": "key-prefix",
+							"value": "config/vpp/v2/interfaces/"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/txn-history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/txn-history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"txn-history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/key-timeline?key=config/vpp/v2/interfaces/loop1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/key-timeline?key=config/vpp/v2/interfaces/loop1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"key-timeline"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "config/vpp/v2/interfaces/loop1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/graph-snapshot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/graph-snapshot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"graph-snapshot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/status?key=config/vpp/v2/interfaces/loop1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/status?key=config/vpp/v2/interfaces/loop1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"status"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "config/vpp/v2/interfaces/loop1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/flag-stats?flag=descriptor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/flag-stats?flag=descriptor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"flag-stats"
+					],
+					"query": [
+						{
+							"key": "flag",
+							"value": "descriptor"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9191/scheduler/flag-stats?flag=last-update",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9191/scheduler/flag-stats?flag=last-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"scheduler",
+						"flag-stats"
+					],
+					"query": [
+						{
+							"key": "flag",
+							"value": "last-update"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
