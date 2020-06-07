@@ -1,0 +1,223 @@
+# primary schema
+# check interface.pb.go
+components:
+  schema:
+    type: array
+    description: interface list
+    items:
+      type: object
+      properties:
+        sw_if_index:
+          type: object
+          description: note that sw_if_index should have addition properties of "string". Addressed in OAS 3.1 with https://github.com/OAI/OpenAPI-Specification/issues/687
+          properties:
+            interface:
+              type: object
+              description: interface info
+              properties:
+                name:
+                  type: string
+                  example: vpp-tap1
+                type:
+                  type: string
+                  required: boolean
+                  description: interface type
+                  enum:
+                    - UNDEFINED_TYPE
+                    - SUB_INTERFACE
+                    - SOFTWARE_LOOPBACK
+                    - DPDK
+                    - MEMIF
+                    - TAP
+                    - AF_PACKET
+                    - VXLAN_TUNNEL
+                    - VMXNET3_INTERFACE
+                    - BOND_INTERFACE
+                    - GRE_TUNNEL
+                    - GTPU_TUNNEL
+                    - IPIP_TUNNEL
+                  example: TAP
+                enabled:
+                  type: boolean
+                  example: true
+                physAddress:
+                  type: string
+                  example: 02:fe:1b:0d:d5:29
+                vrf:
+                  type: uint32
+                  description: VRF table of interface
+                  example: 0
+                set_dhcp_client:
+                  type: boolean
+                mtu:
+                  type: integer
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: string
+                  description: unnumbered IF
+                  properties:
+                    interfaceWithIp:
+                      type: string
+                      description: name of interface to borrow IP address from
+                rxModes:
+                  type: object
+                  description: rx mode for interface
+                  properties:
+                    queue:
+                      type: uint32
+                      example: 1
+                    mode:
+                      type: string
+                      enum:
+                        - UNKNOWN
+                        - POLLING
+                        - INTERRUPT
+                        - ADAPTIVE
+                        - DEFAULT
+                      example: ADAPTIVE
+
+                rxPlacements:
+                  type: object
+                  description: rxPlacement
+                  properties:
+                    queue:
+                      type: uint32
+                      example: 1
+                    worker:
+                      type: uint32
+                      example: 1
+                    mainThread:
+                      type: boolean
+                tap:
+                  $ref: '#/components/schemas/tap'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+
+
+
+# interface meta
+components:
+  schemas:
+    interface_meta:
+      type: object
+      properties:
+        sw_if_index:
+          type: uint32
+          example: 3
+        sub_sw_if_index:
+          type: uint32
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: tap0
+        is_admin_state_up:
+          type: boolean
+          example: true
+        is_link_state_up:
+          type: boolean
+          example: true
+        link_duplex:
+          type: uint32
+          example: 0
+        link_mtu:
+          type: uint32
+          example: 1450
+        mtu:
+          type: object
+          description: per-protocol mtu for L2,
+          example: [1450, 0,0,0]
+        link_speed:
+          type: uint32
+          example: 0
+        sub_id:
+          type: uint32
+          example: 0
+        tag:
+          type: string
+          example: tap-vpp2
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: uint32
+          example: 0
+        vrf_ipv6:
+          type: uint32
+          example: 0
+        pci:
+          type: uin32
+          example: 0
+
+#interface "tap" schema which is property of interface tap
+# proto/ligato/vpp/interfaces/interface.pb.go
+Components:
+  schemas:
+    tap:
+      type: object
+      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        version:
+          type: uint32
+          example: 2
+        hostIfName:
+          type: string
+          example: tap-283567301
+        toMicroservice:
+          type: string
+          description: a target microservice name
+          example: foobar
+        rxRingSize:
+          type: uint32
+          description: power of 2
+        txRingSize:
+          type: uint32
+          description: power of 2
+        enableGso:
+          type: bool
+
+
+Components:
+  schemas:
+    memif:
+      type: object
+      description: message Memiflink fields from interface.proto. "memif" is properties of memif interface
+      properties:
+        mode:
+          type: string
+          enum:
+            - ETHERNET
+            - IP
+            - PUNT_INJECT
+        master:
+          type: boolean
+          example: true
+        id:
+          type: uint32
+          description: 32bit integer used to authenticate and match opposite sides of the connection
+        socket_filename:
+          type: string
+          description: Filename of the socket used for connection establishment
+        secret:
+          type: string
+        ring_size:
+          type: uint32
+          description: number of entries of RX/TX rings
+        buffer_size:
+          type: uint32
+          description: size of the buffer allocated for each ring entry
+        rx_queues:
+          type: uint32
+          description: number of rx queues (only valid for slave)
+        tx_queues:
+          type: uint32
+          description: number of tx queues (only valid for slave)
+
+
+
+
+

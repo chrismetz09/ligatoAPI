@@ -1,0 +1,201 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent interfaces/tap
+  description: VPP Agent REST API for vpp.interfaces.tap
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/interfaces/tap:
+    get:
+      summary: Returns a list of VPP Tap Interfaces
+      description: VPP Agent interfaces/tap API
+      tags:
+        - Interface Plugin
+      responses:
+        '200':
+          description: List of VPP Agent TAP interfaces
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                type: array
+                description: TAP Interface List; derived from a) ../plugins/restapi/resturl/urls.go; b) ../proto/ligato/vpp/interfaces/interface.proto; c) ../plugins/vpp/ifplugin/vppcalls/interface_handler_api.go; d)
+                items:
+                  type: object
+                  description: individual tap interface
+                  properties:
+                    Interface_index:
+                      type: string
+                      example: 6
+                    interface:
+                          type: object
+                          description: interface info
+                          properties:
+                            name:
+                              type: string
+                              example: vpp-tap1
+                            type:
+                              type: string
+                              required: boolean
+                              description: interface type
+                              enum:
+                                - UNDEFINED_TYPE
+                                - SUB_INTERFACE
+                                - SOFTWARE_LOOPBACK
+                                - DPDK
+                                - MEMIF
+                                - TAP
+                                - AF_PACKET
+                                - VXLAN_TUNNEL
+                                - VMXNET3_INTERFACE
+                                - BOND_INTERFACE
+                                - GRE_TUNNEL
+                                - GTPU_TUNNEL
+                                - IPIP_TUNNEL
+                              example: TAP
+                            enabled:
+                              type: boolean
+                              example: true
+                            physAddress:
+                              type: string
+                              example: 02:fe:1b:0d:d5:29
+                            vrf:
+                              type: uint32
+                              description: VRF table of interface
+                              example: 0
+                            set_dhcp_client:
+                              type: boolean
+                            mtu:
+                              type: integer
+                              example: 1450
+                              description: maximum frame size on wire
+                            unnumbered:
+                              type: string
+                              description: unnumbered IF
+                              properties:
+                                interfaceWithIp:
+                                  type: string
+                                  description: name of interface to borrow IP address from
+                            rxModes:
+                              type: object
+                              description: rx mode for interface
+                              properties:
+                                  queue:
+                                    type: uint32
+                                    example: 1
+                                  mode:
+                                    type: string
+                                    enum:
+                                      - UNKNOWN
+                                      - POLLING
+                                      - INTERRUPT
+                                      - ADAPTIVE
+                                      - DEFAULT
+                                    example: ADAPTIVE
+
+                            rxPlacements:
+                              type: object
+                              description: rxPlacement
+                              properties:
+                                queue:
+                                  type: uint32
+                                  example: 1
+                                worker:
+                                  type: uint32
+                                  example: 1
+                                mainThread:
+                                  type: boolean
+                            tap:
+                                  $ref: '#/components/schemas/tap'
+                    interface_meta:
+                                  $ref: '#/components/schemas/interface_meta'
+components:
+  schemas:
+    interface_meta:
+      type: object
+      properties:
+        sw_if_index:
+          type: uint32
+          example: 3
+        sub_sw_if_index:
+          type: uint32
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: tap0
+        is_admin_state_up:
+          type: boolean
+          example: true
+        is_link_state_up:
+          type: boolean
+          example: true
+        link_duplex:
+          type: uint32
+          example: 0
+        link_mtu:
+          type: uint32
+          example: 1450
+        mtu:
+          type: object
+          description: per-protocol mtu for L2,
+          example: [1450, 0,0,0]
+        link_speed:
+          type: uint32
+          example: 0
+        sub_id:
+          type: uint32
+          example: 0
+        tag:
+          type: string
+          example: tap-vpp2
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: uint32
+          example: 0
+        vrf_ipv6:
+          type: uint32
+          example: 0
+        pci:
+          type: uin32
+          example: 0
+    tap:
+      type: object
+      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        version:
+          type: uint32
+          example: 2
+        host_if_name:
+          type: string
+          example: tap-283567301
+        to_microservice:
+          type: string
+          description: a target microservice name
+          example: foobar
+        rx_ring_size:
+          type: uint32
+          description: power of 2
+        tx_ring_size:
+          type: uint32
+          description: power of 2
+        enable_gso:
+          type: bool
+
+    
+
+
+
+
+
+                      
+

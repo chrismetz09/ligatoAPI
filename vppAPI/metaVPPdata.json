@@ -1,0 +1,59 @@
+/* TAP Interface List; derived from a) ../plugins/restapi/resturl/urls.go; b) ../proto/ligato/vpp/interfaces/interface.proto; c) ../plugins/vpp/ifplugin/vppcalls/interface_handler_api.go; d)*/
+
+//interface meta
+{
+  "interface_meta": {
+    "sw_if_index": 6,
+    "sub_sw_if_index": 6,
+    "l2_address": "Av6vqlHm",
+    "internal_name": "tap1",
+    "is_admin_state_up": true,
+    "is_link_state_up": true,
+    "link_duplex": 0,
+    "link_mtu": 1450,
+    "mtu": [1450, 0, 0, 0],
+    "link_speed": 0,
+    "sub_id": 0,
+    "tag": "vpp-tap-61c1f434be0396de2d2347cbebc51a822799f3ee78f0f98a101a816",
+    "dhcp": null,
+    "vrf_ipv4": 1,
+    "vrf_ipv6": 0,
+    "pci": 0
+  }
+}
+
+//interface - tap props
+{
+    "tap": {
+        "version": 2,
+        "hostIfName": "tap-1755813745",
+        "rxRingSize": 1024,
+        "txRingSize": 1024
+    }
+}
+
+// InterfaceMeta is combination of proto-modelled Interface data and VPP provided metadata
+type InterfaceMeta struct {
+    SwIfIndex      uint32           `json:"sw_if_index"`
+    SupSwIfIndex   uint32           `json:"sub_sw_if_index"`
+    L2Address      net.HardwareAddr `json:"l2_address"`
+    InternalName   string           `json:"internal_name"`
+    IsAdminStateUp bool             `json:"is_admin_state_up"`
+    IsLinkStateUp  bool             `json:"is_link_state_up"`
+    LinkDuplex     uint32           `json:"link_duplex"`
+    LinkMTU        uint16           `json:"link_mtu"`
+    MTU            []uint32         `json:"mtu"`
+LinkSpeed      uint32           `json:"link_speed"`
+SubID          uint32           `json:"sub_id"`
+Tag            string           `json:"tag"`
+// dhcp
+Dhcp *Dhcp `json:"dhcp"`
+// vrf
+VrfIPv4 uint32 `json:"vrf_ipv4"`
+VrfIPv6 uint32 `json:"vrf_ipv6"`
+// wmxnet3
+Pci uint32 `json:"pci"`
+}
+
+
+
