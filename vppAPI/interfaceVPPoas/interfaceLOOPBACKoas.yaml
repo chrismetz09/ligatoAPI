@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VPP Agent Loopback Interface
-  description: VPP Agent for GET Loopback Interfaces
+  description: VPP Agent GET Loopback Interfaces REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'

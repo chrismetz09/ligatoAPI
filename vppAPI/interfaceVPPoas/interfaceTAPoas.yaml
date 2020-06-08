@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VPP Agent TAP Interface
-  description: VPP Agent for GET TAP Interface
+  description: VPP Agent GET TAP Interface REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'

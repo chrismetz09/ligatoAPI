@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VPP Agent Memif Interface
-  description: VPP Agent for GET Memif Interface
+  description: VPP Agent GET Memif Interface REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'

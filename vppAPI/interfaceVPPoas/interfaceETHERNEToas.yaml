@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VPP Agent Ethernet Interface
-  description: VPP Agent for GET Ethernet Interfaces
+  description: VPP Agent GET Ethernet Interfaces REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'

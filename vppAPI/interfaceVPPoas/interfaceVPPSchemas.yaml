@@ -271,7 +271,7 @@ Components:
 # proto/ligato/vpp/interfaces/interface.pb.go
 Components:
   schemas:
-    vxlan:
+    afpacketLink:
       type: object
       description: af_packet interface properties
       properties:
