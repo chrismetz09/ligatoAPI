@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent interfaces/tap
-  description: VPP Agent REST API for vpp.interfaces.tap
+  title: VPP Agent Vxlan Interface
+  description: VPP Agent for GET Vxlan Interface
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'
@@ -10,38 +10,37 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /dump/vpp/v2/interfaces/tap:
+  /dump/vpp/v2/interfaces/vxlan:
     get:
-      summary: Returns a list of VPP Tap Interfaces
-      description: VPP Agent interfaces/tap API
-      tags:
-        - Interface Plugin
+      summary: list of Vxlan interfaces
+      description:
       responses:
         '200':
-          description: List of VPP Agent TAP interfaces
+          description: list of vxlan interfaces
           content:
-            application/json; charset=UTF-8:
+            application/json:
               schema:
                 type: array
-                description: TAP Interface List; derived from a) ../plugins/restapi/resturl/urls.go; b) ../proto/ligato/vpp/interfaces/interface.proto; c) ../plugins/vpp/ifplugin/vppcalls/interface_handler_api.go; d)
+                description: list of vxlan Interfaces
                 items:
                   type: object
-                  description: individual tap interface
                   properties:
-                    Interface_index:
-                      type: string
-                      example: 6
-                    interface:
+                    sw_if_index:
+                      type: object
+                      description: sw_if_index used to index array of interface objects
+                      properties:
+                        interface:
                           type: object
-                          description: interface info
+                          description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
                           properties:
                             name:
                               type: string
-                              example: vpp-tap1
+                              example: vxlan-default-2
+                              description: logical name for the interface, must be unique across all configured VPP interfaces
                             type:
                               type: string
                               required: boolean
-                              description: interface type
+                              description: interface type and must match actual link
                               enum:
                                 - UNDEFINED_TYPE
                                 - SUB_INTERFACE
@@ -56,16 +55,22 @@ paths:
                                 - GRE_TUNNEL
                                 - GTPU_TUNNEL
                                 - IPIP_TUNNEL
-                              example: TAP
+                              example: VXLAN_TUNNEL
                             enabled:
                               type: boolean
+                              description: Enabled controls if the interface should be UP
                               example: true
                             physAddress:
                               type: string
+                              description: interface physical address; random address assigned if left empty
                               example: 02:fe:1b:0d:d5:29
+                            ipAddresses:
+                              type: string
+                              description: IPAddresses define list of IP addresses for the interface and must be defined in the format of <ipAddress>/<ipPrefix>.
+                              example: 172.30.1.1/24
                             vrf:
                               type: uint32
-                              description: VRF table of interface
+                              description: ID of VRF table that the interface is assigned to.
                               example: 0
                             set_dhcp_client:
                               type: boolean
@@ -75,7 +80,7 @@ paths:
                               description: maximum frame size on wire
                             unnumbered:
                               type: string
-                              description: unnumbered IF
+                              description: unnumbered interface
                               properties:
                                 interfaceWithIp:
                                   type: string
@@ -84,19 +89,20 @@ paths:
                               type: object
                               description: rx mode for interface
                               properties:
-                                  queue:
-                                    type: uint32
-                                    example: 1
-                                  mode:
-                                    type: string
-                                    enum:
-                                      - UNKNOWN
-                                      - POLLING
-                                      - INTERRUPT
-                                      - ADAPTIVE
-                                      - DEFAULT
-                                    example: ADAPTIVE
-
+                                queue:
+                                  type: uint32
+                                  example: 1
+                                mode:
+                                  type: string
+                                  enum:
+                                    - UNKNOWN
+                                    - POLLING
+                                    - INTERRUPT
+                                    - ADAPTIVE
+                                    - DEFAULT
+                                  example: ADAPTIVE
+                                defaultMode:
+                                  type: boolean
                             rxPlacements:
                               type: object
                               description: rxPlacement
@@ -109,17 +115,43 @@ paths:
                                   example: 1
                                 mainThread:
                                   type: boolean
-                            tap:
-                                $ref: '#/components/schemas/tap'
-                    interface_meta:
+                            vxlanlink:
+                                $ref: '#/components/schemas/VxlanLink'
+                        interface_meta:
                                 $ref: '#/components/schemas/interface_meta'
+        '404':
+           description: error
+           content:
+             application/json:
+               schema:
+                 type: string
+                 description: error message
+                 example: not found
 components:
   schemas:
+    VxlanLink:
+      type: object
+      description: vxlan tunnel properties
+      properties:
+        srcAddress:
+          type: string
+          description: source VTEP address
+          example: 192.168.16.1
+        dstAddress:
+          type: string
+          description: destination VTEP address
+          example: 192.168.16.2
+        vni:
+          type: uint32
+          description: VXLAN Network Identifier
+          example: 10
     interface_meta:
       type: object
+      description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
       properties:
         sw_if_index:
           type: uint32
+          description: also used to index array of interfaces
           example: 3
         sub_sw_if_index:
           type: uint32
@@ -143,9 +175,9 @@ components:
           type: uint32
           example: 1450
         mtu:
-          type: object
-          description: per-protocol mtu for L2,
-          example: [1450, 0,0,0]
+          type: uint32
+          description: per-protocol mtu for L2, ... organized as array
+          example: [1450,0,0,0]
         link_speed:
           type: uint32
           example: 0
@@ -168,34 +200,5 @@ components:
         pci:
           type: uin32
           example: 0
-    tap:
-      type: object
-      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
-      properties:
-        version:
-          type: uint32
-          example: 2
-        host_if_name:
-          type: string
-          example: tap-283567301
-        to_microservice:
-          type: string
-          description: a target microservice name
-          example: foobar
-        rx_ring_size:
-          type: uint32
-          description: power of 2
-        tx_ring_size:
-          type: uint32
-          description: power of 2
-        enable_gso:
-          type: bool
 
-    
-
-
-
-
-
-                      
 

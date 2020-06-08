@@ -36,13 +36,20 @@ paths:
                                 type: string
                                 example: 6
                           meta:
-                            type: object
-                            properties:
-                              name:
-                                type: string
-                                example: interface1
-                              number:
-                                type: string
-                                example: 6
+                            $ref: '#/components/schemas/meta'
+
+
+components:
+  schemas:
+    meta:
+      type: object
+      properties:
+        name:
+          type: string
+          example: interface1
+        number:
+          type: string
+          example: 6
+
 
 
