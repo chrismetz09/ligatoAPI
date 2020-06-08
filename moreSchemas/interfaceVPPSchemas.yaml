@@ -1,5 +1,6 @@
-# primary schema
+# top-level VPP interface schema
 # check interface.pb.go
+
 components:
   schema:
     type: array
@@ -13,15 +14,16 @@ components:
           properties:
             interface:
               type: object
-              description: interface info
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
               properties:
                 name:
                   type: string
                   example: vpp-tap1
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
                 type:
                   type: string
                   required: boolean
-                  description: interface type
+                  description: interface type and must match actual link
                   enum:
                     - UNDEFINED_TYPE
                     - SUB_INTERFACE
@@ -39,13 +41,19 @@ components:
                   example: TAP
                 enabled:
                   type: boolean
+                  description: Enabled controls if the interface should be UP
                   example: true
                 physAddress:
                   type: string
+                  description: interface physical address; random address assigned if left empty
                   example: 02:fe:1b:0d:d5:29
+                ipAddresses:
+                  type: string
+                  description: IPAddresses define list of IP addresses for the interface and must be defined in the format of <ipAddress>/<ipPrefix>.
+                  example: 172.30.1.1/24
                 vrf:
                   type: uint32
-                  description: VRF table of interface
+                  description: ID of VRF table that the interface is assigned to.
                   example: 0
                 set_dhcp_client:
                   type: boolean
@@ -55,7 +63,7 @@ components:
                   description: maximum frame size on wire
                 unnumbered:
                   type: string
-                  description: unnumbered IF
+                  description: unnumbered interface
                   properties:
                     interfaceWithIp:
                       type: string
@@ -76,7 +84,8 @@ components:
                         - ADAPTIVE
                         - DEFAULT
                       example: ADAPTIVE
-
+                    defaultMode:
+                      type: boolean
                 rxPlacements:
                   type: object
                   description: rxPlacement
@@ -94,6 +103,22 @@ components:
             interface_meta:
               $ref: '#/components/schemas/interface_meta'
 
+# note from interface.pb.go
+#  // Link defines configuration for specific interface types.
+#  // It can be nil for some interfaces types like: loopback and DPDK.
+#  //
+#  // Types that are valid to be assigned to Link:
+#  //	*Interface_Sub
+#  //	*Interface_Memif
+#  //	*Interface_Afpacket
+#  //	*Interface_Tap
+#  //	*Interface_Vxlan
+#  //	*Interface_Ipsec
+#  //	*Interface_VmxNet3
+#  //	*Interface_Bond
+# //	*Interface_Gre
+#  //	*Interface_Gtpu
+#  //	*Interface_Ipip
 
 
 # interface meta
@@ -101,6 +126,7 @@ components:
   schemas:
     interface_meta:
       type: object
+      description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
       properties:
         sw_if_index:
           type: uint32
@@ -153,7 +179,7 @@ components:
           type: uin32
           example: 0
 
-#interface "tap" schema which is property of interface tap
+# interface type TAP schema section
 # proto/ligato/vpp/interfaces/interface.pb.go
 Components:
   schemas:
@@ -180,12 +206,13 @@ Components:
         enableGso:
           type: bool
 
-
+# interface type MEMIF schema section
+# proto/ligato/vpp/interfaces/interface.pb.go
 Components:
   schemas:
     memif:
       type: object
-      description: message Memiflink fields from interface.proto. "memif" is properties of memif interface
+      description: memif interface properties
       properties:
         mode:
           type: string
@@ -199,23 +226,134 @@ Components:
         id:
           type: uint32
           description: 32bit integer used to authenticate and match opposite sides of the connection
-        socket_filename:
+        socketFilename:
           type: string
           description: Filename of the socket used for connection establishment
         secret:
           type: string
-        ring_size:
+        ringSize:
           type: uint32
           description: number of entries of RX/TX rings
-        buffer_size:
+        bufferSize:
           type: uint32
           description: size of the buffer allocated for each ring entry
-        rx_queues:
+        rxQueues:
           type: uint32
           description: number of rx queues (only valid for slave)
-        tx_queues:
+        txQueues:
           type: uint32
           description: number of tx queues (only valid for slave)
+
+
+#interface type VXLAN_TUNNEL schema
+# proto/ligato/vpp/interfaces/interface.pb.go
+Components:
+  schemas:
+    vxlan:
+      type: object
+      description: vxlan tunnel properties
+      properties:
+        srcAddress:
+          type: string
+          description: source VTEP address
+          example: 192.168.16.1
+        dstAddress:
+          type: string
+          description: destination VTEP address
+          example: 192.168.16.2
+        vni:
+          type: uint32
+          description: VXLAN Network Identifier
+          example: 10
+
+# interface type AF_PACKET interface schema
+# proto/ligato/vpp/interfaces/interface.pb.go
+Components:
+  schemas:
+    vxlan:
+      type: object
+      description: af_packet interface properties
+      properties:
+        hostIfName:
+          type: string
+          description: DEPRECATED. DO NOT USE! Logical reference <linux_interface> should be used instead.
+        linuxInterface:
+          type: string
+          required: boolean
+          description: Logical name of the Linux interface to bind to. Use instead of hostIfNname
+
+
+# interface type DPDK (ethernet) interface schema
+# proto/ligato/vpp/interfaces/interface.pb.go
+# nil for DPDK
+# for interfaces:
+name: GigabitEthernet0/8/0
+type: DPDK
+mtu: 9206
+# rxModes
+mode: POLLING
+#rxPlacement
+mainThread: true
+# for interface meta
+l2_address: CAAn2g1r
+internal_name: GigabitEthernet0/8/0
+
+
+
+
+# interface type SOFTWARE_LOOPBACK interface schema
+# proto/ligato/vpp/interfaces/interface.pb.go
+# nil for LOOPBACK
+# for interfaces:
+name: podGwLoop
+type: SOFTWARE_LOOPBACK
+vrf: 1
+l2_address: AAAAAAAA
+internal_name: local0
+mtu: 0
+
+
+
+
+#interface type SUB_INTERFACE schema
+# proto/ligato/vpp/interfaces/interface.pb.go
+Components:
+  schemas:
+    subinterface:
+      type: object
+      description: subinterface properties
+      properties:
+        parentName:
+          type: string
+          description: Name of the parent (super) interface
+        subID:
+          type: uint32
+          description: SubInterface ID, used as VLAN
+        tagRwOption:
+          type: string
+          description: VLAN tag rewrite rule applied for given tag for sub-interface
+          enum:
+            - DISABLED
+            - PUSH1
+            - PUSH2
+            - POP1
+            - POP2
+            - TRANSLATE11
+            - TRANSLATE12
+            - TRANSLATE21
+            - TRANSLATE22
+        pushDot1q:
+          type: boolean
+          description: Set ether-type of the first tag to dot1q if true, dot1ad otherwise
+        tag1:
+          type: uint32
+          description: First tag (required for PUSH1 and any TRANSLATE)
+        tag2:
+          type: uint32
+          description: Second tag (required for PUSH2 and any TRANSLATE)
+
+
+
 
 
 
