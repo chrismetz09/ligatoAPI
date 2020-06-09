@@ -1,0 +1,77 @@
+// curl http://localhost:9999/scheduler/flag-stats?flag=last-update
+//    "Flags": {
+//      "last-update": "TXN-0",
+//      "value-state": "CONFIGURED",
+//      "descriptor": "vpp-nat44-global"
+//    }
+
+({
+  "TotalCount": 203,
+  "PerValueCount": {
+    "TXN-0": 61,
+    "TXN-1": 1,
+    "TXN-10": 27,
+    "TXN-11": 1,
+    "TXN-12": 13,
+    "TXN-13": 1,
+    "TXN-14": 1,
+    "TXN-15": 1,
+    "TXN-16": 15,
+    "TXN-17": 2,
+    "TXN-18": 2,
+    "TXN-19": 3,
+    "TXN-2": 1,
+    "TXN-20": 2,
+    "TXN-21": 2,
+    "TXN-22": 13,
+    "TXN-23": 1,
+    "TXN-3": 1,
+    "TXN-4": 1,
+    "TXN-5": 1,
+    "TXN-6": 25,
+    "TXN-7": 1,
+    "TXN-8": 26,
+    "TXN-9": 1
+  }
+},
+// curl http://localhost:9999/scheduler/flag-stats?flag=descriptor
+{
+  "TotalCount": 193,
+  "PerValueCount": {
+    "linux-arp": 3,
+    "linux-interface": 7,
+    "linux-interface-address": 10,
+    "linux-interface-watcher": 5,
+    "linux-route": 8,
+    "microservice": 1,
+    "vpp-arp": 4,
+    "vpp-bd-interface": 3,
+    "vpp-bridge-domain": 2,
+    "vpp-interface": 9,
+    "vpp-interface-address": 4,
+    "vpp-interface-has-address": 4,
+    "vpp-interface-link-state": 17,
+    "vpp-interface-rx-mode": 2,
+    "vpp-interface-vrf": 8,
+    "vpp-ip-scan-neighbor": 1,
+    "vpp-l2-fib": 1,
+    "vpp-nat44-dnat": 10,
+    "vpp-nat44-global": 6,
+    "vpp-nat44-global-address": 12,
+    "vpp-nat44-global-interface": 46,
+    "vpp-proxy-arp": 1,
+    "vpp-route": 23,
+    "vpp-unnumbered-interface": 3,
+    "vpp-vrf-table": 3
+  }
+},
+// curl http://localhost:9999/scheduler/flag-stats?flag=value-state
+{
+  "TotalCount": 203,
+  "PerValueCount": {
+    "CONFIGURED": 169,
+    "OBTAINED": 29,
+    "PENDING": 1,
+    "REMOVED": 4
+  }
+})

@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Dump
+  description: KV Scheduler Dump API
+  version: '0.9'
+servers:
+  -  url: 'http://{hostServer}:9999'
+     variables:
+       hostServer:
+         default: localhost
+         description: localhost or VPP agent IP address
+paths:
+  /scheduler/dump:
+    get:
+      summary: Dump index
+      description: index of KV pairs for Descriptors, KeyPrefixes and Views
+      tags:
+        - KV Scheduler
+      responses:
+        '200':
+          description: Returns index of Descriptors, KeyPrefixes and Views
+          content:
+            application/json; charset=UTF-8:
+              schema:
+                type: object
+                description: KV Sched Dump API Index
+                properties:
+                  Descriptors:
+                    $ref: '#/components/schemas/Descriptors'
+                  KeyPrefixes:
+                    $ref: '#/components/schemas/KeyPrefixes'
+                  Views:
+                    $ref: '#/components/schemas/Views'
+
+components:
+  schemas:
+    Descriptors:
+      type: array
+      description: KV Descriptors registered with the KV Scheduler
+      items:
+        type: string
+        description: KV Descriptor name
+        example: vpp-interface-address
+    KeyPrefixes:
+      type: array
+      description: key prefixes being watched (e.g. etcd)
+      items:
+        type: string
+        description: specific short form key prefix
+        example: config/vpp/v2/interfaces/
+    Views:
+      type: array
+      description: describes KV Scheduler's view of data
+      items:
+        type: string
+        description: northbound is look at the key-value space from NB point of view; southbound is look directly into SB via Retrieve methods of descriptors to learn the real and up-to-date state of the systemo; cached is look at KV Scheduler's current view of SB
+        example: NB
+
+
+
+
+
+
+
+
+
+
+
+

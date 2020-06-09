@@ -1,0 +1,3664 @@
+// curl http://localhost:9999/scheduler/graph-snapshot
+[
+  {
+    "Since": "2020-05-25T13:39:46.410887348Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+    "Label": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/vxlanBVI"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-v4-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410908598Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/10.1.0.0/16/tap-vpp1",
+    "Label": "10.1.0.0/16/tap-vpp1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.1.0.0/16\",\"gwAddr\":\"172.30.1.1\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "gw-reachable",
+        "ExpectedKey": "linux/interface/tap-vpp1/address/* | linux/link-local-route/tap-vpp1/*",
+        "MatchingKeys": [
+          "linux/interface/tap-vpp1/address/static/172.30.1.2/24"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/tap-vpp1/UP",
+        "MatchingKeys": ["linux/interface/state/tap-vpp1/UP"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757930792Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410873878Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlanBVI/has-IP-address",
+    "Label": "vpp/interface/vxlanBVI/has-IP-address",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-has-address",
+      "derived": "config/vpp/v2/interfaces/vxlanBVI"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-IP",
+        "ExpectedKey": "vpp/interface/vxlanBVI/address/*",
+        "MatchingKeys": [
+          "vpp/interface/vxlanBVI/address/static/192.168.30.1/24"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669071675Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.08479189Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+    "Label": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/vxlan-default-2"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078595622Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/dnat44/kube-system/kube-dns",
+    "Label": "kube-system/kube-dns",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.DNat44",
+      "ProtoMsgData": "{\"label\":\"kube-system/kube-dns\",\"stMappings\":[{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"protocol\":\"UDP\",\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.96.0.10\",\"externalPort\":53,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.2\",\"localPort\":53,\"probability\":1},{\"vrfId\":1,\"localIp\":\"10.1.1.4\",\"localPort\":53,\"probability\":1}],\"twiceNat\":\"SELF\"}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-dnat"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists-1",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:54.530632189Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/UP",
+    "Label": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-17",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410805565Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/UNTAGGED-local0",
+    "Label": "UNTAGGED-local0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"UNTAGGED-local0\",\"type\":\"SOFTWARE_LOOPBACK\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["0"]
+    },
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410950371Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/vrf-table/id/0/protocol/IPV6",
+    "Label": "id/0/protocol/IPV6",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+      "ProtoMsgData": "{\"protocol\":\"IPV6\",\"label\":\"ipv6-VRF:0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-vrf-table"
+    },
+    "MetadataFields": {
+      "index": ["0"]
+    },
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.415298216Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/podGwLoop/link-state/UP",
+    "Label": "vpp/interface/podGwLoop/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-2",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986925237Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+    "Label": "vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:8f:c3:b9:cf\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["5"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "ExpectedKey": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+        "ExpectedKey": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669085341Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+    "Label": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669099623Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+    "Label": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.75798403Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+    "Label": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410948099Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/::/0/gw/::",
+    "Label": "config/vpp/v2/route/vrf/0/dst/::/0/gw/::",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"::/0\",\"nextHopAddr\":\"::\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986921879Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Label": "0.0.0.0/0/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "gw-reachable",
+        "ExpectedKey": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/* | linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/*",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084800391Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+    "Label": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.BridgeDomain.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"splitHorizonGroup\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-bd-interface",
+      "derived": "config/vpp/l2/v2/bridge-domain/vxlanBD"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlan-default-2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlan-default-2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.4108721Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/tap-vpp1/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/tap-vpp1"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410914099Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/1/dst/172.30.0.0/16/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/1/dst/172.30.0.0/16/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.41094608Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/tap-vpp2",
+    "Label": "tap-vpp2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"34:3c:00:00:00:01\",\"ipAddresses\":[\"172.30.1.1/24\"],\"mtu\":1450,\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}],\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["3"],
+      "ip_addresses": ["172.30.1.1/24"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+        "ExpectedKey": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/address/static/172.30.1.1/24"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/tap-vpp2/has-IP-address",
+        "ExpectedKey": "vpp/interface/tap-vpp2/has-IP-address",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/has-IP-address"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/tap-vpp2/rx-modes",
+        "ExpectedKey": "vpp/interface/tap-vpp2/rx-modes",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/rx-modes"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+        "ExpectedKey": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/vrf/0/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.418772055Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlanBVI/link-state/UP",
+    "Label": "vpp/interface/vxlanBVI/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-4",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757958121Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/1/dst/10.1.1.4/32/gw/10.1.1.4",
+    "Label": "config/vpp/v2/route/if/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/1/dst/10.1.1.4/32/gw/10.1.1.4",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.4/32\",\"nextHopAddr\":\"10.1.1.4\",\"outgoingInterface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410800258Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/1/dst/172.30.1.0/24/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/1/dst/172.30.1.0/24/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"172.30.1.0/24\",\"nextHopAddr\":\"0.0.0.0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.41080482Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/podGwLoop/has-IP-address",
+    "Label": "vpp/interface/podGwLoop/has-IP-address",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-has-address",
+      "derived": "config/vpp/v2/interfaces/podGwLoop"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-IP",
+        "ExpectedKey": "vpp/interface/podGwLoop/address/*",
+        "MatchingKeys": ["vpp/interface/podGwLoop/address/static/10.1.1.1/24"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.9869664Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/arp/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/10.1.1.2",
+    "Label": "vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/10.1.1.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"ipAddress\":\"10.1.1.2\",\"physAddress\":\"02:fe:70:3c:46:30\",\"static\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669088205Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Label": "0.0.0.0/0/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "gw-reachable",
+        "ExpectedKey": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/* | linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/*",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757965954Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+    "Label": "vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:53:bb:01:d7\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["7"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "ExpectedKey": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+        "ExpectedKey": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410803632Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/UNTAGGED-local0/link-state/DOWN",
+    "Label": "vpp/interface/UNTAGGED-local0/link-state/DOWN",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410880068Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/fe80::/10/gw/::",
+    "Label": "config/vpp/v2/route/vrf/0/dst/fe80::/10/gw/::",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"dstNetwork\":\"fe80::/10\",\"nextHopAddr\":\"::\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410915Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/host-name/docker0",
+    "Label": "linux/interface/host-name/docker0",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "linux-interface-watcher"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078602692Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+    "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078598834Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+    "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"isInside\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410809457Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.0.2.15/32/gw/172.30.1.2",
+    "Label": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.0.2.15/32/gw/172.30.1.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"dstNetwork\":\"10.0.2.15/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/tap-vpp2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/tap-vpp2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410912905Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/10.96.0.0/12/tap-vpp1",
+    "Label": "10.96.0.0/12/tap-vpp1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"tap-vpp1\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"10.96.0.0/12\",\"gwAddr\":\"172.30.1.1\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "gw-reachable",
+        "ExpectedKey": "linux/interface/tap-vpp1/address/* | linux/link-local-route/tap-vpp1/*",
+        "MatchingKeys": [
+          "linux/interface/tap-vpp1/address/static/172.30.1.2/24"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/tap-vpp1/UP",
+        "MatchingKeys": ["linux/interface/state/tap-vpp1/UP"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410915968Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+    "Label": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/GigabitEthernet0/8/0"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669081634Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Label": "10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32",
+        "ExpectedKey": "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.758000473Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+    "Label": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+      "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-unnumbered-interface",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/*",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "unnumbered-interface-has-IP",
+        "ExpectedKey": "vpp/interface/podGwLoop/has-IP-address",
+        "MatchingKeys": ["vpp/interface/podGwLoop/has-IP-address"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.07859418Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+    "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410920003Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+    "Label": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-address",
+      "derived": "config/vpp/v2/interfaces/vxlanBVI"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/vxlanBVI/vrf/*",
+        "MatchingKeys": ["vpp/interface/vxlanBVI/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986898197Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+    "Label": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986951973Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078606394Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+    "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Address",
+      "ProtoMsgData": "{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-address",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078593075Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vxlanBVI/feature/out",
+    "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlanBVI\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410923285Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/host-name/enp0s3",
+    "Label": "linux/interface/host-name/enp0s3",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "linux-interface-watcher"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986924056Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Label": "10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32",
+        "ExpectedKey": "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:54.531097784Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/UP",
+    "Label": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-18",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410868613Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+    "Label": "id/1/protocol/IPV4",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+      "ProtoMsgData": "{\"id\":1,\"label\":\"podVRF-IPv4\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-vrf-table"
+    },
+    "MetadataFields": {
+      "index": ["1"]
+    },
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410894794Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/microservice/k8s-master",
+    "Label": "linux/microservice/k8s-master",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "microservice"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078590042Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/tap-vpp2/feature/in",
+    "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"isInside\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/tap-vpp2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/tap-vpp2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410949558Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+    "Label": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-address",
+      "derived": "config/vpp/v2/interfaces/GigabitEthernet0/8/0"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/GigabitEthernet0/8/0/vrf/*",
+        "MatchingKeys": [
+          "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986914788Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Label": "linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.2/32\"],\"physAddress\":\"02:fe:70:3c:46:30\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["eth0"],
+      "tap-vpp-name": [
+        "vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+      ]
+    },
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vpp-tap-interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+        "ExpectedKey": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "ExpectedKey": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.085147739Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vxlan-default-2/link-state/UP",
+    "Label": "vpp/interface/vxlan-default-2/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-23",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410895998Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/tap-vpp2/has-IP-address",
+    "Label": "vpp/interface/tap-vpp2/has-IP-address",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-has-address",
+      "derived": "config/vpp/v2/interfaces/tap-vpp2"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-IP",
+        "ExpectedKey": "vpp/interface/tap-vpp2/address/*",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/address/static/172.30.1.1/24"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410898481Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/dnat44/DNAT-identities",
+    "Label": "DNAT-identities",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.DNat44",
+      "ProtoMsgData": "{\"label\":\"DNAT-identities\",\"idMappings\":[{\"ipAddress\":\"192.168.16.1\",\"port\":4789,\"protocol\":\"UDP\"},{\"vrfId\":1,\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"},{\"ipAddress\":\"192.168.16.1\",\"protocol\":\"UDP\"}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-dnat"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists-1",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.07860368Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vxlanBVI/feature/in",
+    "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"isInside\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986950961Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+    "Label": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084796876Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+    "Label": "kube-system/contiv-etcd",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.DNat44",
+      "ProtoMsgData": "{\"label\":\"kube-system/contiv-etcd\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.107.93.18\",\"externalPort\":12379,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":12379}],\"twiceNat\":\"SELF\"}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-dnat"
+    },
+    "MetadataFields": null,
+    "Targets": [],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.41088883Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/tap-vpp1",
+    "Label": "tap-vpp1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp1\",\"type\":\"TAP_TO_VPP\",\"hostIfName\":\"vpp1\",\"enabled\":true,\"ipAddresses\":[\"172.30.1.2/24\"],\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"tap-vpp2\"}}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["vpp1"],
+      "tap-vpp-name": ["tap-vpp2"]
+    },
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vpp-tap-interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/tap-vpp2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/tap-vpp2"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/tap-vpp1/UP",
+        "ExpectedKey": "linux/interface/state/tap-vpp1/UP",
+        "MatchingKeys": ["linux/interface/state/tap-vpp1/UP"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+        "ExpectedKey": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+        "MatchingKeys": [
+          "linux/interface/tap-vpp1/address/static/172.30.1.2/24"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669068467Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/1/dst/10.1.1.3/32/gw/10.1.1.3",
+    "Label": "config/vpp/v2/route/if/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/1/dst/10.1.1.3/32/gw/10.1.1.3",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.3/32\",\"nextHopAddr\":\"10.1.1.3\",\"outgoingInterface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757928541Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/arp/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/10.1.1.4",
+    "Label": "vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/10.1.1.4",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"ipAddress\":\"10.1.1.4\",\"physAddress\":\"02:fe:ac:44:fe:28\",\"static\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084788418Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.20.0.10/32/gw/192.168.30.2",
+    "Label": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.20.0.10/32/gw/192.168.30.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078592057Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+    "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669076387Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Label": "linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.3/32\"],\"physAddress\":\"02:fe:10:48:34:d3\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"}}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["eth0"],
+      "tap-vpp-name": [
+        "vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+      ]
+    },
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vpp-tap-interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+        "ExpectedKey": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "ExpectedKey": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410867895Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/1/dst/10.1.0.0/16/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/1/dst/10.1.0.0/16/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"vrfId\":1,\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410939529Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/255.255.255.255/32/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/255.255.255.255/32/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"255.255.255.255/32\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078607693Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+    "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+        "MatchingKeys": ["config/vpp/v2/interfaces/GigabitEthernet0/8/0"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669072669Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+    "Label": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "numbered-interface-assigned-to-VRF",
+        "ExpectedKey": "vpp/interface/podGwLoop/vrf/*",
+        "MatchingKeys": ["vpp/interface/podGwLoop/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.41092187Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/172.30.0.0/16/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/172.30.0.0/16/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"172.30.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "via-vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986901875Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+    "Label": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084799204Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/arp/vxlanBVI/192.168.30.2",
+    "Label": "vxlanBVI/192.168.30.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"vxlanBVI\",\"ipAddress\":\"192.168.30.2\",\"physAddress\":\"12:2b:00:00:00:02\",\"static\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084803054Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:02",
+    "Label": "vxlanBD/mac/12:2b:00:00:00:02",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.FIBEntry",
+      "ProtoMsgData": "{\"physAddress\":\"12:2b:00:00:00:02\",\"bridgeDomain\":\"vxlanBD\",\"outgoingInterface\":\"vxlan-default-2\",\"staticConfig\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-l2-fib"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "bridged-interface",
+        "ExpectedKey": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+        "MatchingKeys": ["vpp/bd/vxlanBD/interface/vxlan-default-2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410864882Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/proxyarp-global",
+    "Label": "config/vpp/v2/proxyarp-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.ProxyARP",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-proxy-arp"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410893973Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/32/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/32/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"0.0.0.0/32\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084801843Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/bd/vxlanBD/interface/vxlanBVI",
+    "Label": "vpp/bd/vxlanBD/interface/vxlanBVI",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.BridgeDomain.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-bd-interface",
+      "derived": "config/vpp/l2/v2/bridge-domain/vxlanBD"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986947238Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece",
+    "Label": "linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7318/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["lo"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+        "ExpectedKey": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+        "ExpectedKey": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP",
+        "ExpectedKey": "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757988025Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+    "Label": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "numbered-interface-assigned-to-VRF",
+        "ExpectedKey": "vpp/interface/podGwLoop/vrf/*",
+        "MatchingKeys": ["vpp/interface/podGwLoop/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.039304196Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/dnat44/default/kubernetes",
+    "Label": "default/kubernetes",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.DNat44",
+      "ProtoMsgData": "{\"label\":\"default/kubernetes\",\"stMappings\":[{\"externalIp\":\"10.96.0.1\",\"externalPort\":443,\"localIps\":[{\"localIp\":\"10.20.0.2\",\"localPort\":6443}],\"twiceNat\":\"SELF\"}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-14",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-dnat"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078609537Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/tap-vpp2/feature/out",
+    "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp2\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/tap-vpp2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/tap-vpp2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986957003Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410917206Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+    "Label": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-address",
+      "derived": "config/vpp/v2/interfaces/tap-vpp2"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/tap-vpp2/vrf/*",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/vrf/0/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410940995Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/vrf-table/id/0/protocol/IPV4",
+    "Label": "id/0/protocol/IPV4",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.VrfTable",
+      "ProtoMsgData": "{\"label\":\"mainVRF-IPv4\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-vrf-table"
+    },
+    "MetadataFields": {
+      "index": ["0"]
+    },
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669088872Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757998493Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+    "Label": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:54.532332336Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/UP",
+    "Label": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-20",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078601217Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/nat44-global",
+    "Label": "config/vpp/nat/v2/nat44-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global",
+      "ProtoMsgData": "{\"forwarding\":true,\"natInterfaces\":[{\"name\":\"GigabitEthernet0/8/0\",\"outputFeature\":true},{\"name\":\"vxlanBVI\"},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\"},{\"name\":\"tap-vpp2\"},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"},{\"name\":\"vxlanBVI\",\"isInside\":true},{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"isInside\":true},{\"name\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\",\"isInside\":true},{\"name\":\"tap-vpp2\",\"isInside\":true},{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"isInside\":true}],\"addressPool\":[{\"address\":\"192.168.16.1\",\"vrfId\":4294967295},{\"address\":\"10.1.1.254\",\"vrfId\":4294967295,\"twiceNat\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "ExpectedKey": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "MatchingKeys": ["vpp/nat44/address/10.1.1.254/twice-nat/on"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "ExpectedKey": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "MatchingKeys": ["vpp/nat44/address/192.168.16.1/twice-nat/off"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/GigabitEthernet0/8/0/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/tap-vpp2/feature/out"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "MatchingKeys": [
+          "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/in"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "ExpectedKey": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "MatchingKeys": ["vpp/nat44/interface/vxlanBVI/feature/out"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410814047Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+    "Label": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/podGwLoop"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-v4-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410866341Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/224.0.0.0/4/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/224.0.0.0/4/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"224.0.0.0/4\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.877263806Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/host-name/vpp1",
+    "Label": "linux/interface/host-name/vpp1",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-5",
+      "value-state": "OBTAINED",
+      "descriptor": "linux-interface-watcher"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410801938Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/host-name/lo",
+    "Label": "linux/interface/host-name/lo",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "linux-interface-watcher"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410820631Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/1/dst/0.0.0.0/0/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/1/dst/0.0.0.0/0/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"vrfId\":1,\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"0.0.0.0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410878724Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/ipscanneigh-global",
+    "Label": "config/vpp/v2/ipscanneigh-global",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.IPScanNeighbor",
+      "ProtoMsgData": "{\"mode\":\"IPV4\",\"scanInterval\":1,\"staleThreshold\":4}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-ip-scan-neighbor"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410918608Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+    "Label": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-has-address",
+      "derived": "config/vpp/v2/interfaces/GigabitEthernet0/8/0"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-IP",
+        "ExpectedKey": "vpp/interface/GigabitEthernet0/8/0/address/*",
+        "MatchingKeys": [
+          "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669069894Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+    "Label": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757946541Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Label": "0.0.0.0/0/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"GLOBAL\",\"dstNetwork\":\"0.0.0.0/0\",\"gwAddr\":\"10.1.1.1\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "gw-reachable",
+        "ExpectedKey": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/* | linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/*",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078604472Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+    "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\",\"isInside\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.08479837Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+    "Label": "kube-system/contiv-ui-svc",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.DNat44",
+      "ProtoMsgData": "{\"label\":\"kube-system/contiv-ui-svc\",\"stMappings\":[{\"externalIp\":\"192.168.16.1\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"192.168.16.2\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.20.0.10\",\"externalPort\":32500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"},{\"externalIp\":\"10.109.245.108\",\"externalPort\":9500,\"localIps\":[{\"vrfId\":1,\"localIp\":\"10.1.1.3\",\"localPort\":9500}],\"twiceNat\":\"SELF\"}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-dnat"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists-1",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:54.532145426Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/tap-vpp2/link-state/UP",
+    "Label": "vpp/interface/tap-vpp2/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-19",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410821544Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+    "Label": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-address",
+      "derived": "config/vpp/v2/interfaces/podGwLoop"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/podGwLoop/vrf/*",
+        "MatchingKeys": ["vpp/interface/podGwLoop/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410935237Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/vxlanBVI",
+    "Label": "vxlanBVI",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlanBVI\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"physAddress\":\"12:2b:00:00:00:01\",\"ipAddresses\":[\"192.168.30.1/24\"],\"vrf\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["4"],
+      "ip_addresses": ["192.168.30.1/24"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+        "ExpectedKey": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+        "MatchingKeys": [
+          "vpp/interface/vxlanBVI/address/static/192.168.30.1/24"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vxlanBVI/has-IP-address",
+        "ExpectedKey": "vpp/interface/vxlanBVI/has-IP-address",
+        "MatchingKeys": ["vpp/interface/vxlanBVI/has-IP-address"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+        "ExpectedKey": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+        "MatchingKeys": ["vpp/interface/vxlanBVI/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986902996Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669094847Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb",
+    "Label": "linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7533/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["lo"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+        "ExpectedKey": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+        "ExpectedKey": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP",
+        "ExpectedKey": "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757973001Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Label": "linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"type\":\"TAP_TO_VPP\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"hostIfName\":\"eth0\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.4/32\"],\"physAddress\":\"02:fe:ac:44:fe:28\",\"mtu\":1450,\"tap\":{\"vppTapIfName\":\"vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777\"}}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["eth0"],
+      "tap-vpp-name": [
+        "vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+      ]
+    },
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "vpp-tap-interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+        "ExpectedKey": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "ExpectedKey": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.75798537Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+    "Label": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084786556Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.1.2.0/24/gw/192.168.30.2",
+    "Label": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.1.2.0/24/gw/192.168.30.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084789949Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/172.30.2.0/24/gw/192.168.30.2",
+    "Label": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/172.30.2.0/24/gw/192.168.30.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"172.30.2.0/24\",\"nextHopAddr\":\"192.168.30.2\",\"outgoingInterface\":\"vxlanBVI\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vxlanBVI",
+        "MatchingKeys": ["config/vpp/v2/interfaces/vxlanBVI"]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757991602Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90",
+    "Label": "linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90\",\"type\":\"LOOPBACK\",\"namespace\":{\"type\":\"FD\",\"reference\":\"/proc/7575/ns/net\"},\"enabled\":true,\"ipAddresses\":[\"127.0.0.1/8\",\"::1/128\"]}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface"
+    },
+    "MetadataFields": {
+      "host-iface-name": ["lo"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+        "ExpectedKey": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+        "ExpectedKey": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+        "MatchingKeys": [
+          "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP",
+        "ExpectedKey": "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.08477903Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/vxlan-default-2",
+    "Label": "vxlan-default-2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vxlan-default-2\",\"type\":\"VXLAN_TUNNEL\",\"enabled\":true,\"vxlan\":{\"srcAddress\":\"192.168.16.1\",\"dstAddress\":\"192.168.16.2\",\"vni\":10}}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["8"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+        "ExpectedKey": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+        "MatchingKeys": ["vpp/interface/vxlan-default-2/vrf/0/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078597273Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+    "Label": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Address",
+      "ProtoMsgData": "{\"address\":\"192.168.16.1\",\"vrfId\":4294967295}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-address",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410816451Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+    "Label": "GigabitEthernet0/8/0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"GigabitEthernet0/8/0\",\"type\":\"DPDK\",\"enabled\":true,\"ipAddresses\":[\"192.168.16.1/24\"]}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["1"],
+      "ip_addresses": ["192.168.16.1/24"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+        "ExpectedKey": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+        "MatchingKeys": [
+          "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+        "ExpectedKey": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+        "MatchingKeys": ["vpp/interface/GigabitEthernet0/8/0/has-IP-address"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+        "ExpectedKey": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+        "MatchingKeys": [
+          "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:51.078605438Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+    "Label": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.nat.Nat44Global.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-16",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-nat44-global-interface",
+      "derived": "config/vpp/nat/v2/nat44-global"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986958126Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+    "Label": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "numbered-interface-assigned-to-VRF",
+        "ExpectedKey": "vpp/interface/podGwLoop/vrf/*",
+        "MatchingKeys": ["vpp/interface/podGwLoop/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757962718Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757982839Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Label": "10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.Route",
+      "ProtoMsgData": "{\"outgoingInterface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"scope\":\"LINK\",\"dstNetwork\":\"10.1.1.1/32\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "outgoing-interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32",
+        "ExpectedKey": "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32",
+        "MatchingKeys": [
+          "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084791015Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/10.20.0.10/32/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/10.20.0.10/32/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.20.0.10/32\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "via-vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410819908Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/10.1.0.0/16/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/10.1.0.0/16/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"INTER_VRF\",\"dstNetwork\":\"10.1.0.0/16\",\"nextHopAddr\":\"0.0.0.0\",\"viaVrfId\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "via-vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410892862Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/GigabitEthernet0/8/0/vrf/0/dst/0.0.0.0/0/gw/192.168.16.100",
+    "Label": "config/vpp/v2/route/if/GigabitEthernet0/8/0/vrf/0/dst/0.0.0.0/0/gw/192.168.16.100",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"192.168.16.100\",\"outgoingInterface\":\"GigabitEthernet0/8/0\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+        "MatchingKeys": ["config/vpp/v2/interfaces/GigabitEthernet0/8/0"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986968176Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/1/dst/10.1.1.2/32/gw/10.1.1.2",
+    "Label": "config/vpp/v2/route/if/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/1/dst/10.1.1.2/32/gw/10.1.1.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"vrfId\":1,\"dstNetwork\":\"10.1.1.2/32\",\"nextHopAddr\":\"10.1.1.2\",\"outgoingInterface\":\"vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "vrf-table-exists",
+        "ExpectedKey": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+        "MatchingKeys": ["config/vpp/v2/vrf-table/id/1/protocol/IPV4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.66908964Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669098605Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/arp/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/10.1.1.3",
+    "Label": "vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/10.1.1.3",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"ipAddress\":\"10.1.1.3\",\"physAddress\":\"02:fe:10:48:34:d3\",\"static\":true}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757986509Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP",
+    "Label": "",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "derived": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.757994243Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/arp/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/10.1.1.1",
+    "Label": "linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/10.1.1.1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:53:bb:01:d7\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-10",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:54.532147415Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/tap-vpp2/rx-modes",
+    "Label": "vpp/interface/tap-vpp2/rx-modes",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"tap-vpp2\",\"type\":\"TAP\",\"rxModes\":[{\"mode\":\"DEFAULT\",\"defaultMode\":true}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-19",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-rx-mode",
+      "derived": "config/vpp/v2/interfaces/tap-vpp2"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-link-is-UP",
+        "ExpectedKey": "vpp/interface/tap-vpp2/link-state/UP",
+        "MatchingKeys": ["vpp/interface/tap-vpp2/link-state/UP"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:41:01.084793935Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/l2/v2/bridge-domain/vxlanBD",
+    "Label": "vxlanBD",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l2.BridgeDomain",
+      "ProtoMsgData": "{\"name\":\"vxlanBD\",\"forward\":true,\"interfaces\":[{\"name\":\"vxlanBVI\",\"bridgedVirtualInterface\":true,\"splitHorizonGroup\":1},{\"name\":\"vxlan-default-2\",\"splitHorizonGroup\":1}]}"
+    },
+    "Flags": {
+      "last-update": "TXN-22",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-bridge-domain"
+    },
+    "MetadataFields": {
+      "index": ["1"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+        "ExpectedKey": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+        "MatchingKeys": ["vpp/bd/vxlanBD/interface/vxlan-default-2"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/bd/vxlanBD/interface/vxlanBVI",
+        "ExpectedKey": "vpp/bd/vxlanBD/interface/vxlanBVI",
+        "MatchingKeys": ["vpp/bd/vxlanBD/interface/vxlanBVI"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410920889Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/0/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/0/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"0.0.0.0/0\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410922616Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/vrf/0/dst/240.0.0.0/4/gw/0.0.0.0",
+    "Label": "config/vpp/v2/route/vrf/0/dst/240.0.0.0/4/gw/0.0.0.0",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"type\":\"DROP\",\"dstNetwork\":\"240.0.0.0/4\",\"nextHopAddr\":\"0.0.0.0\",\"weight\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.413880295Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+    "Label": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-1",
+      "value-state": "OBTAINED",
+      "descriptor": "vpp-interface-link-state"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.98694118Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+    "Label": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+      "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-unnumbered-interface",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/*",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "unnumbered-interface-has-IP",
+        "ExpectedKey": "vpp/interface/podGwLoop/has-IP-address",
+        "MatchingKeys": ["vpp/interface/podGwLoop/has-IP-address"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410813223Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+    "Label": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-interface-address",
+      "derived": "config/linux/interfaces/v2/interface/tap-vpp1"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410861273Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+    "Label": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface-vrf",
+      "derived": "config/vpp/v2/interfaces/tap-vpp2"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410903155Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/podGwLoop",
+    "Label": "podGwLoop",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"podGwLoop\",\"type\":\"SOFTWARE_LOOPBACK\",\"enabled\":true,\"ipAddresses\":[\"10.1.1.1/24\"],\"vrf\":1}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["2"],
+      "ip_addresses": ["10.1.1.1/24"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+        "ExpectedKey": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+        "MatchingKeys": ["vpp/interface/podGwLoop/address/static/10.1.1.1/24"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/podGwLoop/has-IP-address",
+        "ExpectedKey": "vpp/interface/podGwLoop/has-IP-address",
+        "MatchingKeys": ["vpp/interface/podGwLoop/has-IP-address"]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+        "ExpectedKey": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+        "MatchingKeys": ["vpp/interface/podGwLoop/vrf/1/ip-version/v4"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.986949511Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/arp/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/10.1.1.1",
+    "Label": "linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/10.1.1.1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:8f:c3:b9:cf\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-6",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669066679Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/linux/l3/v2/arp/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/10.1.1.1",
+    "Label": "linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/10.1.1.1",
+    "Value": {
+      "ProtoMsgName": "ligato.linux.l3.ARPEntry",
+      "ProtoMsgData": "{\"interface\":\"linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2\",\"ipAddress\":\"10.1.1.1\",\"hwAddress\":\"02:fe:ef:b7:cb:2c\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "linux-arp"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-has-ip-address",
+        "ExpectedKey": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/*",
+        "MatchingKeys": [
+          "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "interface-is-up",
+        "ExpectedKey": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "MatchingKeys": [
+          "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669083203Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+    "Label": "vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface",
+      "ProtoMsgData": "{\"name\":\"vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298\",\"type\":\"TAP\",\"enabled\":true,\"physAddress\":\"02:fe:ef:b7:cb:2c\",\"vrf\":1,\"mtu\":1450,\"unnumbered\":{\"interfaceWithIp\":\"podGwLoop\"},\"tap\":{\"version\":2,\"rxRingSize\":1024,\"txRingSize\":1024,\"enableGso\":true}}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-interface"
+    },
+    "MetadataFields": {
+      "index": ["6"]
+    },
+    "Targets": [
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "ExpectedKey": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "MatchingKeys": [
+          "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+        ]
+      },
+      {
+        "Relation": "derives",
+        "Label": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+        "ExpectedKey": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop"
+        ]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410884934Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "linux/interface/host-name/enp0s9",
+    "Label": "linux/interface/host-name/enp0s9",
+    "Value": {
+      "ProtoMsgName": "google.protobuf.Empty",
+      "ProtoMsgData": "{}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "OBTAINED",
+      "descriptor": "linux-interface-watcher"
+    },
+    "MetadataFields": null,
+    "Targets": null,
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:46.410810514Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.20.0.2/32/gw/172.30.1.2",
+    "Label": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.20.0.2/32/gw/172.30.1.2",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.l3.Route",
+      "ProtoMsgData": "{\"dstNetwork\":\"10.20.0.2/32\",\"nextHopAddr\":\"172.30.1.2\",\"outgoingInterface\":\"tap-vpp2\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-0",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-route"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-exists",
+        "ExpectedKey": "config/vpp/v2/interfaces/tap-vpp2",
+        "MatchingKeys": ["config/vpp/v2/interfaces/tap-vpp2"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  },
+  {
+    "Since": "2020-05-25T13:39:48.669091861Z",
+    "Until": "0001-01-01T00:00:00Z",
+    "Key": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+    "Label": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+    "Value": {
+      "ProtoMsgName": "ligato.vpp.interfaces.Interface.Unnumbered",
+      "ProtoMsgData": "{\"interfaceWithIp\":\"podGwLoop\"}"
+    },
+    "Flags": {
+      "last-update": "TXN-8",
+      "value-state": "CONFIGURED",
+      "descriptor": "vpp-unnumbered-interface",
+      "derived": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298"
+    },
+    "MetadataFields": null,
+    "Targets": [
+      {
+        "Relation": "depends-on",
+        "Label": "interface-assigned-to-vrf-table",
+        "ExpectedKey": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/*",
+        "MatchingKeys": [
+          "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop"
+        ]
+      },
+      {
+        "Relation": "depends-on",
+        "Label": "unnumbered-interface-has-IP",
+        "ExpectedKey": "vpp/interface/podGwLoop/has-IP-address",
+        "MatchingKeys": ["vpp/interface/podGwLoop/has-IP-address"]
+      }
+    ],
+    "TargetUpdateOnly": false
+  }
+]

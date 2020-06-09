@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Dump View & Key Prefix
+  description: KV Scheduler Dump View & Key Prefix
+  version: '0.9'
+servers:
+  -  url: 'http://{hostServer}:9999'
+     variables:
+       hostServer:
+         default: localhost
+         description: localhost or VPP agent IP address
+paths:
+  /scheduler/dump:
+    get:
+      summary:
+      description: key status value
+      tags:
+        - KV Scheduler
+      parameters:
+        - name: view
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [NB, SB, cached]
+          description: view from KV scheduler
+          example: NB
+        - name: key-prefix
+          in: query
+          required: true
+          schema:
+            type: string
+          description: key-prefix to examine
+          example: config/vpp/v2/interfaces/
+      responses:
+        200:
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: array of data known to KV Scheduler
+                items:
+                  type: object
+                  description: info composed of key, values and metadata)
+                  properties:
+                    key:
+                      type: string
+                      example: config/vpp/v2/interfaces/UNTAGGED-local0
+                    value:
+                      type: object
+                      properties:
+                        ProtoMsgName:
+                          type: string
+                          example: ligato.vpp.interfaces.Interface
+                        ProtoMsgData:
+                          type: string
+                          example: '{"name":"UNTAGGED-local0","type":"SOFTWARE_LOOPBACK","rxModes":[]}'
+                    Metadata:
+                      type: object
+
+
+components:
+  schemas:
+
+

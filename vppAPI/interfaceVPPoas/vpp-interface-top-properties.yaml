@@ -1,0 +1,55 @@
+openapi: 3.0.1
+info:
+  title: playIF
+  description: testing for interface
+  version: 0.8
+servers:
+  - url: 0.0.0.0:8000
+  - description: fake server
+paths:
+  /dump/vpp/v2/interfaces/IF:
+    get:
+      summary: Returns a list
+      description: play-IF
+      responses:
+        '200':
+          description: test response
+          content:
+            application/json:
+              schema:
+                type: array
+                description: interface list
+                items:
+                  type: object
+                  properties:
+                    sw_if_index:
+                        type: object
+                        description: note that sw_if_index should have addition properties of "string". Addressed in OAS 3.1 with https://github.com/OAI/OpenAPI-Specification/issues/687
+                        properties:
+                          interface:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                                example: interface1
+                              number:
+                                type: string
+                                example: 6
+                          meta:
+                            $ref: '#/components/schemas/meta'
+
+
+components:
+  schemas:
+    meta:
+      type: object
+      properties:
+        name:
+          type: string
+          example: interface1
+        number:
+          type: string
+          example: 6
+
+
+

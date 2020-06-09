@@ -1,0 +1,867 @@
+//  curl http://localhost:9999/scheduler/status
+[
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/::1/128",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/127.0.0.1/8",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/address/static/::1/128",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-loop-7f90892f26e17d226fc32df715220013df495525990724667bdb/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/127.0.0.1/8",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/address/static/::1/128",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-loop-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/address/static/10.1.1.4/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/address/static/10.1.1.3/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/address/static/10.1.1.2/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/state/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/interfaces/v2/interface/tap-vpp1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/interface/state/tap-vpp1/UP",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "linux/interface/tap-vpp1/address/static/172.30.1.2/24",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/arp/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/10.1.1.1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/arp/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/10.1.1.1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/arp/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/10.1.1.1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/0.0.0.0/0/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/10.1.0.0/16/tap-vpp1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/link-local-route/linux-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf907/dest-address/10.1.1.1/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/link-local-route/linux-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb2/dest-address/10.1.1.1/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/10.1.1.1/32/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "linux/link-local-route/linux-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9/dest-address/10.1.1.1/32",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/linux/l3/v2/route/10.96.0.0/12/tap-vpp1",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/l2/v2/bridge-domain/vxlanBD",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/bd/vxlanBD/interface/vxlan-default-2",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/bd/vxlanBD/interface/vxlanBVI",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/l2/v2/fib/vxlanBD/mac/12:2b:00:00:00:02",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/dnat44/DNAT-identities",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/dnat44/default/kubernetes",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/dnat44/kube-system/contiv-etcd",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/dnat44/kube-system/contiv-ui-svc",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/dnat44/kube-system/kube-dns",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/nat/v2/nat44-global",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/nat44/address/10.1.1.254/twice-nat/on",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/address/192.168.16.1/twice-nat/off",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/GigabitEthernet0/8/0/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/tap-vpp2/feature/in",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/tap-vpp2/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/in",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/in",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/in",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vxlanBVI/feature/in",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      },
+      {
+        "key": "vpp/nat44/interface/vxlanBVI/feature/out",
+        "state": "CONFIGURED",
+        "lastOperation": "UPDATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/arp/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/10.1.1.4",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/arp/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/10.1.1.3",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/arp/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/10.1.1.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/arp/vxlanBVI/192.168.30.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/GigabitEthernet0/8/0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/GigabitEthernet0/8/0/address/static/192.168.16.1/24",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/GigabitEthernet0/8/0/has-IP-address",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/GigabitEthernet0/8/0/vrf/0/ip-version/v4",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/UNTAGGED-local0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/podGwLoop",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/podGwLoop/address/static/10.1.1.1/24",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/podGwLoop/has-IP-address",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/podGwLoop/vrf/1/ip-version/v4",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/tap-vpp2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/tap-vpp2/address/static/172.30.1.1/24",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/tap-vpp2/has-IP-address",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/tap-vpp2/rx-modes",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/tap-vpp2/vrf/0/ip-version/v4",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/unnumbered/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/from-interface/podGwLoop",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/unnumbered/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/from-interface/podGwLoop",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/unnumbered/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/from-interface/podGwLoop",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/vxlan-default-2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/vxlan-default-2/vrf/0/ip-version/v4",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/interfaces/vxlanBVI",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    },
+    "derived_values": [
+      {
+        "key": "vpp/interface/vxlanBVI/address/static/192.168.30.1/24",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/vxlanBVI/has-IP-address",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      },
+      {
+        "key": "vpp/interface/vxlanBVI/vrf/1/ip-version/v4",
+        "state": "CONFIGURED",
+        "lastOperation": "CREATE"
+      }
+    ]
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/ipscanneigh-global",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/proxyarp-global",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/GigabitEthernet0/8/0/vrf/0/dst/0.0.0.0/0/gw/192.168.16.100",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.0.2.15/32/gw/172.30.1.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/tap-vpp2/vrf/0/dst/10.20.0.2/32/gw/172.30.1.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/vrf/1/dst/10.1.1.4/32/gw/10.1.1.4",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/vrf/1/dst/10.1.1.3/32/gw/10.1.1.3",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/vrf/1/dst/10.1.1.2/32/gw/10.1.1.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.1.2.0/24/gw/192.168.30.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/10.20.0.10/32/gw/192.168.30.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/if/vxlanBVI/vrf/1/dst/172.30.2.0/24/gw/192.168.30.2",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/0/gw/0.0.0.0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/0.0.0.0/32/gw/0.0.0.0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/10.1.0.0/16/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/10.20.0.10/32/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/172.30.0.0/16/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/224.0.0.0/4/gw/0.0.0.0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/240.0.0.0/4/gw/0.0.0.0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/255.255.255.255/32/gw/0.0.0.0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/::/0/gw/::",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/0/dst/fe80::/10/gw/::",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/1/dst/0.0.0.0/0/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/1/dst/10.1.0.0/16/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/1/dst/172.30.0.0/16/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/route/vrf/1/dst/172.30.1.0/24/gw/0.0.0.0",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/vrf-table/id/0/protocol/IPV4",
+      "state": "CONFIGURED",
+      "lastOperation": "UPDATE"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/vrf-table/id/0/protocol/IPV6",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "config/vpp/v2/vrf-table/id/1/protocol/IPV4",
+      "state": "CONFIGURED",
+      "lastOperation": "CREATE"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/interface/host-name/docker0",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/interface/host-name/enp0s3",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/interface/host-name/enp0s9",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/interface/host-name/lo",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/interface/host-name/vpp1",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "linux/microservice/k8s-master",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/GigabitEthernet0/8/0/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/UNTAGGED-local0/link-state/DOWN",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/podGwLoop/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/tap-vpp2/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/vpp-tap-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90777/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/vpp-tap-7f90892f26e17d226fc32df715220013df495525990724667bdb298/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/vpp-tap-9973661384a2942ec77ee36b93212445f7b2030cc48c5e340ece9f7/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/vxlan-default-2/link-state/UP",
+      "state": "OBTAINED"
+    }
+  },
+  {
+    "value": {
+      "key": "vpp/interface/vxlanBVI/link-state/UP",
+      "state": "OBTAINED"
+    }
+  }
+]

@@ -1,0 +1,5 @@
+docker exec etcd etcdctl put /vnf-agent/vpp1/config/vpp/v2/interfaces/mem01 \
+'{"name":"mem01","type":"MEMIF","enabled":true,"phys_address":"02:00:00:00:00:03","ip_addresses":["100.100.100.102/24"],"mtu":1500,"rx_modes":[{"mode":"ADAPTIVE"}],"memif":{"id":2,"socket_filename":"/var/run/contiv/memif_ts1-host4.sock"}}'
+
+
+
