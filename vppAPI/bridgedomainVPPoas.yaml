@@ -14,23 +14,14 @@ paths:
     get:
       summary: Returns a list of configured L2 Bridge Domains
       description: VPP agent bridge domain info
-      tags:
-        - L2 Plugin
-      parameters:
-        - name: vswitch
-          allowEmptyValue: true
-          in: query
-          schema:
-            type: string
-          description: name of vswitch to query for bridge domains
       responses:
         '200':
           description: List of configured bridge domains
           content:
-            application/json; charset=UTF-8:
+            application/json:
               schema:
                 type: array
-                description: BD list
+                description: List of Bridge Domains
                 items:
                   type: object
                   description: an individual bridge domain with BD and BD meta data properties
@@ -47,6 +38,12 @@ paths:
                           learn:
                             type: boolean
                             example: true
+                          arp_termination:
+                            type: boolean
+                            example: true
+                          mac_age:
+                            type: uint32
+                            example: 364
                           interfaces:
                             type: object
                             description: interface that BD is assigned to
@@ -54,13 +51,25 @@ paths:
                               name:
                                 type: string
                                 example: loop1
+                              bridged_virtual_interface:
+                                type: boolean
+                                example: true
+                              split_horizon_group:
+                                type: uint32
+                                example: 22
+                          arpTerminationEntry:
+                            type: object
+                            description: ARP entries for tunnel termination
+                            properties:
+                                  ip_address:
+                                    type: string
+                                    example: 192.16.18.01
+                                  phys_address:
+                                    type: string
+                                    example: 03:19:00:00:55:01
                     bridge_domain_meta:
                       type: object
                       properties:
                         bridge_domain_id:
                           type: integer
                           example: 1
-        servers:
-        - url: 'http://localhost:9191'
-    servers:
-      - url: 'http://localhost:9191'
