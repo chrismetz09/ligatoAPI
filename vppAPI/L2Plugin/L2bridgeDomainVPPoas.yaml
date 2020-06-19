@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent L2 Bridge Doman
+  title: VPP Agent L2 Bridge Domain
   description: VPP Agent GET Bridge Domains REST API
   version: 0.9
 servers:
@@ -32,6 +32,12 @@ paths:
                           name:
                             type: string
                             example: bd1
+                          flood:
+                            type: boolean
+                            example: true
+                          unknown_unicast_flood:
+                            type: boolean
+                            example: true
                           forward:
                             type: boolean
                             example: true
@@ -57,7 +63,7 @@ paths:
                               split_horizon_group:
                                 type: uint32
                                 example: 22
-                          arpTerminationEntry:
+                          arp_termination_table:
                             type: object
                             description: ARP entries for tunnel termination
                             properties:
