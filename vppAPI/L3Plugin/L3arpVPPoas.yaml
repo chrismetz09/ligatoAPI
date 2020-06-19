@@ -13,7 +13,7 @@ paths:
   /dump/vpp/v2/bd:
     get:
       summary: Returns a list of configured L3 arps
-      description: VPP agent xc info
+      description: VPP agent L3 ARP info
       responses:
         '200':
           description: List of configured arps
@@ -21,10 +21,10 @@ paths:
             application/json:
               schema:
                 type: array
-                description: List of L3 arps
+                description: List of L3 ARPs
                 items:
                   type: object
-                  description: L3 arp properties
+                  description: L3 ARP properties
                   properties:
                     arp:
                       type: object
