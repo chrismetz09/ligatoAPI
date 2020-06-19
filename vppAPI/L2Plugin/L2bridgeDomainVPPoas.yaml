@@ -79,3 +79,11 @@ paths:
                         bridge_domain_id:
                           type: integer
                           example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found

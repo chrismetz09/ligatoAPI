@@ -64,3 +64,11 @@ paths:
                             outgoing_interface_sw_if_idx:
                               type: uint32
                               example: 4
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
