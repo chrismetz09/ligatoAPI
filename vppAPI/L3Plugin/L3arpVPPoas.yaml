@@ -10,13 +10,13 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /dump/vpp/v2/bd:
+  /dump/vpp/v2/arps:
     get:
-      summary: Returns a list of configured L3 arps
+      summary: Returns a list of configured L3 ARPs
       description: VPP agent L3 ARP info
       responses:
         '200':
-          description: List of configured arps
+          description: List of configured ARPs
           content:
             application/json:
               schema:
