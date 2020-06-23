@@ -1,0 +1,118 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent Linux Interfaces
+  description: VPP Agent GET Linux Interfaces REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/linux/v2/interfaces:
+    get:
+      summary: Returns a list of configured Linux Interfaces
+      description: VPP Agent Linux Interfaces info
+      responses:
+        '200':
+          description: Returns a list of configured Linux Interfaces
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of configured Linux Interfaces
+                items:
+                  type: object
+                  description: an individual Linux Interface and meta object
+                  properties:
+                    interfaces:
+                      type: object
+                      properties:
+                          name:
+                            type: string
+                            example: tap-vpp1
+                          type:
+                            type: string
+                            enum:
+                              - "UNDEFINED":  0,
+                              - "VETH":       1,
+                              - "TAP_TO_VPP": 2,
+                              - LOOPBACK":   3,
+                              - "EXISTING":   4,
+                            example: TAP_TO_VPP
+                          namespace:
+                            type: object
+                            description: Namespace is a reference to a Linux network namespace where the interface should be put into
+                            properties:
+                              type:
+                                type: string
+                                example: "FD"
+                              reference:
+                                type: string
+                                example: "/proc/12661/ns/net"
+                          hostIfName:
+                            type: string
+                            example: vpp1
+                          enabled:
+                            type: boolean
+                            example: true
+                          ipAddresses:
+                            type: array
+                            description: IPAddresses define list of IP addresses for the interface and must be defined in the following format of <ipAddress>/<ipPrefix>. Note that interface could have IPv4 and IPv6 with example being ["127.0.0.1/8", "::1/128"]
+                            items:
+                              type: string
+                              format: ipv4
+                              example: 192.168.22.1/24
+                          physAddress:
+                            type: string
+                            format: mac
+                            example: ca:aa:bc:5d:76:9c
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                    interface_meta:
+                      $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+components:
+  schemas:
+    interface_meta:
+        type: object
+        properties:
+          linux_if_index:
+            type: integer
+            example: 6
+          parent_index:
+            type: integer
+            example: 0
+          master_index:
+            type: integer
+            example: 0
+          oper_state:
+            type: integer
+            format: uint8
+            example: 0
+          flags:
+            type: integer
+            format: uint32
+            example: 69699
+          encapsulation:
+            type: string
+            example: ether
+          num_rx_queue:
+            type: integer
+            example: 0
+          num_tx_queue:
+            type: integer
+            example: 0
+          tx_queue_len:
+            type: integer
+            example: 500

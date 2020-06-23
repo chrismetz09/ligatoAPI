@@ -1,0 +1,83 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent Linux Interface Stats
+  description: VPP Agent GET Linux Interface Stats REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/linux/v2/routes:
+    get:
+      description: linux interface stats
+      responses:
+        '200':
+          description: linux stats entries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: linux interface stats
+                items:
+                  type: object
+                  description: linux route and meta data
+                  properties:
+                    interface_name:
+                      type: object
+                      example: tap-vpp1
+                    interface_type:
+                      type: string
+                      enum:
+                        - 0 is "UNDEFINED",
+                        - 1 is "VETH",
+                        - 2 is "TAP_TO_VPP",
+                        - 3 is "LOOPBACK",
+                        - 4 is "EXISTING",
+                      example: 2
+                    linux_if_index:
+                      type: integer
+                      example: 6
+                    rx_packets:
+                      type: integer
+                      format: uint64
+                      example: 58919
+                    tx_packets:
+                      type: integer
+                      format: uint64
+                      example: 54273
+                    rx_bytes:
+                      type: integer
+                      format: uint64
+                      example: 83203332
+                    tx_bytes:
+                      type: integer
+                      format: uint64
+                      example: 85581834
+                    rx_errors:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    tx_errors:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    rx_dropped:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    tx_dropped:
+                      type: integer
+                      format: uint64
+                      example: 0
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+

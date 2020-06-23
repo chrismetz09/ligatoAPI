@@ -24,14 +24,18 @@ paths:
                 description: Proxy ARP Ranges Items
                 properties:
                   ranges:
-                    type: object
-                    properties:
-                      first_ip_addr:
-                        type: string
-                        example: 10.0.0.1
-                      last_ip_addr:
-                        type: string
-                        example: 10.0.0.3
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        first_ip_addr:
+                          type: string
+                          format: IPv4
+                          example: 10.0.0.1
+                        last_ip_addr:
+                          type: string
+                          format: IPv4
+                          example: 10.0.0.3
         '404':
           description: error
           content:
