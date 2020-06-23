@@ -21,7 +21,7 @@ paths:
             application/json:
               schema:
                 type: array
-                description:
+                description: list of nat address pool entries
                 items:
                   type: object
                   description: nat address pool entries
