@@ -1,0 +1,53 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent NAT Interfaces
+  description: VPP Agent GET NAT Interfaces REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/nat/interfaces:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: lists local network interfaces enabled for NAT44
+                items:
+                  type: object
+                  description: an individual Linux Interface and meta object
+                  properties:
+                      name:
+                        type: string
+                        description: Interface name (logical)
+                        example: tap-vpp2
+                      nat_inside:
+                        type: boolean
+                        description: Enable/disable NAT on inside
+                        example: true
+                      nat_outside:
+                        type: boolean
+                        description: Enable/disable NAT on outside
+                        example: true
+                      output_feature:
+                        type: boolean
+                        description: Enable/disable output feature
+                        example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+
