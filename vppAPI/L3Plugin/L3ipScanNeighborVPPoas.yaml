@@ -33,19 +33,19 @@ paths:
                         - BOTH = 3;
                       example: 1
                     scan_interval:
-                      type: uint32
+                      type: integer
                       example: 1
                     max_proc_time:
-                      type: uint32
+                      type: integer
                       example: 20
                     max_update:
-                      type: uint32
+                      type: integer
                       example: 10
                     scan_int_delay:
-                      type: uint32
+                      type: integer
                       example: 1
                     stale_threshold:
-                      type: uint32
+                      type: integer
                       example: 4
         '404':
           description: error

@@ -48,7 +48,8 @@ paths:
                             type: boolean
                             example: true
                           mac_age:
-                            type: uint32
+                            type: integer
+                            format: uint32
                             example: 364
                           interfaces:
                             type: object
@@ -61,7 +62,8 @@ paths:
                                 type: boolean
                                 example: true
                               split_horizon_group:
-                                type: uint32
+                                type: integer
+                                format: uint32
                                 example: 22
                           arp_termination_table:
                             type: object

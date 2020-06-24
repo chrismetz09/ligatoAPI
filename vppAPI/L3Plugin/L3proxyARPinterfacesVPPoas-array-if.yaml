@@ -39,7 +39,7 @@ paths:
                       type: object
                       properties:
                         swIFIndex:
-                          type: uint32
+                          type: integer
                           example: 1
         '404':
           description: error

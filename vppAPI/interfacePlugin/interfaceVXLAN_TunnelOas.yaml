@@ -25,9 +25,9 @@ paths:
                 items:
                   type: object
                   properties:
-                    sw_if_index:
+                    sw_if_index value:
                       type: object
-                      description: sw_if_index used to index array of interface objects
+                      description: sw_if_index value used to index array of interface objects
                       properties:
                         interface:
                           type: object
@@ -69,7 +69,7 @@ paths:
                               description: IPAddresses define list of IP addresses for the interface and must be defined in the format of <ipAddress>/<ipPrefix>.
                               example: 172.30.1.1/24
                             vrf:
-                              type: uint32
+                              type: integer
                               description: ID of VRF table that the interface is assigned to.
                               example: 0
                             set_dhcp_client:
@@ -90,7 +90,7 @@ paths:
                               description: rx mode for interface
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mode:
                                   type: string
@@ -108,10 +108,10 @@ paths:
                               description: rxPlacement
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 worker:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mainThread:
                                   type: boolean
@@ -142,7 +142,7 @@ components:
           description: destination VTEP address
           example: 192.168.16.2
         vni:
-          type: uint32
+          type: integer
           description: VXLAN Network Identifier
           example: 10
     interface_meta:
@@ -150,11 +150,11 @@ components:
       description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
       properties:
         sw_if_index:
-          type: uint32
+          type: integer
           description: also used to index array of interfaces
           example: 3
         sub_sw_if_index:
-          type: uint32
+          type: integer
           example: 3
         l2_address:
           type: string
@@ -169,20 +169,20 @@ components:
           type: boolean
           example: true
         link_duplex:
-          type: uint32
+          type: integer
           example: 0
         link_mtu:
-          type: uint32
+          type: integer
           example: 1450
         mtu:
-          type: uint32
+          type: integer
           description: per-protocol mtu for L2, ... organized as array
           example: [1450,0,0,0]
         link_speed:
-          type: uint32
+          type: integer
           example: 0
         sub_id:
-          type: uint32
+          type: integer
           example: 0
         tag:
           type: string
@@ -192,10 +192,10 @@ components:
           example: null
           # look into handling with component
         vrf_ipv4:
-          type: uint32
+          type: integer
           example: 0
         vrf_ipv6:
-          type: uint32
+          type: integer
           example: 0
         pci:
           type: uin32

@@ -39,10 +39,12 @@ paths:
                       type: object
                       properties:
                         receive_interface_sw_if_idx:
-                          type: uint32
+                          type: string
+                          format: uint32
                           example: 1
                         transmit_interface_sw_if_idx:
-                          type: uint32
+                          type: integer
+                          format: uint32
                           example: 1
         '404':
           description: error

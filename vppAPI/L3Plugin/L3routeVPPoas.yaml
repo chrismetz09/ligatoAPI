@@ -48,7 +48,7 @@ paths:
                               - "DROP":      2,                             -
                             example: 2
                           vrf_id:
-                            type: uint32
+                            type: integer
                             example: 2
                           dst_network:
                             type: string
@@ -61,13 +61,13 @@ paths:
                             type: string
                             example: GigabitEthernet0/8/0"
                           weight:
-                            type: uint32
+                            type: integer
                             example: 1
                           preference:
-                            type: uint32
+                            type: integer
                             example: 1
                           via_vrf_id:
-                            type: uint32
+                            type: integer
                             example: 2
                     meta:
                       type: object
@@ -76,7 +76,7 @@ paths:
                           type: string
                           example: id/1/protocol/IPV4
                         OutgoingIfIdx:
-                          type: uint32
+                          type: integer
                           example: 4294967295
                         IsIPv6:
                           type: boolean
@@ -109,10 +109,10 @@ paths:
                           type: boolean
                           example: false
                         NextHopID:
-                          type: uint32
+                          type: integer
                           example: 0
                         RpfID:
-                          type: uint32
+                          type: integer
                           example: 0
                         LabelStack:
                           type: object

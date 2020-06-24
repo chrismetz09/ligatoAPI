@@ -42,7 +42,8 @@ paths:
                       type: object
                       properties:
                         swIFIndex:
-                          type: uint32
+                          type: integer
+                          format: uint32
         '404':
           description: error
           content:
