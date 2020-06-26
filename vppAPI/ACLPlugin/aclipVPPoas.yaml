@@ -1,0 +1,207 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent IP ACL
+  description: VPP Agent GET IP ACL REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/acl/ip:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: acl entries
+                items:
+                  type: object
+                  description: ACL
+                  properties:
+                    acl:
+                      type: object
+                      properties:
+                          name:
+                            type: string
+                            description: The name of an access list. A device MAY restrict the length and value of this name, possibly spaces and special characters are not allowed.
+                            example: acl1
+                          rules:
+                             $ref: '#/components/schemas/rules'
+                          interfaces:
+                             $ref: '#/components/schemas/interfaces'
+                    acl_meta:
+                      $ref: '#/components/schemas/acl_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+components:
+  schemas:
+    acl_meta:
+        type: object
+        properties:
+          acl_index:
+            type: integer
+            example: 0
+          acl_tag:
+            type: string
+            example: acl1
+    rules:
+      type: array
+      description: List of access list entries (Rules). Each Access Control Rule has a list of match criteria and a list of actions.
+      items:
+        type: object
+        properties:
+          action:
+            type: string
+            description: action rule value
+            enum:
+              - 0 is "DENY",
+              - 1 is "PERMIT",
+              - 2 is "REFLECT",
+            example: 1
+          ip_rule:
+            type: object
+            properties:
+              ip:
+                $ref: "#/components/schemas/ip"
+              tcp:
+                $ref: '#/components/schemas/tcp'
+              icmp:
+                $ref: '#/components/schemas/icmp'
+              udp:
+                $ref: '#/components/schemas/udp'
+    ip:
+      type: object
+      description: IP  used in this Access List Entry.
+      properties:
+        destination_network:
+          type: string
+          description: destination IPv4/IPv6 network address (<ip>/<network>)
+          example: 10.20.1.0/24
+        source_network:
+          type: string
+          description: source IPv4/IPv6 network address (<ip>/<network>)
+          example: 192.168.1.2/32
+    tcp:
+      type: object
+      description: ACL TCP src/dst port ranges, flags mask and value
+      properties:
+        destination_port_range:
+          type: object
+          description: destination lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1150
+        source_port_range:
+          type: object
+          description: source lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1150
+        tcp_flags_mask:
+          type: integer
+          description: Binary mask for tcp flags to match. MSB order (FIN at position 0).
+            // Applied as logical AND to tcp flags field of the packet being matched,
+            // before it is compared with tcp-flags-value.
+          example: 20
+        tcp_flags_value:
+          type: integer
+          description: Binary value for tcp flags to match. MSB order (FIN at position 0).
+            // Before tcp-flags-value is compared with tcp flags field of the packet being matched,
+            // tcp-flags-mask is applied to packet field value.
+          example: 10
+    icmp:
+      type: object
+      description: icmp acl data
+      properties:
+        icmpv6:
+          type: boolean
+          description: ICMPv6 flag, if false ICMPv4 will be used
+          example: false
+        icmp_code_range:
+          type: object
+          description: Inclusive range representing icmp codes to be used
+          properties:
+            first:
+              type: integer
+              format: uint32
+              example: 0
+            last:
+              type: integer
+              format: uint32
+              example: 14
+        icmp_type_range:
+          type: object
+          description: Inclusive range representing icmp types to be used
+          properties:
+            first:
+              type: integer
+              format: uint32
+              example: 0
+            last:
+              type: integer
+              format: uint32
+              example: 14
+    udp:
+      type: object
+      description: Inclusive range representing destination ports to be used. When only lower-port is present, it represents a single port.
+      properties:
+        destination_port_range:
+          type: object
+          description: destination lower and upper UDP port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              description: If upper port is set, it must be greater or equal to lower port
+              example: 1150
+        source_port_range:
+          type: object
+          description: source lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1157
+    interfaces:
+      type: object
+      properties:
+        egress:
+          type: array
+          description: egress interfaces where ACL is applied
+          items:
+            type: string
+            example: tap1
+        ingress:
+          type: array
+          description: ingress interfaces where ACL is applied
+          items:
+            type: string
+            example: tap2
+
+            

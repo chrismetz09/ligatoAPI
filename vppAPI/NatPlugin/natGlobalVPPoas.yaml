@@ -1,0 +1,59 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent NAT Global
+  description: VPP Agent NAT Global REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/nat/global:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description:
+                properties:
+                    forwarding:
+                      type: boolean
+                      example: true
+                    virtual_reassembly:
+                      type: object
+                      properties:
+                          timeout:
+                            type: integer
+                            format: uint32
+                            description: Reassembly timeout
+                            example: 2
+                          max_reassemblies:
+                            type: integer
+                            format: uint32
+                            description: Maximum number of concurrent reassemblies
+                            example: 1024
+                          max_fragments:
+                            type: integer
+                            format: uint32
+                            description: Maximum number of fragments per reassembly
+                            example: 5
+                          drop_fragments:
+                            type: boolean
+                            description: If set to true fragments are dropped, translated otherwise
+                            example: true
+
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found

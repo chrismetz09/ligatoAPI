@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent L2 X-connect
+  description: VPP Agent GET X-connect REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/bd:
+    get:
+      summary: Returns a list of configured L2 x-connects
+      description: VPP agent xc info
+      responses:
+        '200':
+          description: List of configured x-connects
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L2 x-connects
+                items:
+                  type: object
+                  description: L2xc properties
+                  properties:
+                    x_connect:
+                      type: object
+                      properties:
+                          receive_interface:
+                            type: string
+                            example: tap1
+                          transmit_interface:
+                            type: string
+                            example: tap2
+                    xc_connect_meta:
+                      type: object
+                      properties:
+                        receive_interface_sw_if_idx:
+                          type: string
+                          format: uint32
+                          example: 1
+                        transmit_interface_sw_if_idx:
+                          type: integer
+                          format: uint32
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found

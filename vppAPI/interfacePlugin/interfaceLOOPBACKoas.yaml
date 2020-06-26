@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent TAP Interface
-  description: VPP Agent GET TAP Interface REST API
+  title: VPP Agent Loopback Interface
+  description: VPP Agent GET Loopback Interfaces REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'
@@ -10,24 +10,24 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /dump/vpp/v2/interfaces/tap:
+  /dump/vpp/v2/interfaces/loopback:
     get:
-      summary: list of TAP Interfaces
+      summary: list of Loopback Interfaces
       description:
       responses:
         '200':
-          description: list of TAP Interfaces
+          description: list of Loopback Interfaces
           content:
             application/json:
               schema:
                 type: array
-                description: list of TAP Interfaces
+                description: list of Loopback Interfaces
                 items:
                   type: object
                   properties:
-                    sw_if_index:
+                    sw_if_index value:
                       type: object
-                      description: sw_if_index used to index array of interface objects
+                      description: sw_if_index value used to index array of interface objects
                       properties:
                         interface:
                           type: object
@@ -35,7 +35,7 @@ paths:
                           properties:
                             name:
                               type: string
-                              example: vpp-tap1
+                              example: UNTAGGED-local0
                               description: logical name for the interface, must be unique across all configured VPP interfaces
                             type:
                               type: string
@@ -55,7 +55,7 @@ paths:
                                 - GRE_TUNNEL
                                 - GTPU_TUNNEL
                                 - IPIP_TUNNEL
-                              example: TAP
+                              example: SOFTWARE_LOOPBACK
                             enabled:
                               type: boolean
                               description: Enabled controls if the interface should be UP
@@ -63,15 +63,15 @@ paths:
                             physAddress:
                               type: string
                               description: interface physical address; random address assigned if left empty
-                              example: 02:fe:1b:0d:d5:29
+                              example: 00:00:00:00:00:00
                             ipAddresses:
                               type: string
                               description: IPAddresses define list of IP addresses for the interface and must be defined in the format of <ipAddress>/<ipPrefix>.
                               example: 172.30.1.1/24
                             vrf:
-                              type: uint32
+                              type: integer
                               description: ID of VRF table that the interface is assigned to.
-                              example: 0
+                              example: 1
                             set_dhcp_client:
                               type: boolean
                             mtu:
@@ -90,7 +90,7 @@ paths:
                               description: rx mode for interface
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mode:
                                   type: string
@@ -108,15 +108,13 @@ paths:
                               description: rxPlacement
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 worker:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mainThread:
                                   type: boolean
-                            tap:
-                                $ref: '#/components/schemas/tapLink'
                         interface_meta:
                                 $ref: '#/components/schemas/interface_meta'
         '404':
@@ -129,78 +127,57 @@ paths:
                  example: not found
 components:
   schemas:
-    tapLink:
-      type: object
-      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
-      properties:
-        version:
-          type: uint32
-          example: 2
-        hostIfName:
-          type: string
-          example: tap-283567301
-        toMicroservice:
-          type: string
-          description: a target microservice name
-          example: foobar
-        rxRingSize:
-          type: uint32
-          description: power of 2
-        txRingSize:
-          type: uint32
-          description: power of 2
-        enableGso:
-          type: bool
     interface_meta:
       type: object
       description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
       properties:
         sw_if_index:
-          type: uint32
-          example: 3
+          type: integer
+          example: 0
+          description: also used to index array of interfaces
         sub_sw_if_index:
-          type: uint32
+          type: integer
           example: 3
         l2_address:
           type: string
           example: NDwAAAAB
         internal_name:
           type: string
-          example: tap0
+          example: local0
         is_admin_state_up:
           type: boolean
-          example: true
+          example: false
         is_link_state_up:
           type: boolean
-          example: true
+          example: false
         link_duplex:
-          type: uint32
+          type: integer
           example: 0
         link_mtu:
-          type: uint32
-          example: 1450
+          type: integer
+          example: 0
         mtu:
-          type: uint32
+          type: integer
           description: per-protocol mtu for L2, ... organized as array
-          example: [1450, 0,0,0]
+          example: [0,0,0,0]
         link_speed:
-          type: uint32
+          type: integer
           example: 0
         sub_id:
-          type: uint32
+          type: integer
           example: 0
         tag:
           type: string
-          example: tap-vpp2
+          example: ""
         dhcp:
           nullable: boolean
           example: null
           # look into handling with component
         vrf_ipv4:
-          type: uint32
+          type: integer
           example: 0
         vrf_ipv6:
-          type: uint32
+          type: integer
           example: 0
         pci:
           type: uin32

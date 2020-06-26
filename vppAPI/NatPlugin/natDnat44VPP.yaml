@@ -1,0 +1,141 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent DNAT44
+  description: VPP Agent DNAT44 REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/nat/dnat:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of DNAT44 entries
+                items:
+                  type: object
+                  description: an individual DNAT entry
+                  properties:
+                    label:
+                      type: string
+                      description: Unique identifier for the DNAT configuration
+                      example: DNAT-identities
+                    id_mappings:
+                      $ref: '#/components/schemas/id_mappings'
+                    st_mappings:
+                      $ref: '#/components/schemas/st_mappings'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+components:
+  schemas:
+    id_mappings:
+      type: array
+      description: array with key value pairs
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            description: VRF (table) ID. Non-zero VRF has to be explicitly created
+            example: 1
+          interface:
+            type: string
+            description: Name of the interface to use address from; preferred over ip_address
+            example: tap-vpp
+          ip_address:
+            type: string
+            description: IP address
+            example: 192.168.16.1
+          port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+          protocol:
+            type: string
+            description: Protocol used for identity mapping
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+    st_mappings:
+      type: array
+      description: list of static mappings in DNAT
+      items:
+        type: object
+        description: static mapping data
+        properties:
+          external_interface:
+            type: string
+            description: Interface to use external IP from; preferred over external_ip
+            example: tap1
+          external_ip:
+            type: string
+            description: external IP address
+            example: 10.96.0.1
+          external_port:
+            type: integer
+            format: uint32
+          protocol:
+            type: string
+            description: Protocol
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+          local_ips:
+            $ref: '#/components/schemas/local_ips'
+          twice_nat:
+            type: integer
+            format: uint32
+            enum:
+              - 0 is "DISABLED
+              - 1 is "ENABLED"
+              - 2 is "SELF"
+            example: 2
+          session_affinity:
+            type: integer
+            format: uint32
+            description: 0 means disabled, otherwise client IP affinity sticky time in seconds
+            example: 0
+    local_ips:
+      type: array
+      description: List of local IP addresses. If there is more than one entry, load-balancing is enabled
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            example: 1
+          local_ip:
+            type: string
+            description: local IP address
+            example: 10.20.0.2
+          local_port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+            example: 6443
+          probability:
+            type: integer
+            format: uint32
+

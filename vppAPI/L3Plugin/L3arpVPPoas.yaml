@@ -1,0 +1,54 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent L3 ARP
+  description: VPP Agent GET L3 ARP REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/arps:
+    get:
+      summary: Returns a list of configured L3 ARPs
+      description: VPP agent L3 ARP info
+      responses:
+        '200':
+          description: List of configured ARPs
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L3 ARPs
+                items:
+                  type: object
+                  description: L3 ARP properties
+                  properties:
+                    arp:
+                      type: object
+                      properties:
+                          interface:
+                            type: string
+                            example: tap1
+                          ip_address:
+                            type: string
+                            example: 192.168.16.100
+                          phys_address:
+                            type: string
+                            example: 08:00:27:c9:c3:7a
+                    meta:
+                      type: object
+                      properties:
+                        swIFIndex:
+                          type: integer
+                          format: uint32
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found

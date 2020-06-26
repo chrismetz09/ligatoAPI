@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent Vxlan Interface
-  description: VPP Agent GET Vxlan Interface REST API
+  title: VPP Agent Afpacket Interface
+  description: VPP Agent GET Afpacket Interface REST API
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'
@@ -10,24 +10,24 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /dump/vpp/v2/interfaces/vxlan:
+  /dump/vpp/v2/interfaces/afpacket:
     get:
-      summary: list of Vxlan interfaces
+      summary: list of afpacket interfaces
       description:
       responses:
         '200':
-          description: list of vxlan interfaces
+          description: list of Afpacket interfaces
           content:
             application/json:
               schema:
                 type: array
-                description: list of vxlan Interfaces
+                description: list of Afpacket Interfaces
                 items:
                   type: object
                   properties:
-                    sw_if_index:
+                    sw_if_index value:
                       type: object
-                      description: sw_if_index used to index array of interface objects
+                      description: sw_if_index value used to index array of interface objects
                       properties:
                         interface:
                           type: object
@@ -35,7 +35,7 @@ paths:
                           properties:
                             name:
                               type: string
-                              example: vxlan-default-2
+                              example: afp01
                               description: logical name for the interface, must be unique across all configured VPP interfaces
                             type:
                               type: string
@@ -55,7 +55,7 @@ paths:
                                 - GRE_TUNNEL
                                 - GTPU_TUNNEL
                                 - IPIP_TUNNEL
-                              example: VXLAN_TUNNEL
+                              example: AF_PACKET
                             enabled:
                               type: boolean
                               description: Enabled controls if the interface should be UP
@@ -69,7 +69,7 @@ paths:
                               description: IPAddresses define list of IP addresses for the interface and must be defined in the format of <ipAddress>/<ipPrefix>.
                               example: 172.30.1.1/24
                             vrf:
-                              type: uint32
+                              type: integer
                               description: ID of VRF table that the interface is assigned to.
                               example: 0
                             set_dhcp_client:
@@ -90,7 +90,7 @@ paths:
                               description: rx mode for interface
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mode:
                                   type: string
@@ -108,15 +108,15 @@ paths:
                               description: rxPlacement
                               properties:
                                 queue:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 worker:
-                                  type: uint32
+                                  type: integer
                                   example: 1
                                 mainThread:
                                   type: boolean
-                            vxlanlink:
-                                $ref: '#/components/schemas/VxlanLink'
+                            linkParms:
+                                $ref: '#/components/schemas/afpacketLink'
                         interface_meta:
                                 $ref: '#/components/schemas/interface_meta'
         '404':
@@ -129,32 +129,27 @@ paths:
                  example: not found
 components:
   schemas:
-    VxlanLink:
+    afpacketLink:
       type: object
-      description: vxlan tunnel properties
+      description: af_packet interface properties
       properties:
-        srcAddress:
+        hostIfName:
           type: string
-          description: source VTEP address
-          example: 192.168.16.1
-        dstAddress:
+          description: DEPRECATED. DO NOT USE! Logical reference <linux_interface> should be used instead.
+        linuxInterface:
           type: string
-          description: destination VTEP address
-          example: 192.168.16.2
-        vni:
-          type: uint32
-          description: VXLAN Network Identifier
-          example: 10
+          required: boolean
+          description: Logical name of the Linux interface to bind to. Use instead of hostIfNname
     interface_meta:
       type: object
       description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
       properties:
         sw_if_index:
-          type: uint32
+          type: integer
           description: also used to index array of interfaces
           example: 3
         sub_sw_if_index:
-          type: uint32
+          type: integer
           example: 3
         l2_address:
           type: string
@@ -169,20 +164,20 @@ components:
           type: boolean
           example: true
         link_duplex:
-          type: uint32
+          type: integer
           example: 0
         link_mtu:
-          type: uint32
+          type: integer
           example: 1450
         mtu:
-          type: uint32
+          type: integer
           description: per-protocol mtu for L2, ... organized as array
           example: [1450,0,0,0]
         link_speed:
-          type: uint32
+          type: integer
           example: 0
         sub_id:
-          type: uint32
+          type: integer
           example: 0
         tag:
           type: string
@@ -192,10 +187,10 @@ components:
           example: null
           # look into handling with component
         vrf_ipv4:
-          type: uint32
+          type: integer
           example: 0
         vrf_ipv6:
-          type: uint32
+          type: integer
           example: 0
         pci:
           type: uin32

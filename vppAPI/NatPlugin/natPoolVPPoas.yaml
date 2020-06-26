@@ -1,0 +1,55 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent NAT Address Pool
+  description: VPP Agent GET NAT Address Pools REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/nat/pools:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of nat address pool entries
+                items:
+                  type: object
+                  description: nat address pool entries
+                  properties:
+                      vrf_id:
+                        type: integer
+                        format: uint32
+                        description: VRF id of tenant, 0xFFFFFFFF means independent of VRF.
+                          // Non-zero (and not all-ones) VRF has to be explicitly created
+                        example: 4294967295
+                      first_ip:
+                        type: string
+                        description: First IP address of the pool
+                        example: 192.168.16.1
+                      last_ip:
+                        type: string
+                        description: Last IP address of the pool. Should be higher than first_ip or empty
+                        example: 192.168.16.200
+                      twice_nat:
+                        type: boolean
+                        description: Enable/disable twice NAT
+                        example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: not found
+

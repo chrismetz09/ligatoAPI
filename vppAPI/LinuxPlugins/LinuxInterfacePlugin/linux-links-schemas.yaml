@@ -1,0 +1,45 @@
+tap:
+  type: object
+  properties:
+    vppTapIfName:
+      type: string
+      description: Logical name of the VPP TAP interface (mandatory for TAP_TO_VPP)
+      example: tap-vpp2
+
+veth:
+  type: object
+  properties:
+    peerIfName:
+      type: string
+      description: Name of the VETH peer, i.e. other end of the linux veth (mandatory for VETH)
+      example: veth1
+    rxChecksumOffloading:
+      type: string
+      description: Checksum offloading - Rx side (enabled by default)
+      enum:
+        - CHKSM_OFFLOAD_DEFAULT = 0;
+        - CHKSM_OFFLOAD_ENABLED = 1;
+        - CHKSM_OFFLOAD_DISABLED = 2;
+    txxChecksumOffloading:
+      type: string
+      enum:
+        - CHKSM_OFFLOAD_DEFAULT = 0;
+        - CHKSM_OFFLOAD_ENABLED = 1;
+        - CHKSM_OFFLOAD_DISABLED = 2;
+
+
+
+  example:
+
+
+
+tapLink:
+  type: object
+  description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
+  properties:
+    version:
+      type: uint32
+      example: 2
+    hostIfName:
+      type: string
+      example: tap-283567301
