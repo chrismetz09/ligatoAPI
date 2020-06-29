@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent Telemetry Nodecount
+  description: VPP Agent GET Telemetry Nodecount REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /vpp/telemetry/count:
+    get:
+      summary:
+      description: contains values returned from 'show node counters'
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: contains values returned from 'show node counters'
+                properties:
+                  counters:
+                    type: array
+                    description: contains values returned from 'show node counters'
+                    items:
+                      type: object
+                      description: single node counter
+                      properties:
+                        value:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        node:
+                          type: string
+                          description: node
+                          example: /err/null-node
+                        name:
+                          type: string
+                          description: name
+                          example: blackholed packets
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

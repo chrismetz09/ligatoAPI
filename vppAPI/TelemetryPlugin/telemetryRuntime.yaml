@@ -1,0 +1,131 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent Telemetry Runtime
+  description: VPP Agent GET Telemetry Runtime REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /vpp/telemetry/runtime:
+    get:
+      summary:
+      description: contains values returned from 'show runtime'
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: contains values returned from 'show runtime'
+                properties:
+                  threads:
+                    type: array
+                    description: contains values returned from 'show runtime'
+                    items:
+                      type: object
+                      description: single runtime thread data
+                      properties:
+                        id:
+                          type: integer
+                          format: uint
+                          example: 0
+                        name:
+                          type: string
+                          description: name
+                          example: ALL
+                        time:
+                          type: number
+                          format: float64
+                          example: 0
+                        avg_vectors_per_node:
+                          type: number
+                          format: float64
+                          example: 0
+                        last_main_loops:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        vectors_per_main_loop:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_length_per_node:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_in:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_out:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_drop:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_punt:
+                          type: number
+                          format: float64
+                          example: 0
+                        items:
+                          $ref: '#/components/schemas/items'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    items:
+      type: array
+      description: single runtime item
+      items:
+        type: object
+        properties:
+          index:
+            type: integer
+            format: uint
+            example: 0
+          name:
+            type: string
+            example: null-node
+          state:
+            type: string
+            example:
+          calls:
+            type: integer
+            format: uint64
+            example: 0
+          vectors:
+            type: integer
+            format: uint64
+            example: 0
+          suspends:
+            type: integer
+            format: uint64
+            example: 0
+          clocks:
+            type: number
+            format: float64
+          vectors_per_call:
+            type: number
+            format: float64
+
