@@ -10,7 +10,7 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /vpp/telemetry/count:
+  /vpp/telemetry/nodecount:
     get:
       summary:
       description: contains values returned from 'show node counters'
