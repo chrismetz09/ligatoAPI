@@ -94,7 +94,7 @@ paths:
              application/json:
                schema:
                  type: string
-                 description: error
+                 description: error 
                  example: 404 page not found
         '500':
           description: error

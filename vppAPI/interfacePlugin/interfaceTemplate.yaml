@@ -1,0 +1,423 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/interfaces/TEST:
+    get:
+      summary: Returns a list of Test Interfaces
+      tags:
+        - interfaces
+      description:
+      responses:
+        '200':
+          description: list of Test Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Test Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: Example Name
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                              $ref: '#/components/schemas/interface_meta'
+                              type: string
+                              required: boolean
+                              description: interface type and must match actual link
+                              enum:
+                                - UNDEFINED_TYPE
+                                - SUB_INTERFACE
+                                - SOFTWARE_LOOPBACK
+                                - DPDK
+                                - MEMIF
+                                - TAP
+                                - AF_PACKET
+                                - VXLAN_TUNNEL
+                                - VMXNET3_INTERFACE
+                                - BOND_INTERFACE
+                                - GRE_TUNNEL
+                                - GTPU_TUNNEL
+                                - IPIP_TUNNEL
+                              example: Example Type
+  /dump/vpp/v2/interfaces/tap:
+    get:
+      summary: Returns a list of Tap Interfaces
+      tags:
+        - interfaces
+      description: GET TAP interfaces REST API
+      responses:
+        '200':
+          description: list of Tap Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Tap Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: tap1
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          tap:
+                            $ref: '#/components/schemas/tapLink'
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+           description: error
+           content:
+             application/json:
+               schema:
+                 type: string
+                 description: error 
+                 example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    interface_meta:
+      type: object
+      description: meta properties
+      properties:
+        sw_if_index:
+          type: integer
+          format: uint32
+          example: 0
+          description: also used to index array of interfaces
+        sub_sw_if_index:
+          type: integer
+          format: uint32
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: internal name example
+        is_admin_state_up:
+          type: boolean
+          example: false
+        is_link_state_up:
+          type: boolean
+          example: false
+        link_duplex:
+          type: integer
+          format: uint32
+          example: 0
+        link_mtu:
+          type: integer
+          format: uint16
+          example: 0
+        mtu:
+          $ref: '#/components/schemas/interface_meta_mtu'
+        link_speed:
+          type: integer
+          format: uint32
+          example: 0
+        sub_id:
+          type: integer
+          format: uint32
+          example: 0
+        tag:
+          type: string
+          example: ""
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: integer
+          format: uint32
+          example: 0
+        vrf_ipv6:
+          type: integer
+          format: uint32
+          example: 0
+        pci:
+          type: integer
+          format: uint32
+          example: 0
+    interface_meta_mtu:
+      type: array
+      description: per-protocol mtu for L2, ... organized as array
+      items:
+        type: integer
+        format: uint32
+        example: 0
+    interface_ip_addresses:
+      type: array
+      items:
+        type: string
+        description: IPAddresses define list of IP addresses for the interface and must be
+          // defined in the following format like so <ipAddress>/<ipPrefix>.
+        example: 172.30.1.1/24
+    rx_modes:
+      type: array
+      items:
+        type: object
+        description: rx mode for interface
+        properties:
+          queue:
+            type: integer
+            format: uint32
+            example: 1
+          mode:
+            type: string
+            enum:
+              - UNKNOWN
+              - POLLING
+              - INTERRUPT
+              - ADAPTIVE
+              - DEFAULT
+            example: ADAPTIVE
+          defaultMode:
+            type: boolean
+            description: DefaultMode, if set to true, the <queue> field will be ignored and the <mode> will be used as a default for all the queues.
+            example: true
+    rx_placements:
+      type: array
+      items:
+        type: object
+        properties:
+          queue:
+            type: integer
+            format: uint64
+            description: number of queues
+            example: 1
+          worker:
+            type: integer
+            format: uint32
+            description: number of workers
+            example: 1
+          main_thread:
+            type: boolean
+            description: Let the main thread process the given queue. If enabled, value of <worker> is ignored
+            example: true
+    memifLink:
+      type: object
+      description:  MemifLink defines configuration for interface type MEMIF. See /proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        mode:
+          type: string
+          enum:
+            - ETHERNET
+            - IP
+            - PUNT_INJECT
+          example: IP
+        master:
+          type: boolean
+          example: true
+        id:
+          type: integer
+          format: uint32
+          description: 32bit integer used to authenticate and match opposite sides of the connection
+        socketFilename:
+          type: string
+          description: Filename of the socket used for connection establishment
+          example: /run/vpp/memif.sock
+        secret:
+          type: string
+        ringSize:
+          type: integer
+          format: uint32
+          description: number of entries of RX/TX rings
+        bufferSize:
+          type: integer
+          format: uint32
+          description: size of the buffer allocated for each ring entry
+          example: 256
+        rxQueues:
+          type: integer
+          format: uint32
+          description: number of rx queues (only valid for slave)
+          example: 6
+        txQueues:
+          type: integer
+          format: uint32
+          description: number of tx queues (only valid for slave)
+    tapLink:
+      type: object
+      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        version:
+          type: integer
+          format: uint32
+          description: 1 / unset = use the original TAP interface; 2 = use a fast virtio-based TAP
+          example: 2
+        hostIfName:
+          type: string
+          description: Name of the TAP interface in the host OS;
+            // if empty, it will be auto-generated (suitable for combination with TAP_TO_VPP
+            // interface from Linux ifplugin, because then this name is only temporary anyway)
+          example: tap-283567301
+        toMicroservice:
+          type: string
+          description: If TAP connects VPP with microservice, fill this parameter with the target
+            // microservice name - should match with the namespace reference of the associated
+            // TAP_TO_VPP interface (it is still moved to the namespace by Linux-ifplugin but
+            // VPP-ifplugin needs to be aware of this dependency)
+          example: foobar
+        rxRingSize:
+          type: integer
+          format: uint32
+          description: Rx ring buffer size; must be power of 2; default is 256; only for TAP v.2
+        txRingSize:
+          type: integer
+          format: uint32
+          description: Tx ring buffer size; must be power of 2; default is 256; only for TAP v.2
+        enableGso:
+          type: bool
+          description: EnableGso enables GSO mode for TAP interface
+          example: false
+        enableTunnel:
+          type: boolean
+          description: EnableTunnel enables tunnel mode for TAP interface
+    VxlanLink:
+      type: object
+      description: vxlan tunnel properties
+      properties:
+        srcAddress:
+          type: string
+          description: source VTEP address
+          example: 192.168.16.1
+        dstAddress:
+          type: string
+          description: destination VTEP address
+          example: 192.168.16.2
+        vni:
+          type: integer
+          format: uint32
+          description: stands for VXLAN Network Identifier
+          example: 10
+        multicast:
+          type: integer
+          format: uint32
+          description: Multicast defines name of multicast interface
+          example: tap3
+    type:
+      type: string
+      required: boolean
+      description: interface type and must match actual link. See proto/ligato/vpp/interfaces/interface.proto
+      enum:
+        - UNDEFINED_TYPE
+        - SUB_INTERFACE
+        - SOFTWARE_LOOPBACK
+        - DPDK
+        - MEMIF
+        - TAP
+        - AF_PACKET
+        - VXLAN_TUNNEL
+        - VMXNET3_INTERFACE
+        - BOND_INTERFACE
+        - GRE_TUNNEL
+        - GTPU_TUNNEL
+        - IPIP_TUNNEL
+      example: <Interface Type>
+      
