@@ -1,0 +1,310 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/nat/interfaces:
+    get:
+      summary:
+      description: Returns a list of NAT Interfaces
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: lists local network interfaces enabled for NAT44
+                items:
+                  type: object
+                  description: nat interface data
+                  properties:
+                      name:
+                        type: string
+                        description: Interface name (logical)
+                        example: tap-vpp2
+                      nat_inside:
+                        type: boolean
+                        description: Enable/disable NAT on inside
+                        example: true
+                      nat_outside:
+                        type: boolean
+                        description: Enable/disable NAT on outside
+                        example: true
+                      output_feature:
+                        type: boolean
+                        description: Enable/disable output feature
+                        example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/global:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description: nat global parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                description:
+                properties:
+                  forwarding:
+                    type: boolean
+                    example: true
+                  virtual_reassembly:
+                    type: object
+                    properties:
+                      timeout:
+                        type: integer
+                        format: uint32
+                        description: Reassembly timeout
+                        example: 2
+                      max_reassemblies:
+                        type: integer
+                        format: uint32
+                        description: Maximum number of concurrent reassemblies
+                        example: 1024
+                      max_fragments:
+                        type: integer
+                        format: uint32
+                        description: Maximum number of fragments per reassembly
+                        example: 5
+                      drop_fragments:
+                        type: boolean
+                        description: If set to true fragments are dropped, translated otherwise
+                        example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/dnat:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of DNAT44 entries
+                items:
+                  type: object
+                  description: an individual DNAT entry
+                  properties:
+                    label:
+                      type: string
+                      description: Unique identifier for the DNAT configuration
+                      example: DNAT-identities
+                    id_mappings:
+                      $ref: '#/components/schemas/id_mappings'
+                    st_mappings:
+                      $ref: '#/components/schemas/st_mappings'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/pools:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of nat address pool entries
+                items:
+                  type: object
+                  description: nat address pool entries
+                  properties:
+                    vrf_id:
+                      type: integer
+                      format: uint32
+                      description: VRF id of tenant, 0xFFFFFFFF means independent of VRF.
+                        // Non-zero (and not all-ones) VRF has to be explicitly created
+                      example: 4294967295
+                    first_ip:
+                      type: string
+                      description: First IP address of the pool
+                      example: 192.168.16.1
+                    last_ip:
+                      type: string
+                      description: Last IP address of the pool. Should be higher than first_ip or empty
+                      example: 192.168.16.200
+                    twice_nat:
+                      type: boolean
+                      description: Enable/disable twice NAT
+                      example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    id_mappings:
+      type: array
+      description: array with key value pairs
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            description: VRF (table) ID. Non-zero VRF has to be explicitly created
+            example: 1
+          interface:
+            type: string
+            description: Name of the interface to use address from; preferred over ip_address
+            example: tap-vpp
+          ip_address:
+            type: string
+            description: IP address
+            example: 192.168.16.1
+          port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+          protocol:
+            type: string
+            description: Protocol used for identity mapping
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+    st_mappings:
+      type: array
+      description: list of static mappings in DNAT
+      items:
+        type: object
+        description: static mapping data
+        properties:
+          external_interface:
+            type: string
+            description: Interface to use external IP from; preferred over external_ip
+            example: tap1
+          external_ip:
+            type: string
+            description: external IP address
+            example: 10.96.0.1
+          external_port:
+            type: integer
+            format: uint32
+          protocol:
+            type: string
+            description: Protocol
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+          local_ips:
+            $ref: '#/components/schemas/local_ips'
+          twice_nat:
+            type: integer
+            format: uint32
+            enum:
+              - 0 is "DISABLED
+              - 1 is "ENABLED"
+              - 2 is "SELF"
+            example: 2
+          session_affinity:
+            type: integer
+            format: uint32
+            description: 0 means disabled, otherwise client IP affinity sticky time in seconds
+            example: 0
+    local_ips:
+      type: array
+      description: List of local IP addresses. If there is more than one entry, load-balancing is enabled
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            example: 1
+          local_ip:
+            type: string
+            description: local IP address
+            example: 10.20.0.2
+          local_port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+            example: 6443
+          probability:
+            type: integer
+            format: uint32

@@ -14,6 +14,8 @@ paths:
     get:
       summary:
       description:
+      tags:
+        - NAT Plugin
       responses:
         '200':
           description:
@@ -41,7 +43,15 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
 components:
   schemas:
     id_mappings:
