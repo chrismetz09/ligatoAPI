@@ -14,6 +14,8 @@ paths:
     get:
       summary:
       description: memory thread values
+      tags:
+        - Telemetry Plugin
       responses:
         '200':
           description: memory thread values
@@ -36,8 +38,8 @@ paths:
                           example: 0
                         name:
                           type: string
-                          description: name
-                          example: name
+                          description:
+                          example: north1
                         size:
                           type: integer
                           format: uint64

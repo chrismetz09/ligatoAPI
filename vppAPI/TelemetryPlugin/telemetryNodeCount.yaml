@@ -14,6 +14,8 @@ paths:
     get:
       summary:
       description: contains values returned from 'show node counters'
+      tags:
+        - Telemetry Plugin
       responses:
         '200':
           description:

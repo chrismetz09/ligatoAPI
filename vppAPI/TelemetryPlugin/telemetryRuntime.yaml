@@ -14,6 +14,8 @@ paths:
     get:
       summary:
       description: contains values returned from 'show runtime'
+      tags:
+        - Telemetry Plugin
       responses:
         '200':
           description:
@@ -75,7 +77,7 @@ paths:
                           format: float64
                           example: 0
                         items:
-                          $ref: '#/components/schemas/items'
+                            $ref: '#/components/schemas/items_telemetry_runtime'
         '404':
           description: error
           content:
@@ -94,7 +96,7 @@ paths:
                 example: 500 Internal server error
 components:
   schemas:
-    items:
+    items_telemetry_runtime:
       type: array
       description: single runtime item
       items:
