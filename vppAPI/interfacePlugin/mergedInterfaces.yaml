@@ -10,13 +10,13 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 tags:
-  name: Ligato VPP Agent
+  - name: Ligato VPP Agent
 paths:
   /dump/vpp/v2/interfaces/loopback:
     get:
       summary: Returns a list of Loopback Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description:
       responses:
         '200':
@@ -99,7 +99,7 @@ paths:
     get:
       summary: Returns a list of Ethernet Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description:
       responses:
         '200':
@@ -181,7 +181,7 @@ paths:
     get:
       summary: Returns a list of Vxlan Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description:
       responses:
         '200':
@@ -265,7 +265,7 @@ paths:
     get:
       summary: Returns a list of Tap Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description: GET TAP interfaces REST API
       responses:
         '200':
@@ -349,7 +349,7 @@ paths:
     get:
       summary: Returns a list of Memif Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description: GET Memif interfaces REST API
       responses:
         '200':
@@ -433,7 +433,7 @@ paths:
     get:
       summary: Returns a list of Afpacket Interfaces
       tags:
-        - interfaces
+        - Interfaces
       description:
       responses:
         '200':

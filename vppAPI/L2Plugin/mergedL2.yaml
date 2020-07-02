@@ -10,7 +10,7 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 tags:
-  name: Ligato VPP Agent
+  - name: Ligato VPP Agent
 paths:
   /dump/vpp/v2/bd:
     get:
