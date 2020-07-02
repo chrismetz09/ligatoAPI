@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent ABF
-  description: VPP Agent GET ABF REST API
-  version: 0.9
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
 servers:
   - url: 'http://{hostServer}:9191'
     variables:
@@ -33,19 +33,19 @@ paths:
                     abf:
                       type: object
                       properties:
-                          index:
-                            type: integer
-                            format: uint32
-                            description: ABF index (unique identifier)
-                            example: 1
-                          acl_name:
-                            type: string
-                            description: Name of the associated access list
-                            example: acl1
-                          attached_interfaces:
-                            $ref: '#/components/schemas/attached_interfaces'
-                          forwarding_paths:
-                            $ref: '#/components/schemas/forwarding_paths'
+                        index:
+                          type: integer
+                          format: uint32
+                          description: ABF index (unique identifier)
+                          example: 1
+                        acl_name:
+                          type: string
+                          description: Name of the associated access list
+                          example: acl1
+                        attached_interfaces:
+                          $ref: '#/components/schemas/attached_interfaces'
+                        forwarding_paths:
+                          $ref: '#/components/schemas/forwarding_paths'
                     abf_meta:
                       $ref: '#/components/schemas/abf_meta'
         '404':
@@ -67,12 +67,12 @@ paths:
 components:
   schemas:
     abf_meta:
-        type: object
-        properties:
-          policy_id:
-            type: integer
-            format: uint32
-            example: 6
+      type: object
+      properties:
+        policy_id:
+          type: integer
+          format: uint32
+          example: 6
     attached_interfaces:
       type: array
       description: List of interfaces attached to the ABF
