@@ -9,10 +9,14 @@ servers:
       hostServer:
         default: locahost
         description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato VPP Agent
 paths:
-  /dump/linux/v2/routes:
+  /stats/linux/interfaces:
     get:
       description: linux interface stats
+      tags:
+        - Linux Interfaces Plugin
       responses:
         '200':
           description: linux stats entries
@@ -79,5 +83,13 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
 
