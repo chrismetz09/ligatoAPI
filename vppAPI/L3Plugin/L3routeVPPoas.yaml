@@ -14,6 +14,8 @@ paths:
     get:
       summary: Returns a list of configured L3 routes
       description: VPP agent route info
+      tags:
+        - L3 Plugin
       responses:
         '200':
           description: List of Configured L3 routes
@@ -49,11 +51,12 @@ paths:
                             example: 2
                           vrf_id:
                             type: integer
+                            format: uint32
                             example: 2
                           dst_network:
                             type: string
                             description: Destination network defined by IP address and prefix format of address/prefix
-                            example: IPv4 is 192.168.16.1/32; IPv6 is fe80::/10
+                            example: IPv4 is 192.168.16.1/32
                           next_hop_addr:
                             type: string
                             example: 192.168.16.100
@@ -62,12 +65,15 @@ paths:
                             example: GigabitEthernet0/8/0"
                           weight:
                             type: integer
+                            format: uint32
                             example: 1
                           preference:
                             type: integer
+                            format: uint32
                             example: 1
                           via_vrf_id:
                             type: integer
+                            format: uint32
                             example: 2
                     meta:
                       type: object
@@ -77,6 +83,7 @@ paths:
                           example: id/1/protocol/IPV4
                         OutgoingIfIdx:
                           type: integer
+                          format: uint32
                           example: 4294967295
                         IsIPv6:
                           type: boolean
@@ -110,14 +117,29 @@ paths:
                           example: false
                         NextHopID:
                           type: integer
+                          format: uint32
                           example: 0
                         RpfID:
                           type: integer
+                          format: uint32
                           example: 0
                         LabelStack:
-                          type: object
-                          description: // FibMplsLabel is object returned with route dump. Struct is IsUniform bool, Label uint32, TTL uint8, Exp uint8
-                          example: []
+                          type: array
+                          description: one more mpls labels
+                          items:
+                            type: object
+                            properties:
+                              isUniform:
+                                type: boolean
+                                example: true
+                              Label:
+                                type: integer
+                                format: uint32
+                                example: 00010348
+                              TTL:
+                                type: integer
+                                format: uint32
+                                example: 002
         '404':
           description: error
           content:
@@ -125,4 +147,12 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

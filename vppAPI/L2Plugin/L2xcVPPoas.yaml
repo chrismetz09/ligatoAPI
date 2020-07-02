@@ -10,10 +10,12 @@ servers:
         default: locahost
         description: localhost or VPP agent server IP address
 paths:
-  /dump/vpp/v2/bd:
+  /dump/vpp/v2/xc:
     get:
       summary: Returns a list of configured L2 x-connects
       description: VPP agent xc info
+      tags:
+        - L2 Plugin
       responses:
         '200':
           description: List of configured x-connects
@@ -21,10 +23,10 @@ paths:
             application/json:
               schema:
                 type: array
-                description: List of L2 x-connects
+                description: list of L2 x-connects
                 items:
                   type: object
-                  description: L2xc properties
+                  description: L2 x-connect properties
                   properties:
                     x_connect:
                       type: object
@@ -53,4 +55,12 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

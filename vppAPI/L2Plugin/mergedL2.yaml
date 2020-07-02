@@ -1,0 +1,231 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/bd:
+    get:
+      summary: Returns a list of configured L2 Bridge Domains
+      description: VPP agent bridge domain info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured bridge domains
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of Bridge Domains
+                items:
+                  type: object
+                  description: an individual bridge domain with BD and BD meta data properties
+                  properties:
+                    bridge_domain:
+                      type: object
+                      properties:
+                          name:
+                            type: string
+                            example: bd1
+                          flood:
+                            type: boolean
+                            example: true
+                          unknown_unicast_flood:
+                            type: boolean
+                            example: true
+                          forward:
+                            type: boolean
+                            example: true
+                          learn:
+                            type: boolean
+                            example: true
+                          arp_termination:
+                            type: boolean
+                            example: true
+                          mac_age:
+                            type: integer
+                            format: uint32
+                            example: 364
+                          interfaces:
+                            type: object
+                            description: interface that BD is assigned to
+                            properties:
+                              name:
+                                type: string
+                                example: loop1
+                              bridged_virtual_interface:
+                                type: boolean
+                                example: true
+                              split_horizon_group:
+                                type: integer
+                                format: uint32
+                                example: 22
+                          arp_termination_table:
+                            type: object
+                            description: ARP entries for tunnel termination
+                            properties:
+                                  ip_address:
+                                    type: string
+                                    example: 192.16.18.01
+                                  phys_address:
+                                    type: string
+                                    example: 03:19:00:00:55:01
+                    bridge_domain_meta:
+                      type: object
+                      properties:
+                        bridge_domain_id:
+                          type: integer
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/fib:
+    get:
+      summary: Returns a list of configured L2FIBs
+      description: VPP agent L2FIB info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured L2FIBs
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L2FIBs
+                items:
+                  type: object
+                  properties:
+                    dest MAC Address value:
+                      type: object
+                      description: destination MAC Address used to index VPP L2 FIB table entries into the northbound API data structure map indexed by destination MAC address
+                      properties:
+                        fib:
+                          type: object
+                          properties:
+                            phys_address:
+                              type: string
+                              example: 12:2b:00:00:00:01
+                            bridge_domain:
+                              type: string
+                              example: vxlanBD
+                            action:
+                              type: string
+                              required: boolean
+                              description: action (forward or drop) to take on matching frames
+                              enum:
+                                - FORWARD
+                                - DROP
+                              example: FORWARD
+                            outgoing_interface:
+                              type: string
+                              example: vxlanBVI
+                            static_config:
+                              type: boolean
+                              example: true
+                            bridged_virtual_interface:
+                              type: boolean
+                              example: true
+                        fib_meta:
+                          type: object
+                          properties:
+                            bridge_domain_id:
+                              type: integer
+                              format: uint32
+                              example: 1
+                            outgoing_interface_sw_if_idx:
+                              type: integer
+                              format: uint32
+                              example: 4
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/xc:
+    get:
+      summary: Returns a list of configured L2 x-connects
+      description: VPP agent xc info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured x-connects
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of L2 x-connects
+                items:
+                  type: object
+                  description: L2 x-connect properties
+                  properties:
+                    x_connect:
+                      type: object
+                      properties:
+                        receive_interface:
+                          type: string
+                          example: tap1
+                        transmit_interface:
+                          type: string
+                          example: tap2
+                    xc_connect_meta:
+                      type: object
+                      properties:
+                        receive_interface_sw_if_idx:
+                          type: string
+                          format: uint32
+                          example: 1
+                        transmit_interface_sw_if_idx:
+                          type: integer
+                          format: uint32
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

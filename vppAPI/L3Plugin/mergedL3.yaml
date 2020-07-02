@@ -1,0 +1,358 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/arps:
+    get:
+      summary: Returns a list of configured L3 ARPs
+      description: VPP agent L3 ARP info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: List of configured ARPs
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L3 ARPs
+                items:
+                  type: object
+                  description: L3 ARP properties
+                  properties:
+                    arp:
+                      type: object
+                      properties:
+                        interface:
+                          type: string
+                          example: tap1
+                        ip_address:
+                          type: string
+                          example: 192.168.16.100
+                        phys_address:
+                          type: string
+                          example: 08:00:27:c9:c3:7a
+                    meta:
+                      type: object
+                      properties:
+                        swIFIndex:
+                          type: integer
+                          format: uint32
+                          example: 2
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/routes:
+    get:
+      summary: Returns a list of configured L3 routes
+      description: VPP agent route info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: List of Configured L3 routes
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L3 routes
+                items:
+                  type: object
+                  description: an individual route and meta properties
+                  properties:
+                    route:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: // Forwarding is being done in the specified vrf_id only, or according to
+                            // the specified outgoing interface.
+                            Route_INTRA_VRF Route_RouteType = 0
+                            // Forwarding is being done by lookup into a different VRF,
+                            // specified as via_vrf_id field. In case of these routes, the outgoing
+                            // interface should not be specified. The next hop IP address
+                            // does not have to be specified either, in that case VPP does full
+                            // recursive lookup in the via_vrf_id VRF.
+                            Route_INTER_VRF Route_RouteType = 1
+                            // Drops the network communication designated for specific IP address.
+                            Route_DROP Route_RouteType = 2
+                          enum:
+                            - "INTRA_VRF": 0,
+                            - "INTER_VRF": 1,
+                            - "DROP":      2,                             -
+                          example: 2
+                        vrf_id:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        dst_network:
+                          type: string
+                          description: Destination network defined by IP address and prefix format of address/prefix
+                          example: IPv4 is 192.168.16.1/32
+                        next_hop_addr:
+                          type: string
+                          example: 192.168.16.100
+                        outgoing_interface:
+                          type: string
+                          example: GigabitEthernet0/8/0"
+                        weight:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        preference:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        via_vrf_id:
+                          type: integer
+                          format: uint32
+                          example: 2
+                    meta:
+                      type: object
+                      properties:
+                        TableName:
+                          type: string
+                          example: id/1/protocol/IPV4
+                        OutgoingIfIdx:
+                          type: integer
+                          format: uint32
+                          example: 4294967295
+                        IsIPv6:
+                          type: boolean
+                          example: false
+                        Afi:
+                          type: uint8
+                          example: 0
+                        IsLocal:
+                          type: boolean
+                          example: false
+                        IsUDPEncap:
+                          type: boolean
+                          example: false
+                        IsUnreach:
+                          type: boolean
+                          example: false
+                        IsProhibit:
+                          type: boolean
+                          example: false
+                        IsResolveHost:
+                          type: boolean
+                          example: false
+                        IsResolveAttached:
+                          type: boolean
+                          example: false
+                        IsDvr:
+                          type: boolean
+                          example: false
+                        IsSourceLookup:
+                          type: boolean
+                          example: false
+                        NextHopID:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        RpfID:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        LabelStack:
+                          type: array
+                          description: one more mpls labels
+                          items:
+                            type: object
+                            properties:
+                              isUniform:
+                                type: boolean
+                                example: true
+                              Label:
+                                type: integer
+                                format: uint32
+                                example: 00010348
+                              TTL:
+                                type: integer
+                                format: uint32
+                                example: 002
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/ipscanneigh:
+    get:
+      summary: Returns Configured IP Scan Neighbor items
+      description: VPP agent L3 IP Scan Neighbor info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: IP Scan Neighbor Items
+          content:
+            application/json:
+              schema:
+                type: object
+                description: IP Scan Neighbor Items
+                properties:
+                  mode:
+                    type: string
+                    description: ...
+                    enum:
+                      - DISABLED = 0;
+                      - IPV4 = 1;
+                      - IPV6 = 2;
+                      - BOTH = 3;
+                    example: 1
+                  scan_interval:
+                    type: integer
+                    format: uint32
+                    example: 1
+                  max_proc_time:
+                    type: integer
+                    format: uint32
+                    example: 20
+                  max_update:
+                    type: integer
+                    format: uint32
+                    example: 10
+                  scan_int_delay:
+                    type: integer
+                    format: uint32
+                    example: 1
+                  stale_threshold:
+                    type: integer
+                    format: uint32
+                    example: 4
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/proxyarp/interfaces:
+    get:
+      summary: Returns Configured L3 Proxy ARP Interfaces
+      description: VPP agent L3 Proxy ARP Interfaces info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: Proxy ARP Interface Items
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of Proxy ARP Interface Items
+                items:
+                  type: object
+                  description: Proxy ARP interface and meta
+                  properties:
+                    interfaces:
+                      properties:
+                        name:
+                          type: string
+                          example: tap1
+                    meta:
+                      type: object
+                      properties:
+                        swIFIndex:
+                          type: integer
+                          format: uint32
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/proxyarp/ranges:
+    get:
+      summary: Returns Configured L3 Proxy ARP ranges
+      description: VPP agent L3 Proxy ARP ranges info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: Proxy ARP Ranges Items
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Proxy ARP Ranges Items
+                items:
+                  type: object
+                  properties:
+                    first_ip_addr:
+                      type: string
+                      example: 10.0.0.1
+                    last_ip_addr:
+                      type: string
+                      example: 10.0.0.3
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

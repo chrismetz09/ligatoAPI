@@ -14,9 +14,11 @@ paths:
     get:
       summary: Returns Configured IP Scan Neighbor items
       description: VPP agent L3 IP Scan Neighbor info
+      tags:
+        - L3 Plugin
       responses:
         '200':
-          description: IP Scan Neighbor items
+          description: IP Scan Neighbor Items
           content:
             application/json:
               schema:
@@ -34,18 +36,23 @@ paths:
                       example: 1
                     scan_interval:
                       type: integer
+                      format: uint32
                       example: 1
                     max_proc_time:
                       type: integer
+                      format: uint32
                       example: 20
                     max_update:
                       type: integer
+                      format: uint32
                       example: 10
                     scan_int_delay:
                       type: integer
+                      format: uint32
                       example: 1
                     stale_threshold:
                       type: integer
+                      format: uint32
                       example: 4
         '404':
           description: error
@@ -54,4 +61,12 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
