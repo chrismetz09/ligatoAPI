@@ -1,0 +1,172 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/ipsec/sas:
+    get:
+      summary: Returns a list of configured IPsec SAs
+      description: IPsec Security Associations (SA)
+      tags:
+        - IPsec Plugin
+      responses:
+        '200':
+          description: IPsec SA data
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  description: an individual IPsec SA data
+                  properties:
+                    Sa:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                          format: uint32
+                          description: Numerical security association index, serves as a unique identifier
+                          example: 1
+                        spi:
+                          type: integer
+                          format: uint32
+                          description: Security parameter index
+                          example: 2
+                        protocol:
+                          type: integer
+                          format: uint32
+                          description: 0 is Authentication Header (AH), provides a mechanism for authentication only. 1 is Encapsulating Security Payload (ESP) is for data confidentiality and authentication
+                          enum:
+                            - 0
+                            - 1
+                          example: 1
+                        crypto_alg:
+                            $ref: '#/components/schemas/crypto_alg'
+                        crypto_key:
+                          type: string
+                          example: 4a506a794f574265564551694d653768
+                        integ_alg:
+                            $ref: '#/components/schemas/integ_alg'
+                        integ_key:
+                          type: string
+                          example: 4339314b55523947594d6d3547666b45764e6a58
+                        use_esn:
+                          type: boolean
+                          description: Use extended sequence number
+                          example: false
+                        use_anti_replay:
+                          type: boolean
+                          description: Use anti replay
+                          example: true
+                        tunnel_src_addr:
+                          type: string
+                          example: 172.16.7.9
+                        tunnel_dst_addr:
+                          type: string
+                          example: 172.16.7.10
+                        enable_udp_encap:
+                          type: boolean
+                          description: Enable UDP encapsulation for NAT traversal
+                          example: true
+                    meta:
+                      type: object
+                      properties:
+                        SaID:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        Interface:
+                          type: string
+                          example: tap32
+                        IfIdx:
+                          type: integer
+                          format: uint32
+                          example: 4294967295
+                        CryptoKeyLen:
+                          type: integer
+                          format: uint8
+                          example: 0
+                        IntegKeyLen:
+                          type: integer
+                          format: uint8
+                          example: 0
+                        Salt:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        SeqOutbound:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        LastSeqInbound:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        ReplayWindow:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        TotalDataSize:
+                          type: integer
+                          format: uint64
+                          example: false
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    crypto_alg:
+      type: integer
+      format: int32
+      description: Cryptographic algorithm for encryption. See options at proto/ligato/vpp/ipsec/ipsec.pb.go
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+      example: 1
+    integ_alg:
+      type: integer
+      format: int32
+      description: Cryptographic algorithm for authentication. See options at proto/ligato/vpp/ipsec/ipsec.pb.go
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      example: 1      

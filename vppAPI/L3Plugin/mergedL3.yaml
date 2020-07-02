@@ -117,7 +117,7 @@ paths:
                           example: 192.168.16.100
                         outgoing_interface:
                           type: string
-                          example: GigabitEthernet0/8/0"
+                          example: GigabitEthernet0/8/0
                         weight:
                           type: integer
                           format: uint32
