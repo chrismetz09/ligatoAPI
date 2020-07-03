@@ -71,7 +71,6 @@ paths:
                             vrf:
                               type: integer
                               description: ID of VRF table that the interface is assigned to.
-                              example: 0
                             set_dhcp_client:
                               type: boolean
                             mtu:

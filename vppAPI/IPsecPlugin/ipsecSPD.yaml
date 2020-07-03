@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/ipsec/spds:
+    get:
+      summary: Returns a list of configured IPsec SPDs
+      description: IPsec Security Policy Database (SPD)
+      tags:
+        - IPsec Plugin
+      responses:
+        '200':
+          description: IPsec SPD data
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  description: an individual IPsec SA data
+                  properties:
+                    index:
+                      type: integer
+                      format: uint32
+                      description: Numerical security policy database index
+                      example: 1
+                    interfaces:
+                      type: array
+                      description: List of interfaces belonging to this SPD
+                      items:
+                        properties:
+                          name:
+                            type: string
+                            description: Name of the related interface
+                            example: tap1
+                    policy_entries:
+                      type: array
+                      description: list of policy database entries
+                      items:
+                        type: object
+                        description: policy database entry properties
+                        properties:
+                          priority:
+                            type: integer
+                            format: int32
+                            example: 10
+                          is_outbound:
+                            type: boolean
+                            example: true
+                          remote_addr_start:
+                            type: string
+                            example: 10.0.0.1
+                          remote_addr_stop:
+                            type: string
+                            example: 10.0.0.1
+                          local_addr_start:
+                            type: string
+                            example: 10.0.0.2
+                          local_addr_stop:
+                            type: string
+                            example: 10.0.0.2
+                          protocol:
+                            type: integer
+                            format: uint32
+                            description: 0 is Authentication Header (AH), provides a mechanism for authentication only. 1 is Encapsulating Security Payload (ESP) is for data confidentiality and authentication
+                            enum:
+                              - 0
+                              - 1
+                            example: 1
+                          remote_port_start:
+                            type: integer
+                            format: uint32
+                            example: 511
+                          remote_port_stop:
+                            type: integer
+                            format: uint32
+                            example: 615
+                          local_port_start:
+                            type: integer
+                            format: uint32
+                            example: 71
+                          local_port_stop:
+                            type: integer
+                            format: uint32
+                            example: 619
+                          action:
+                            type: integer
+                            format: int32
+                            description: See proto/ligato/vpp/ipsec/ipsec.proto for options
+                            enum:
+                              - 0
+                              - 1
+                              - 2
+                              - 3
+                            example: 3
+                          sa_index:
+                            type: integer
+                            format: uint32
+                            example: 10
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

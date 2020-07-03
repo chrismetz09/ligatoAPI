@@ -1,0 +1,219 @@
+openapi: 3.0.1
+info:
+  title: VPP Agent Loopback Interface
+  description: VPP Agent GET Loopback Interfaces REST API
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+paths:
+  /dump/vpp/v2/interfaces/loopback:
+    get:
+      summary: list of Loopback Interfaces
+      description:
+      responses:
+        '200':
+          description: list of Loopback Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: list of Loopback Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: UNTAGGED-local0
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            type: string
+                            required: boolean
+                            description: interface type and must match actual link
+                            enum:
+                              - UNDEFINED_TYPE
+                              - SUB_INTERFACE
+                              - SOFTWARE_LOOPBACK
+                              - DPDK
+                              - MEMIF
+                              - TAP
+                              - AF_PACKET
+                              - VXLAN_TUNNEL
+                              - VMXNET3_INTERFACE
+                              - BOND_INTERFACE
+                              - GRE_TUNNEL
+                              - GTPU_TUNNEL
+                              - IPIP_TUNNEL
+                            example: SOFTWARE_LOOPBACK
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            description: ID of VRF table that the interface is assigned to.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                          mtu:
+                            type: integer
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                              $ref: '#/components/schemas/interface_meta'
+        '404':
+           description: error
+           content:
+             application/json:
+               schema:
+                 type: string
+                 description: error
+                 example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    interface_meta:
+      type: object
+      description: properties defined in plugins/vpp/ifplugin/vppcalls/interface_handler_api.go
+      properties:
+        sw_if_index:
+          type: integer
+          example: 0
+          description: also used to index array of interfaces
+        sub_sw_if_index:
+          type: integer
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: local0
+        is_admin_state_up:
+          type: boolean
+          example: false
+        is_link_state_up:
+          type: boolean
+          example: false
+        link_duplex:
+          type: integer
+          example: 0
+        link_mtu:
+          type: integer
+          example: 0
+        mtu:
+          $ref: '#/components/schemas/interface_meta_mtu'
+        link_speed:
+          type: integer
+          example: 0
+        sub_id:
+          type: integer
+          example: 0
+        tag:
+          type: string
+          example: ""
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: integer
+          example: 0
+        vrf_ipv6:
+          type: integer
+          example: 0
+        pci:
+          type: uin32
+          example: 0
+    interface_meta_mtu:
+      type: array
+      description: per-protocol mtu for L2, ... organized as array
+      items:
+        type: integer
+        example: 0
+    interface_ip_addresses:
+      type: array
+      items:
+        type: string
+        description: IPAddresses define list of IP addresses for the interface and must be
+          // defined in the following format like so <ipAddress>/<ipPrefix>.
+        example: 172.30.1.1/24
+    rx_modes:
+      type: array
+      items:
+        type: object
+        description: rx mode for interface
+        properties:
+          queue:
+            type: integer
+            format: uint32
+            example: 1
+          mode:
+            type: string
+            enum:
+              - UNKNOWN
+              - POLLING
+              - INTERRUPT
+              - ADAPTIVE
+              - DEFAULT
+            example: ADAPTIVE
+          defaultMode:
+            type: boolean
+            description: // DefaultMode, if set to true, the <queue> field will be ignored
+              // and the <mode> will be used as a default for all the queues.
+            example: true
+    rx_placements:
+      type: array
+      items:
+        type: object
+        properties:
+          queue:
+            type: integer
+            format: uint64
+            description: number of queues
+            example: 1
+          worker:
+            type: integer
+            format: uint32
+            description: number of workers
+            example: 1
+          main_thread:
+            type: boolean
+            description: Let the main thread process the given queue
+              //  - if enabled, value of <worker> is ignored
+            example: true
+        

@@ -48,7 +48,6 @@ paths:
                             type: boolean
                             description: If set to true fragments are dropped, translated otherwise
                             example: true
-
         '404':
           description: error
           content:

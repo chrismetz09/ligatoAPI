@@ -14,28 +14,25 @@ paths:
     get:
       summary: Returns Configured L3 Proxy ARP ranges
       description: VPP agent L3 Proxy ARP ranges info
+      tags:
+        - L3 Plugin
       responses:
         '200':
           description: Proxy ARP Ranges Items
           content:
             application/json:
               schema:
-                type: object
+                type: array
                 description: Proxy ARP Ranges Items
-                properties:
-                  ranges:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        first_ip_addr:
-                          type: string
-                          format: IPv4
-                          example: 10.0.0.1
-                        last_ip_addr:
-                          type: string
-                          format: IPv4
-                          example: 10.0.0.3
+                items:
+                  type: object
+                  properties:
+                    first_ip_addr:
+                      type: string
+                      example: 10.0.0.1
+                    last_ip_addr:
+                      type: string
+                      example: 10.0.0.3
         '404':
           description: error
           content:
@@ -43,4 +40,12 @@ paths:
               schema:
                 type: string
                 description: error message
-                example: not found
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

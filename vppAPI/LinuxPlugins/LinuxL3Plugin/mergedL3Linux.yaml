@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
-  title: VPP Agent Linux Routes
-  description: VPP Agent GET Linux Routes REST API
-  version: 0.9
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
 servers:
   - url: 'http://{hostServer}:9191'
     variables:
@@ -12,6 +12,65 @@ servers:
 tags:
   - name: Ligato VPP Agent
 paths:
+  /dump/linux/v2/arps:
+    get:
+      description: linux arp entries
+      tags:
+        - Linux L3 Plugin
+      responses:
+        '200':
+          description: linux arp entries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: linux arp and meta data
+                items:
+                  type: object
+                  description: an individual Linux Interface and meta object
+                  properties:
+                    linux_arp:
+                      type: object
+                      properties:
+                        interface:
+                          type: string
+                          example: linux-tap-61c
+                        ip_address:
+                          type: string
+                          example: 10.1.1.1
+                        hw_address:
+                          type: string
+                          example: 02:fe:af:aa:51:e6
+                    linux_arp_meta:
+                      type: object
+                      properties:
+                        interface_index:
+                          type: integer
+                          format: uint32
+                          example: 7
+                        ip_family:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        vni:
+                          type: integer
+                          format: uint32
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
   /dump/linux/v2/routes:
     get:
       description: linux route entries

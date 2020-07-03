@@ -1,0 +1,77 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/punt/sockets:
+    get:
+      summary:
+      description:
+      tags:
+        - Punt Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ToHost:
+                    type: object
+                    properties:
+                      L3Protocol:
+                        type: string
+                        description: L3 destination protocol a packet has to match in order to be punted
+                        enum:
+                          - UNDEFINED_L3
+                          - IPv4
+                          - IPv6
+                          - ALL
+                        example: IPv4
+                      L4Protocol:
+                        type: string
+                        description: L4 destination protocol a packet has to match.
+                          // Currently VPP only supports UDP
+                        enum:
+                          - UNDEFINED_L4
+                          - TCP
+                          - UDP
+                        example: UDP
+                      Port:
+                        type: integer
+                        format: uint32
+                        description: Destination port
+                        example: 3669
+                      socket_path:
+                        type: string
+                        description: SocketPath defines path to unix domain socket
+                          // used for punt packets to the host.
+                          // In dumps, it will actually contain the socket
+                          // defined in VPP config under punt section
+                        example: /tmp/socket/path
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
