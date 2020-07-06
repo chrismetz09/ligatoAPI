@@ -1,0 +1,122 @@
+# keytimeline yaml file notes generated from https://roger13.github.io/SwagDefGen/
+definitions:
+  0:
+    type: object
+    properties:
+      Since:
+        type: string
+        example: 2020-05-28T17:05:48.166536476Z
+      Until:
+        type: string
+        example: 0001-01-01T00:00:00Z
+      Key:
+        type: string
+        example: config/vpp/v2/interfaces/loop1
+      Label:
+        type: string
+        example: loop1
+      Value:
+        type: object
+        properties:
+          ProtoMsgName:
+            type: string
+            example: ligato.vpp.interfaces.Interface
+          ProtoMsgData:
+            type: string
+            example: name:loop1 type:SOFTWARE_LOOPBACK enabled:true ip_addresses:192.168.1.1/24
+      Flags:
+        type: object
+        description: see plugins/kvscheduler/value_flags.go
+        properties:
+          last-update:
+            type: object
+            properties:
+              txnSeqNum:
+                type: integer
+                format: uint64
+              txnop:
+                type: string
+                description: see proto/ligato/kvscheduler/value_status.proto
+                enum:
+                  - UNDEFINED
+                  - VALIDATE
+                  - CREATE
+                  - UPDATE
+                  - DELETE
+                example: CREATE
+              value:
+                type: object
+                properties:
+                  ProtoMsgName:
+                    type: string
+                  ProtoMsgData:
+                    type: string
+              revert:
+                type: boolean
+                example: true
+              retryEnable:
+                type: boolean
+                example: true
+              retryArgs:
+                type: object
+                properties:
+                  period:
+                    type: time.Duration
+                  MaxCount:
+                    type: integer
+                  ExpBackoff:
+                    type: boolean
+
+
+
+
+
+            example: TXN-1
+          value-state:
+            type: string
+            example: CONFIGURED
+          descriptor:
+            type: string
+            example: vpp-interface
+          derived:
+            type: string
+          error:
+            type: string
+          unavailable:
+            type: string
+
+
+      MetadataFields:
+        type: object
+        properties:
+          index:
+            type: array
+            items:
+              type: string
+              example: 1
+          ip_addresses:
+            type: array
+            items:
+              type: string
+              example: 192.168.1.1/24
+      Targets:
+        type: array
+        items:
+          type: object
+          properties:
+            Relation:
+              type: string
+              example: derives
+            Label:
+              type: string
+              example: vpp/interface/loop1/address/static/192.168.1.1/24
+            ExpectedKey:
+              type: string
+              example: vpp/interface/loop1/address/static/192.168.1.1/24
+            MatchingKeys:
+              type: array
+              items:
+                type: string
+                example: vpp/interface/loop1/address/static/192.168.1.1/24
+      TargetUpdateOnly:
+        type: boolean
