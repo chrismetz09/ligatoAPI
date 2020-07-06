@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: Title
-  description: Title REST API
+  title: KV Scheduler Dump
+  description: Key Value Scheduler GET Dump Scheduler Dump
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'
@@ -9,6 +9,8 @@ servers:
       hostServer:
         default: locahost
         description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
 paths:
   /dump/vpp/v2/foo:
     get:

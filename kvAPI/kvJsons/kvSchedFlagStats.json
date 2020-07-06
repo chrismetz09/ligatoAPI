@@ -4,8 +4,8 @@
 //      "value-state": "CONFIGURED",
 //      "descriptor": "vpp-nat44-global"
 //    }
-
-({
+[
+{
   "TotalCount": 203,
   "PerValueCount": {
     "TXN-0": 61,

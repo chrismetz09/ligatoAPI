@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Dump
+  description: Key Value Scheduler GET Dump Scheduler Dump
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/dump:
+    get:
+      summary:
+      description:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: lists of descriptors, KeyPrefixes and Views
+                properties:
+                    type: object
+                    Descriptors:
+                      type: array
+                      items:
+                        type: string
+                        description: KVS registered descriptor names
+                        example: vpp-interface
+                    KeyPrefixes:
+                      type: array
+                      items:
+                        type: string
+                        description: watched kv prefixes
+                        example: config/vpp/v2/interfaces/
+                    Views:
+                      type: string
+                      description: kvs view perspective
+                      enum:
+                        - SB
+                        - NB
+                        - cached
+                      example: SB
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
