@@ -96,7 +96,6 @@ paths:
                 type: string
                 description: something not working properly in system
                 example: 500 Internal server error
-
   /vpp/telemetry/nodecount:
     get:
       summary:
