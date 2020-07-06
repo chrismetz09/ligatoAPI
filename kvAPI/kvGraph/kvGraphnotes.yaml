@@ -1,4 +1,9 @@
-# keytimeline yaml file notes generated from https://roger13.github.io/SwagDefGen/
+# graph snapshot yaml file notes generated from https://roger13.github.io/SwagDefGen/ using
+# https://docs.ligato.io/en/latest/api/api-kvs/#key-timeline
+# query parm is time in unix timestamp format
+# see plugins/kvscheduler/internal/graph/graph_api.goL409 for struct
+# check last-update property. API response returns "last-update": "TXN-1", as example. See plugins/kvscheduler/value_flags.goL109 for explanation
+# /scheduler/graph-snapshot
 definitions:
   0:
     type: object
@@ -66,14 +71,20 @@ definitions:
                     type: integer
                   ExpBackoff:
                     type: boolean
-
-
-
-
-
-            example: TXN-1
           value-state:
             type: string
+            enum:
+              - NONEXISTENT
+              - MISSING
+              - UNIMPLEMENTED
+              - REMOVED
+              - CONFIGURED
+              - OBTAINED
+              - DISCOVERED
+              - PENDING
+              - INVALID
+              - FAILED
+              - RETRYING
             example: CONFIGURED
           descriptor:
             type: string
@@ -81,11 +92,14 @@ definitions:
           derived:
             type: string
           error:
-            type: string
+            type: object
+            properties:
+              err:
+                type: string
+              retriable:
+                type: boolean
           unavailable:
             type: string
-
-
       MetadataFields:
         type: object
         properties:

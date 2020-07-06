@@ -1,0 +1,111 @@
+# flag stats yaml file notes generated from https://roger13.github.io/SwagDefGen/ using
+# https://docs.ligato.io/en/latest/api/api-kvs/#flag-stats
+# query parms are defined plugins/kvscheduler/value_flags.go
+
+# last-update
+#  /scheduler/flag-stats?flag=last-update
+definitions:
+  type: object
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: TXN-0 is notation for txn-seq with seqnum = 0. The number of "TXN-seqnum" propert objects coorelates to number of transactions executed in the system
+      properties:
+        TXN-<seqnum>:
+          type: integer
+          format: int32
+          example: 16
+# descriptor
+# /scheduler/flag-stats?flag=descriptor
+definitions:
+  type: object
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: descriptor name and number of instances
+      properties:
+        <descriptor name>:
+          type: integer
+          format: int32
+          example: 16
+
+# value-state
+# /scheduler/flag-stats?flag=value-state
+definitions:
+  type: object
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: see proto/ligato/kvscheduler/value_status.proto
+      properties:
+        <value-status-name>:
+          type: integer
+          format: int32
+          example: 16
+
+# derived
+# /scheduler/flag-stats?flag=derived
+definitions:
+  type: object
+  /scheduler/flag-stats?flag=derived
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: see plugins/kvscheduler/value_flags.go
+      properties:
+        <base-key>:
+          type: integer
+          format: int32
+          example: 16
+
+#  unavailable
+#  /scheduler/flag-stats?flag=unavailable
+definitions:
+  type: object
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: see plugins/kvscheduler/value_flags.go
+      properties:
+        <NB Values>:
+          type: integer
+          format: int32
+          example: 16
+
+# error
+# /scheduler/flag-stats?flag=error
+definitions:
+  type: object
+  properties:
+    TotalCount:
+      type: integer
+      descriptor: total count of per-flag instances
+      example: 31
+    PerValueCount:
+      type: object
+      description: TXN-0 is notation for txn-seq with seqnum = 0. The number of "TXN-seqnum" propert objects coorelates to number of transactions executed in the system
+      properties:
+        TXN-<seqnum>:
+          type: integer
+          format: int32
+          example: 16

@@ -1,6 +1,10 @@
-# keytxtHistory yaml file notes generated from https://roger13.github.io/SwagDefGen/ using
+# downstream resync yaml file notes generated from https://roger13.github.io/SwagDefGen/ using
 # https://docs.ligato.io/en/latest/api/api-kvs/#transaction-history
-# query parms are seqnum, since and until
+
+#
+# /scheduler/downstream-resync
+# parameters are retry and verbose
+# curl -X POST http://localhost:9191/scheduler/downstream-resync
 type: object
 description: start at txn_record.goL114
 properties:
@@ -29,6 +33,7 @@ properties:
       - SBNotification
       - NBTransaction
       - RetryFailedOps
+    example: NBTransaction
   ResyncType:
     type: string
     description: full, nb or sb resync
@@ -37,6 +42,7 @@ properties:
       - Full Resync
       - NB Sync
       - SB Sync
+    example: Full Resync
   Values:
     type: array
     description: txn_record.goL130, L160

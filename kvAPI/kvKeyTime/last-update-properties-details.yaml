@@ -1,0 +1,32 @@
+txnop:
+  type: string
+  description: see proto/ligato/kvscheduler/value_status.proto
+  enum:
+    - UNDEFINED
+    - VALIDATE
+    - CREATE
+    - UPDATE
+    - DELETE
+  example: CREATE
+value:
+  type: object
+  properties:
+    ProtoMsgName:
+      type: string
+    ProtoMsgData:
+      type: string
+revert:
+  type: boolean
+  example: true
+retryEnable:
+  type: boolean
+  example: true
+retryArgs:
+  type: object
+  properties:
+    period:
+      type: time.Duration
+    MaxCount:
+      type: integer
+    ExpBackoff:
+      type: boolean
