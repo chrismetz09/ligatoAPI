@@ -1,0 +1,119 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Status
+  description: Key Value Scheduler GET Status by Descriptor
+  version: 0.9
+  contact: 
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/status/{descriptor}:
+    get:
+      tags:
+        - Status
+      parameters:
+        - name: descriptor
+          in: query
+          required: true
+          schema:
+            type: string
+            example: vpp-bridge-domain
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                          example: config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90
+                        state:
+                          type: string
+                          enum:
+                            - NONEXISTENT
+                            - MISSING
+                            - UNIMPLEMENTED
+                            - REMOVED
+                            - CONFIGURED
+                            - OBTAINED
+                            - DISCOVERED
+                            - PENDING
+                            - INVALID
+                            - FAILED
+                            - RETRYING
+                          example: CONFIGURED
+                        lastOperation:
+                          type: string
+                          enum:
+                            - UNDEFINED
+                            - VALIDATE
+                            - CREATE
+                            - UPDATE
+                            - DELETE
+                          example: CREATE
+                    derived_values:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          key:
+                            type: string
+                            example: linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8
+                          state:
+                            type: string
+                            enum:
+                              - NONEXISTENT
+                              - MISSING
+                              - UNIMPLEMENTED
+                              - REMOVED
+                              - CONFIGURED
+                              - OBTAINED
+                              - DISCOVERED
+                              - PENDING
+                              - INVALID
+                              - FAILED
+                              - RETRYING
+                            example: CONFIGURED
+                          lastOperation:
+                            type: string
+                            description: see proto/ligato/kvscheduler/value_status.proto
+                            enum:
+                              - UNDEFINED
+                              - VALIDATE
+                              - CREATE
+                              - UPDATE
+                              - DELETE
+                            example: CREATE
+
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

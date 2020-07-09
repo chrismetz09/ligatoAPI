@@ -1,8 +1,11 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler Dump
-  description: Key Value Scheduler GET Dump Scheduler Dump
+  title: KV Scheduler
+  description: Key Value Scheduler GET Scheduler
   version: 0.9
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
 servers:
   - url: 'http://{hostServer}:9191'
     variables:
