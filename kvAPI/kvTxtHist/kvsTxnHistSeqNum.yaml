@@ -12,7 +12,7 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/txn-history/{seq-num}:
+  /scheduler/txn-history:
     get:
       tags:
         - txn history

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler Status
+  title: KV Scheduler Status by Key
   description: Key Value Scheduler GET Status by Key
   version: 0.9
   contact: 
@@ -15,16 +15,17 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/status/{key}:
+  /scheduler/status:
     get:
       tags:
         - Status
       parameters:
-        - name: key
+        - name: flag
           in: query
           required: true
           schema:
             type: string
+            description: key name
             example: config/vpp/v2/interfaces/mem01
       responses:
         '200':

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler Status
+  title: KV Scheduler Status by Descriptor
   description: Key Value Scheduler GET Status by Descriptor
   version: 0.9
   contact: 
@@ -15,7 +15,7 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/status/{descriptor}:
+  /scheduler/status:
     get:
       tags:
         - Status
@@ -25,6 +25,7 @@ paths:
           required: true
           schema:
             type: string
+            description: a desciptor name
             example: vpp-bridge-domain
       responses:
         '200':
