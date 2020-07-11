@@ -14,8 +14,8 @@ tags:
 paths:
   /scheduler/dump:
     get:
-      summary:
-      description:
+      tags:
+        - dump
       responses:
         '200':
           description:

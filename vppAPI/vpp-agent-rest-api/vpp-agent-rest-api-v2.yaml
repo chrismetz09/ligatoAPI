@@ -1,0 +1,3001 @@
+openapi: 3.0.1
+info:
+  title: Ligato VPP Agent REST APIs
+  description: Describes the REST APIs supported by the Ligato VPP Agent
+  version: 3.0
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato VPP Agent
+paths:
+  /dump/vpp/v2/interfaces/loopback:
+    get:
+      summary: Returns a list of Loopback Interfaces
+      tags:
+        - Interfaces
+      description:
+      responses:
+        '200':
+          description: list of Loopback Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Loopback Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: UNTAGGED-local0
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/interfaces/ethernet:
+    get:
+      summary: Returns a list of Ethernet Interfaces
+      tags:
+        - Interfaces
+      description:
+      responses:
+        '200':
+          description: list of Ethernet Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Ethernet Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: GigabitEthernet0/8/0
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/interfaces/vxlan:
+    get:
+      summary: Returns a list of Vxlan Interfaces
+      tags:
+        - Interfaces
+      description:
+      responses:
+        '200':
+          description: list of Vxlan Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Vxlan Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: vxlan-default-2
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 02:fe:1b:0d:d5:29
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          vxlanlink:
+                            $ref: '#/components/schemas/VxlanLink'
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/interfaces/tap:
+    get:
+      summary: Returns a list of Tap Interfaces
+      tags:
+        - Interfaces
+      description: GET TAP interfaces REST API
+      responses:
+        '200':
+          description: list of Tap Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Tap Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: tap1
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          tap:
+                            $ref: '#/components/schemas/tapLink'
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+           description: error
+           content:
+             application/json:
+               schema:
+                 type: string
+                 description: error 
+                 example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/interfaces/memif:
+    get:
+      summary: Returns a list of Memif Interfaces
+      tags:
+        - Interfaces
+      description: GET Memif interfaces REST API
+      responses:
+        '200':
+          description: list of Memif Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Memif Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: mem01
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          memif:
+                            $ref: '#/components/schemas/memifLink'
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/interfaces/afpacket:
+    get:
+      summary: Returns a list of Afpacket Interfaces
+      tags:
+        - Interfaces
+      description:
+      responses:
+        '200':
+          description: list of Afpackets Interfaces
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Afpacket Interfaces
+                properties:
+                  sw_if_index value:
+                    type: object
+                    description: sw_if_index value used to index array of interface objects
+                    properties:
+                      interface:
+                        type: object
+                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+                        properties:
+                          name:
+                            type: string
+                            example: afp01
+                            description: logical name for the interface, must be unique across all configured VPP interfaces
+                          type:
+                            $ref: '#/components/schemas/type'
+                          enabled:
+                            type: boolean
+                            description: Enabled controls if the interface should be UP
+                            example: true
+                          physAddress:
+                            type: string
+                            description: interface physical address; random address assigned if left empty
+                            example: 00:00:00:00:00:00
+                          ipAddresses:
+                            $ref: '#/components/schemas/interface_ip_addresses'
+                          vrf:
+                            type: integer
+                            format: uint32
+                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                            example: 1
+                          set_dhcp_client:
+                            type: boolean
+                            example: false
+                          mtu:
+                            type: integer
+                            format: uint32
+                            example: 1450
+                            description: maximum frame size on wire
+                          unnumbered:
+                            type: object
+                            description: unnumbered interface
+                            properties:
+                              interface_with_ip:
+                                type: string
+                                description: name of interface to borrow IP address from
+                                example: tap1
+                          linkParms:
+                            $ref: '#/components/schemas/afpacketLink'
+                          rxModes:
+                            $ref: '#/components/schemas/rx_modes'
+                          rxPlacements:
+                            $ref: '#/components/schemas/rx_placements'
+                      interface_meta:
+                        $ref: '#/components/schemas/interface_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/acl/ip:
+    get:
+      summary:
+      description:
+      tags:
+        - ACL Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: acl entries
+                items:
+                  type: object
+                  description: ACL
+                  properties:
+                    acl:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The name of an access list. A device MAY restrict the length and value of this name, possibly spaces and special characters are not allowed.
+                          example: acl1
+                        rules:
+                          $ref: '#/components/schemas/rules_ip'
+                        interfaces:
+                          $ref: '#/components/schemas/interfaces'
+                    acl_meta:
+                      $ref: '#/components/schemas/acl_meta'
+  /dump/vpp/v2/acl/macip:
+    get:
+      summary:
+      description:
+      tags:
+        - ACL Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: acl entries
+                items:
+                  type: object
+                  description: ACL
+                  properties:
+                    acl:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: The name of an access list. A device MAY restrict the length and value of this name, possibly spaces and special characters are not allowed.
+                          example: acl1
+                        rules:
+                          $ref: '#/components/schemas/rules_macip'
+                        interfaces:
+                          $ref: '#/components/schemas/interfaces'
+                    acl_meta:
+                      $ref: '#/components/schemas/acl_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/abf:
+    get:
+      summary:
+      description:
+      tags:
+        - ABF Plugin
+      responses:
+        '200':
+          description: ABF defines ACL based forwarding
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  description: ABF data
+                  properties:
+                    abf:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                          format: uint32
+                          description: ABF index (unique identifier)
+                          example: 1
+                        acl_name:
+                          type: string
+                          description: Name of the associated access list
+                          example: acl1
+                        attached_interfaces:
+                          $ref: '#/components/schemas/attached_interfaces'
+                        forwarding_paths:
+                          $ref: '#/components/schemas/forwarding_paths'
+                    abf_meta:
+                      $ref: '#/components/schemas/abf_meta'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/bd:
+    get:
+      summary: Returns a list of configured L2 Bridge Domains
+      description: VPP agent bridge domain info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured bridge domains
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of Bridge Domains
+                items:
+                  type: object
+                  description: an individual bridge domain with BD and BD meta data properties
+                  properties:
+                    bridge_domain:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: bd1
+                        flood:
+                          type: boolean
+                          example: true
+                        unknown_unicast_flood:
+                          type: boolean
+                          example: true
+                        forward:
+                          type: boolean
+                          example: true
+                        learn:
+                          type: boolean
+                          example: true
+                        arp_termination:
+                          type: boolean
+                          example: true
+                        mac_age:
+                          type: integer
+                          format: uint32
+                          example: 364
+                        interfaces:
+                          type: array
+                          items:
+                            type: object
+                            description: interface that BD is assigned to
+                            properties:
+                              name:
+                                type: string
+                                example: loop1
+                              bridged_virtual_interface:
+                                type: boolean
+                                example: true
+                              split_horizon_group:
+                                type: integer
+                                format: uint32
+                                example: 22
+                        arp_termination_table:
+                          type: array
+                          items:
+                            type: object
+                            description: ARP entries for tunnel termination
+                            properties:
+                              ip_address:
+                                type: string
+                                example: 192.16.18.01
+                              phys_address:
+                                type: string
+                                example: 03:19:00:00:55:01
+                    bridge_domain_meta:
+                      type: object
+                      properties:
+                        bridge_domain_id:
+                          type: integer
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/fib:
+    get:
+      summary: Returns a list of configured L2FIBs
+      description: VPP agent L2FIB info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured L2FIBs
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L2FIBs
+                items:
+                  type: object
+                  properties:
+                    dest MAC Address value:
+                      type: object
+                      description: destination MAC Address used to index VPP L2 FIB table entries into the northbound API data structure map indexed by destination MAC address
+                      properties:
+                        fib:
+                          type: object
+                          properties:
+                            phys_address:
+                              type: string
+                              example: 12:2b:00:00:00:01
+                            bridge_domain:
+                              type: string
+                              example: vxlanBD
+                            action:
+                              type: string
+                              required: boolean
+                              description: action (forward or drop) to take on matching frames
+                              enum:
+                                - FORWARD
+                                - DROP
+                              example: FORWARD
+                            outgoing_interface:
+                              type: string
+                              example: vxlanBVI
+                            static_config:
+                              type: boolean
+                              example: true
+                            bridged_virtual_interface:
+                              type: boolean
+                              example: true
+                        fib_meta:
+                          type: object
+                          properties:
+                            bridge_domain_id:
+                              type: integer
+                              format: uint32
+                              example: 1
+                            outgoing_interface_sw_if_idx:
+                              type: integer
+                              format: uint32
+                              example: 4
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/xc:
+    get:
+      summary: Returns a list of configured L2 x-connects
+      description: VPP agent xc info
+      tags:
+        - L2 Plugin
+      responses:
+        '200':
+          description: List of configured x-connects
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of L2 x-connects
+                items:
+                  type: object
+                  description: L2 x-connect properties
+                  properties:
+                    x_connect:
+                      type: object
+                      properties:
+                        receive_interface:
+                          type: string
+                          example: tap1
+                        transmit_interface:
+                          type: string
+                          example: tap2
+                    xc_connect_meta:
+                      type: object
+                      properties:
+                        receive_interface_sw_if_idx:
+                          type: string
+                          format: uint32
+                          example: 1
+                        transmit_interface_sw_if_idx:
+                          type: integer
+                          format: uint32
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/arps:
+    get:
+      summary: Returns a list of configured L3 ARPs
+      description: VPP agent L3 ARP info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: List of configured ARPs
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L3 ARPs
+                items:
+                  type: object
+                  description: L3 ARP properties
+                  properties:
+                    arp:
+                      type: object
+                      properties:
+                        interface:
+                          type: string
+                          example: tap1
+                        ip_address:
+                          type: string
+                          example: 192.168.16.100
+                        phys_address:
+                          type: string
+                          example: 08:00:27:c9:c3:7a
+                    meta:
+                      type: object
+                      properties:
+                        swIFIndex:
+                          type: integer
+                          format: uint32
+                          example: 2
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/routes:
+    get:
+      summary: Returns a list of configured L3 routes
+      description: VPP agent route info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: List of Configured L3 routes
+          content:
+            application/json:
+              schema:
+                type: array
+                description: List of L3 routes
+                items:
+                  type: object
+                  description: an individual route and meta properties
+                  properties:
+                    route:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: // Forwarding is being done in the specified vrf_id only, or according to
+                            // the specified outgoing interface.
+                            Route_INTRA_VRF Route_RouteType = 0
+                            // Forwarding is being done by lookup into a different VRF,
+                            // specified as via_vrf_id field. In case of these routes, the outgoing
+                            // interface should not be specified. The next hop IP address
+                            // does not have to be specified either, in that case VPP does full
+                            // recursive lookup in the via_vrf_id VRF.
+                            Route_INTER_VRF Route_RouteType = 1
+                            // Drops the network communication designated for specific IP address.
+                            Route_DROP Route_RouteType = 2
+                          enum:
+                            - "INTRA_VRF": 0,
+                            - "INTER_VRF": 1,
+                            - "DROP":      2,                             -
+                          example: 2
+                        vrf_id:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        dst_network:
+                          type: string
+                          description: Destination network defined by IP address and prefix format of address/prefix
+                          example: IPv4 is 192.168.16.1/32
+                        next_hop_addr:
+                          type: string
+                          example: 192.168.16.100
+                        outgoing_interface:
+                          type: string
+                          example: GigabitEthernet0/8/0
+                        weight:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        preference:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        via_vrf_id:
+                          type: integer
+                          format: uint32
+                          example: 2
+                    meta:
+                      type: object
+                      properties:
+                        TableName:
+                          type: string
+                          example: id/1/protocol/IPV4
+                        OutgoingIfIdx:
+                          type: integer
+                          format: uint32
+                          example: 4294967295
+                        IsIPv6:
+                          type: boolean
+                          example: false
+                        Afi:
+                          type: uint8
+                          example: 0
+                        IsLocal:
+                          type: boolean
+                          example: false
+                        IsUDPEncap:
+                          type: boolean
+                          example: false
+                        IsUnreach:
+                          type: boolean
+                          example: false
+                        IsProhibit:
+                          type: boolean
+                          example: false
+                        IsResolveHost:
+                          type: boolean
+                          example: false
+                        IsResolveAttached:
+                          type: boolean
+                          example: false
+                        IsDvr:
+                          type: boolean
+                          example: false
+                        IsSourceLookup:
+                          type: boolean
+                          example: false
+                        NextHopID:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        RpfID:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        LabelStack:
+                          type: array
+                          description: one more mpls labels
+                          items:
+                            type: object
+                            properties:
+                              isUniform:
+                                type: boolean
+                                example: true
+                              Label:
+                                type: integer
+                                format: uint32
+                                example: 00010348
+                              TTL:
+                                type: integer
+                                format: uint32
+                                example: 002
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/ipscanneigh:
+    get:
+      summary: Returns Configured IP Scan Neighbor items
+      description: VPP agent L3 IP Scan Neighbor info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: IP Scan Neighbor Items
+          content:
+            application/json:
+              schema:
+                type: object
+                description: IP Scan Neighbor Items
+                properties:
+                  mode:
+                    type: string
+                    description: ...
+                    enum:
+                      - DISABLED = 0;
+                      - IPV4 = 1;
+                      - IPV6 = 2;
+                      - BOTH = 3;
+                    example: 1
+                  scan_interval:
+                    type: integer
+                    format: uint32
+                    example: 1
+                  max_proc_time:
+                    type: integer
+                    format: uint32
+                    example: 20
+                  max_update:
+                    type: integer
+                    format: uint32
+                    example: 10
+                  scan_int_delay:
+                    type: integer
+                    format: uint32
+                    example: 1
+                  stale_threshold:
+                    type: integer
+                    format: uint32
+                    example: 4
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/proxyarp/interfaces:
+    get:
+      summary: Returns Configured L3 Proxy ARP Interfaces
+      description: VPP agent L3 Proxy ARP Interfaces info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: Proxy ARP Interface Items
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of Proxy ARP Interface Items
+                items:
+                  type: object
+                  description: Proxy ARP interface and meta
+                  properties:
+                    interfaces:
+                      properties:
+                        name:
+                          type: string
+                          example: tap1
+                    meta:
+                      type: object
+                      properties:
+                        swIFIndex:
+                          type: integer
+                          format: uint32
+                          example: 1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/proxyarp/ranges:
+    get:
+      summary: Returns Configured L3 Proxy ARP ranges
+      description: VPP agent L3 Proxy ARP ranges info
+      tags:
+        - L3 Plugin
+      responses:
+        '200':
+          description: Proxy ARP Ranges Items
+          content:
+            application/json:
+              schema:
+                type: array
+                description: Proxy ARP Ranges Items
+                items:
+                  type: object
+                  properties:
+                    first_ip_addr:
+                      type: string
+                      example: 10.0.0.1
+                    last_ip_addr:
+                      type: string
+                      example: 10.0.0.3
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/interfaces:
+    get:
+      summary:
+      description: Returns a list of NAT Interfaces
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: lists local network interfaces enabled for NAT44
+                items:
+                  type: object
+                  description: nat interface data
+                  properties:
+                    name:
+                      type: string
+                      description: Interface name (logical)
+                      example: tap-vpp2
+                    nat_inside:
+                      type: boolean
+                      description: Enable/disable NAT on inside
+                      example: true
+                    nat_outside:
+                      type: boolean
+                      description: Enable/disable NAT on outside
+                      example: true
+                    output_feature:
+                      type: boolean
+                      description: Enable/disable output feature
+                      example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/global:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description: nat global parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                description:
+                properties:
+                  forwarding:
+                    type: boolean
+                    example: true
+                  virtual_reassembly:
+                    type: object
+                    properties:
+                      timeout:
+                        type: integer
+                        format: uint32
+                        description: Reassembly timeout
+                        example: 2
+                      max_reassemblies:
+                        type: integer
+                        format: uint32
+                        description: Maximum number of concurrent reassemblies
+                        example: 1024
+                      max_fragments:
+                        type: integer
+                        format: uint32
+                        description: Maximum number of fragments per reassembly
+                        example: 5
+                      drop_fragments:
+                        type: boolean
+                        description: If set to true fragments are dropped, translated otherwise
+                        example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/dnat:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of DNAT44 entries
+                items:
+                  type: object
+                  description: an individual DNAT entry
+                  properties:
+                    label:
+                      type: string
+                      description: Unique identifier for the DNAT configuration
+                      example: DNAT-identities
+                    id_mappings:
+                      $ref: '#/components/schemas/id_mappings'
+                    st_mappings:
+                      $ref: '#/components/schemas/st_mappings'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/nat/pools:
+    get:
+      summary:
+      description:
+      tags:
+        - NAT Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of nat address pool entries
+                items:
+                  type: object
+                  description: nat address pool entries
+                  properties:
+                    vrf_id:
+                      type: integer
+                      format: uint32
+                      description: VRF id of tenant, 0xFFFFFFFF means independent of VRF.
+                        // Non-zero (and not all-ones) VRF has to be explicitly created
+                      example: 4294967295
+                    first_ip:
+                      type: string
+                      description: First IP address of the pool
+                      example: 192.168.16.1
+                    last_ip:
+                      type: string
+                      description: Last IP address of the pool. Should be higher than first_ip or empty
+                      example: 192.168.16.200
+                    twice_nat:
+                      type: boolean
+                      description: Enable/disable twice NAT
+                      example: true
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/ipsec/sas:
+    get:
+      summary: Returns a list of configured IPsec SAs
+      description: IPsec Security Associations (SA)
+      tags:
+        - IPsec Plugin
+      responses:
+        '200':
+          description: IPsec SA data
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  description: an individual IPsec SA data
+                  properties:
+                    Sa:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                          format: uint32
+                          description: Numerical security association index, serves as a unique identifier
+                          example: 1
+                        spi:
+                          type: integer
+                          format: uint32
+                          description: Security parameter index
+                          example: 2
+                        protocol:
+                          type: integer
+                          format: uint32
+                          description: 0 is Authentication Header (AH), provides a mechanism for authentication only. 1 is Encapsulating Security Payload (ESP) is for data confidentiality and authentication
+                          enum:
+                            - 0
+                            - 1
+                          example: 1
+                        crypto_alg:
+                          $ref: '#/components/schemas/crypto_alg'
+                        crypto_key:
+                          type: string
+                          example: 4a506a794f574265564551694d653768
+                        integ_alg:
+                          $ref: '#/components/schemas/integ_alg'
+                        integ_key:
+                          type: string
+                          example: 4339314b55523947594d6d3547666b45764e6a58
+                        use_esn:
+                          type: boolean
+                          description: Use extended sequence number
+                          example: false
+                        use_anti_replay:
+                          type: boolean
+                          description: Use anti replay
+                          example: true
+                        tunnel_src_addr:
+                          type: string
+                          example: 172.16.7.9
+                        tunnel_dst_addr:
+                          type: string
+                          example: 172.16.7.10
+                        enable_udp_encap:
+                          type: boolean
+                          description: Enable UDP encapsulation for NAT traversal
+                          example: true
+                    meta:
+                      type: object
+                      properties:
+                        SaID:
+                          type: integer
+                          format: uint32
+                          example: 1
+                        Interface:
+                          type: string
+                          example: tap32
+                        IfIdx:
+                          type: integer
+                          format: uint32
+                          example: 4294967295
+                        CryptoKeyLen:
+                          type: integer
+                          format: uint8
+                          example: 0
+                        IntegKeyLen:
+                          type: integer
+                          format: uint8
+                          example: 0
+                        Salt:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        SeqOutbound:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        LastSeqInbound:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        ReplayWindow:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        TotalDataSize:
+                          type: integer
+                          format: uint64
+                          example: false
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/ipsec/spds:
+    get:
+      summary: Returns a list of configured IPsec SPDs
+      description: IPsec Security Policy Database (SPD)
+      tags:
+        - IPsec Plugin
+      responses:
+        '200':
+          description: IPsec SPD data
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  description: an individual IPsec SA data
+                  properties:
+                    index:
+                      type: integer
+                      format: uint32
+                      description: Numerical security policy database index
+                      example: 1
+                    interfaces:
+                      type: array
+                      description: List of interfaces belonging to this SPD
+                      items:
+                        properties:
+                          name:
+                            type: string
+                            description: Name of the related interface
+                            example: tap1
+                    policy_entries:
+                      type: array
+                      description: list of policy database entries
+                      items:
+                        type: object
+                        description: policy database entry properties
+                        properties:
+                          priority:
+                            type: integer
+                            format: int32
+                            example: 10
+                          is_outbound:
+                            type: boolean
+                            example: true
+                          remote_addr_start:
+                            type: string
+                            example: 10.0.0.1
+                          remote_addr_stop:
+                            type: string
+                            example: 10.0.0.1
+                          local_addr_start:
+                            type: string
+                            example: 10.0.0.2
+                          local_addr_stop:
+                            type: string
+                            example: 10.0.0.2
+                          protocol:
+                            type: integer
+                            format: uint32
+                            description: 0 is Authentication Header (AH), provides a mechanism for authentication only. 1 is Encapsulating Security Payload (ESP) is for data confidentiality and authentication
+                            enum:
+                              - 0
+                              - 1
+                            example: 1
+                          remote_port_start:
+                            type: integer
+                            format: uint32
+                            example: 511
+                          remote_port_stop:
+                            type: integer
+                            format: uint32
+                            example: 615
+                          local_port_start:
+                            type: integer
+                            format: uint32
+                            example: 71
+                          local_port_stop:
+                            type: integer
+                            format: uint32
+                            example: 619
+                          action:
+                            type: integer
+                            format: int32
+                            description: See proto/ligato/vpp/ipsec/ipsec.proto for options
+                            enum:
+                              - 0
+                              - 1
+                              - 2
+                              - 3
+                            example: 3
+                          sa_index:
+                            type: integer
+                            format: uint32
+                            example: 10
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/vpp/v2/punt/sockets:
+    get:
+      summary:
+      description:
+      tags:
+        - Punt Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ToHost:
+                    type: object
+                    properties:
+                      L3Protocol:
+                        type: string
+                        description: L3 destination protocol a packet has to match in order to be punted
+                        enum:
+                          - UNDEFINED_L3
+                          - IPv4
+                          - IPv6
+                          - ALL
+                        example: IPv4
+                      L4Protocol:
+                        type: string
+                        description: L4 destination protocol a packet has to match.
+                          // Currently VPP only supports UDP
+                        enum:
+                          - UNDEFINED_L4
+                          - TCP
+                          - UDP
+                        example: UDP
+                      Port:
+                        type: integer
+                        format: uint32
+                        description: Destination port
+                        example: 3669
+                      socket_path:
+                        type: string
+                        description: SocketPath defines path to unix domain socket
+                          // used for punt packets to the host.
+                          // In dumps, it will actually contain the socket
+                          // defined in VPP config under punt section
+                        example: /tmp/socket/path
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /vpp/telemetry/runtime:
+    get:
+      summary:
+      description: contains values returned from 'show runtime'
+      tags:
+        - Telemetry Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: contains values returned from 'show runtime'
+                properties:
+                  threads:
+                    type: array
+                    description: contains values returned from 'show runtime'
+                    items:
+                      type: object
+                      description: single runtime thread data
+                      properties:
+                        id:
+                          type: integer
+                          format: uint
+                          example: 0
+                        name:
+                          type: string
+                          description: name
+                          example: ALL
+                        time:
+                          type: number
+                          format: float64
+                          example: 0
+                        avg_vectors_per_node:
+                          type: number
+                          format: float64
+                          example: 0
+                        last_main_loops:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        vectors_per_main_loop:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_length_per_node:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_in:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_out:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_drop:
+                          type: number
+                          format: float64
+                          example: 0
+                        vector_rates_punt:
+                          type: number
+                          format: float64
+                          example: 0
+                        items:
+                          $ref: '#/components/schemas/items_telemetry_runtime'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /vpp/telemetry/nodecount:
+    get:
+      summary:
+      description: contains values returned from 'show node counters'
+      tags:
+        - Telemetry Plugin
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: contains values returned from 'show node counters'
+                properties:
+                  counters:
+                    type: array
+                    description: contains values returned from 'show node counters'
+                    items:
+                      type: object
+                      description: single node counter
+                      properties:
+                        value:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        node:
+                          type: string
+                          description: node
+                          example: /err/null-node
+                        name:
+                          type: string
+                          description: name
+                          example: blackholed packets
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /vpp/telemetry/memory:
+    get:
+      summary:
+      description: memory thread values
+      tags:
+        - Telemetry Plugin
+      responses:
+        '200':
+          description: memory thread values
+          content:
+            application/json:
+              schema:
+                type: object
+                description: memory thread values
+                properties:
+                  threads:
+                    type: array
+                    description: memory thread values
+                    items:
+                      type: object
+                      description: memory thread values
+                      properties:
+                        id:
+                          type: integer
+                          format: uint
+                          example: 0
+                        name:
+                          type: string
+                          description:
+                          example: north1
+                        size:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        objects:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        used:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        total:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        free:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        reclaimed:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        overhead:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        pages:
+                          type: integer
+                          format: uint64
+                          example: 0
+                        page_size:
+                          type: integer
+                          format: uint64
+                          example: 0
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/linux/v2/interfaces:
+    get:
+      summary: Returns a list of configured Linux Interfaces
+      description: VPP Agent Linux Interfaces info
+      tags:
+        - Linux Interfaces Plugin
+      responses:
+        '200':
+          description: Returns a list of configured Linux Interfaces
+          content:
+            application/json:
+              schema:
+                type: array
+                description: list of configured Linux Interfaces
+                items:
+                  type: object
+                  description: an individual Linux Interface and meta object
+                  properties:
+                    interfaces:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          description: Name is mandatory field representing logical name for the interface. It must be unique across all configured interfaces
+                          example: tap-vpp1
+                        type:
+                          type: string
+                          description: Type represents the type of interface and It must match with actual Link. If type is TAP_TO_LINK, use tap property below. If type is VETH, use veth property
+                          enum:
+                            - UNDEFINED
+                            - VETH
+                            - TAP_TO_VPP
+                            - LOOPBACK
+                            - EXISTING
+                          example: TAP_TO_VPP
+                        namespace:
+                          type: object
+                          description: Namespace is a reference to a Linux network namespace where the interface should be placed in
+                          properties:
+                            type:
+                              type: string
+                              example: FD
+                            reference:
+                              type: string
+                              example: /proc/12661/ns/net
+                        hostIfName:
+                          type: string
+                          description: Name of the interface in the host OS. If not set, the host name will be the same as the interface logical name
+                          example: vpp1
+                        enabled:
+                          type: boolean
+                          description: Enabled controls if the interface should be UP
+                          example: true
+                        ipAddresses:
+                          type: array
+                          description: IPAddresses define list of IP addresses for the interface and must be defined in the following format of <ipAddress>/<ipPrefix>. Note that interface could have IPv4 and IPv6 with example being ["127.0.0.1/8", "::1/128"]
+                          items:
+                            type: string
+                            format: ipv4
+                            example: 192.168.22.1/24
+                        physAddress:
+                          type: string
+                          format: mac
+                          example: ca:aa:bc:5d:76:9c
+                        mtu:
+                          type: integer
+                          format: uint32
+                          example: 1450
+                        tap:
+                          $ref: '#/components/schemas/tap_link_linux'
+                        veth:
+                          $ref: '#/components/schemas/veth_link_linux'
+                    interface_meta:
+                      $ref: '#/components/schemas/interface_meta_linux'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /stats/linux/interfaces:
+    get:
+      description: linux interface stats
+      tags:
+        - Linux Interfaces Plugin
+      responses:
+        '200':
+          description: linux stats entries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: linux interface stats
+                items:
+                  type: object
+                  description: linux route and meta data
+                  properties:
+                    interface_name:
+                      type: object
+                      example: tap-vpp1
+                    interface_type:
+                      type: string
+                      enum:
+                        - 0 is "UNDEFINED",
+                        - 1 is "VETH",
+                        - 2 is "TAP_TO_VPP",
+                        - 3 is "LOOPBACK",
+                        - 4 is "EXISTING",
+                      example: 2
+                    linux_if_index:
+                      type: integer
+                      example: 6
+                    rx_packets:
+                      type: integer
+                      format: uint64
+                      example: 58919
+                    tx_packets:
+                      type: integer
+                      format: uint64
+                      example: 54273
+                    rx_bytes:
+                      type: integer
+                      format: uint64
+                      example: 83203332
+                    tx_bytes:
+                      type: integer
+                      format: uint64
+                      example: 85581834
+                    rx_errors:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    tx_errors:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    rx_dropped:
+                      type: integer
+                      format: uint64
+                      example: 0
+                    tx_dropped:
+                      type: integer
+                      format: uint64
+                      example: 0
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/linux/v2/arps:
+    get:
+      description: linux arp entries
+      tags:
+        - Linux L3 Plugin
+      responses:
+        '200':
+          description: linux arp entries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: linux arp and meta data
+                items:
+                  type: object
+                  description: an individual Linux Interface and meta object
+                  properties:
+                    linux_arp:
+                      type: object
+                      properties:
+                        interface:
+                          type: string
+                          example: linux-tap-61c
+                        ip_address:
+                          type: string
+                          example: 10.1.1.1
+                        hw_address:
+                          type: string
+                          example: 02:fe:af:aa:51:e6
+                    linux_arp_meta:
+                      type: object
+                      properties:
+                        interface_index:
+                          type: integer
+                          format: uint32
+                          example: 7
+                        ip_family:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        vni:
+                          type: integer
+                          format: uint32
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /dump/linux/v2/routes:
+    get:
+      description: linux route entries
+      tags:
+        - Linux L3 Plugin
+      responses:
+        '200':
+          description: linux route entries
+          content:
+            application/json:
+              schema:
+                type: array
+                description: linux route and meta data
+                items:
+                  type: object
+                  description: linux route and meta data
+                  properties:
+                    routes:
+                      type: object
+                      properties:
+                        outgoing_interface:
+                          type: string
+                          example: tap-vpp1
+                        scope:
+                          type: string
+                          enum:
+                            - UNDEFINED
+                            - GLOBAL
+                            - SITE
+                            - LINK
+                            - HOST
+                          example: GLOBAL
+                        dst_network:
+                          type: string
+                          example: 10.1.0.0/16
+                        gw_addr:
+                          type: string
+                          example: 172.30.1.1
+                        metric:
+                          type: integer
+                          format: uint32
+                          example: 1
+                    Meta:
+                      type: object
+                      properties:
+                        interface_index:
+                          type: integer
+                          format: uint32
+                          example: 7
+                        link_scope:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        protocol:
+                          type: integer
+                          format: uint32
+                          example: 3
+                        mtu:
+                          type: integer
+                          format: uint32
+                          example: 0
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /info/version:
+    get:
+      summary: Returns VPP Agent version info
+      tags:
+        - Version
+      responses:
+        '200':
+          description: IPsec SA data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  App:
+                    type: string
+                    example: vpp-agent
+                  Version:
+                    type: string
+                    example: v3.2.0-alpha-19-g00aadb60d-dirty
+                  GitCommit:
+                    type: string
+                    example: 00aadb60d4789d5066a0354ea62ea9140c67d5fe
+                  GitBranch:
+                    type: string
+                    example: version-rest-handler
+                  BuildUser:
+                    type: string
+                    example: root
+                  BuildHost:
+                    type: string
+                    example: a16a1f1fa74f
+                  BuildTime:
+                    type: integer
+                    format: int64
+                    example: 1593109090
+                  GoVersion:
+                    type: string
+                    example: go1.14.4
+                  OS:
+                    type: string
+                    example: linux
+                  Arch:
+                    type: string
+                    example: amd64
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    interface_meta:
+      type: object
+      description: meta properties
+      properties:
+        sw_if_index:
+          type: integer
+          format: uint32
+          example: 0
+          description: also used to index array of interfaces
+        sub_sw_if_index:
+          type: integer
+          format: uint32
+          example: 3
+        l2_address:
+          type: string
+          example: NDwAAAAB
+        internal_name:
+          type: string
+          example: internal name example
+        is_admin_state_up:
+          type: boolean
+          example: false
+        is_link_state_up:
+          type: boolean
+          example: false
+        link_duplex:
+          type: integer
+          format: uint32
+          example: 0
+        link_mtu:
+          type: integer
+          format: uint16
+          example: 0
+        mtu:
+          $ref: '#/components/schemas/interface_meta_mtu'
+        link_speed:
+          type: integer
+          format: uint32
+          example: 0
+        sub_id:
+          type: integer
+          format: uint32
+          example: 0
+        tag:
+          type: string
+          example: ""
+        dhcp:
+          nullable: boolean
+          example: null
+          # look into handling with component
+        vrf_ipv4:
+          type: integer
+          format: uint32
+          example: 0
+        vrf_ipv6:
+          type: integer
+          format: uint32
+          example: 0
+        pci:
+          type: integer
+          format: uint32
+          example: 0
+    interface_meta_mtu:
+      type: array
+      description: per-protocol mtu for L2, ... organized as array
+      items:
+        type: integer
+        format: uint32
+        example: 0
+    interface_ip_addresses:
+      type: array
+      items:
+        type: string
+        description: IPAddresses define list of IP addresses for the interface and must be
+          // defined in the following format like so <ipAddress>/<ipPrefix>.
+        example: 172.30.1.1/24
+    rx_modes:
+      type: array
+      items:
+        type: object
+        description: rx mode for interface
+        properties:
+          queue:
+            type: integer
+            format: uint32
+            example: 1
+          mode:
+            type: string
+            enum:
+              - UNKNOWN
+              - POLLING
+              - INTERRUPT
+              - ADAPTIVE
+              - DEFAULT
+            example: ADAPTIVE
+          defaultMode:
+            type: boolean
+            description: DefaultMode, if set to true, the <queue> field will be ignored and the <mode> will be used as a default for all the queues.
+            example: true
+    rx_placements:
+      type: array
+      items:
+        type: object
+        properties:
+          queue:
+            type: integer
+            format: uint64
+            description: number of queues
+            example: 1
+          worker:
+            type: integer
+            format: uint32
+            description: number of workers
+            example: 1
+          main_thread:
+            type: boolean
+            description: Let the main thread process the given queue. If enabled, value of <worker> is ignored
+            example: true
+    memifLink:
+      type: object
+      description:  MemifLink defines configuration for interface type MEMIF. See /proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        mode:
+          type: string
+          enum:
+            - ETHERNET
+            - IP
+            - PUNT_INJECT
+          example: IP
+        master:
+          type: boolean
+          example: true
+        id:
+          type: integer
+          format: uint32
+          description: 32bit integer used to authenticate and match opposite sides of the connection
+        socketFilename:
+          type: string
+          description: Filename of the socket used for connection establishment
+          example: /run/vpp/memif.sock
+        secret:
+          type: string
+        ringSize:
+          type: integer
+          format: uint32
+          description: number of entries of RX/TX rings
+        bufferSize:
+          type: integer
+          format: uint32
+          description: size of the buffer allocated for each ring entry
+          example: 256
+        rxQueues:
+          type: integer
+          format: uint32
+          description: number of rx queues (only valid for slave)
+          example: 6
+        txQueues:
+          type: integer
+          format: uint32
+          description: number of tx queues (only valid for slave)
+    tapLink:
+      type: object
+      description: TapLink fields defined in ../proto/ligato/vpp/interfaces/interface.proto
+      properties:
+        version:
+          type: integer
+          format: uint32
+          description: 1 / unset = use the original TAP interface; 2 = use a fast virtio-based TAP
+          example: 2
+        hostIfName:
+          type: string
+          description: Name of the TAP interface in the host OS;
+            // if empty, it will be auto-generated (suitable for combination with TAP_TO_VPP
+            // interface from Linux ifplugin, because then this name is only temporary anyway)
+          example: tap-283567301
+        toMicroservice:
+          type: string
+          description: If TAP connects VPP with microservice, fill this parameter with the target
+            // microservice name - should match with the namespace reference of the associated
+            // TAP_TO_VPP interface (it is still moved to the namespace by Linux-ifplugin but
+            // VPP-ifplugin needs to be aware of this dependency)
+          example: foobar
+        rxRingSize:
+          type: integer
+          format: uint32
+          description: Rx ring buffer size; must be power of 2; default is 256; only for TAP v.2
+        txRingSize:
+          type: integer
+          format: uint32
+          description: Tx ring buffer size; must be power of 2; default is 256; only for TAP v.2
+        enableGso:
+          type: bool
+          description: EnableGso enables GSO mode for TAP interface
+          example: false
+        enableTunnel:
+          type: boolean
+          description: EnableTunnel enables tunnel mode for TAP interface
+    VxlanLink:
+      type: object
+      description: vxlan tunnel properties
+      properties:
+        srcAddress:
+          type: string
+          description: source VTEP address
+          example: 192.168.16.1
+        dstAddress:
+          type: string
+          description: destination VTEP address
+          example: 192.168.16.2
+        vni:
+          type: integer
+          format: uint32
+          description: stands for VXLAN Network Identifier
+          example: 10
+        multicast:
+          type: integer
+          format: uint32
+          description: Multicast defines name of multicast interface
+          example: tap3
+    type:
+      type: string
+      required: boolean
+      description: interface type and must match actual link. See proto/ligato/vpp/interfaces/interface.proto
+      enum:
+        - UNDEFINED_TYPE
+        - SUB_INTERFACE
+        - SOFTWARE_LOOPBACK
+        - DPDK
+        - MEMIF
+        - TAP
+        - AF_PACKET
+        - VXLAN_TUNNEL
+        - VMXNET3_INTERFACE
+        - BOND_INTERFACE
+        - GRE_TUNNEL
+        - GTPU_TUNNEL
+        - IPIP_TUNNEL
+      example: <interface type>
+    afpacketLink:
+      type: object
+      description: af_packet interface properties
+      properties:
+        hostIfName:
+          type: string
+          description: DEPRECATED. DO NOT USE! Logical reference <linux_interface> should be used instead.
+        linuxInterface:
+          type: string
+          required: boolean
+          description: Logical name of the Linux interface to bind to. Use instead of hostIfNname
+          example: TAP-03281959
+    acl_meta:
+      type: object
+      properties:
+        acl_index:
+          type: integer
+          example: 0
+        acl_tag:
+          type: string
+          example: acl1
+    rules_ip:
+      type: array
+      description: List of access list entries (Rules). Each Access Control Rule has a list of match criteria and a list of actions.
+      items:
+        type: object
+        properties:
+          action:
+            type: string
+            description: action rule value
+            enum:
+              - 0 is "DENY",
+              - 1 is "PERMIT",
+              - 2 is "REFLECT",
+            example: 1
+          ip_rule:
+            type: object
+            properties:
+              ip:
+                $ref: "#/components/schemas/ip"
+              tcp:
+                $ref: '#/components/schemas/tcp'
+              icmp:
+                $ref: '#/components/schemas/icmp'
+              udp:
+                $ref: '#/components/schemas/udp'
+    ip:
+      type: object
+      description: IP  used in this Access List Entry.
+      properties:
+        destination_network:
+          type: string
+          description: destination IPv4/IPv6 network address (<ip>/<network>)
+          example: 10.20.1.0/24
+        source_network:
+          type: string
+          description: source IPv4/IPv6 network address (<ip>/<network>)
+          example: 192.168.1.2/32
+    tcp:
+      type: object
+      description: ACL TCP src/dst port ranges, flags mask and value
+      properties:
+        destination_port_range:
+          type: object
+          description: destination lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1150
+        source_port_range:
+          type: object
+          description: source lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1150
+        tcp_flags_mask:
+          type: integer
+          description: Binary mask for tcp flags to match. MSB order (FIN at position 0).
+            // Applied as logical AND to tcp flags field of the packet being matched,
+            // before it is compared with tcp-flags-value.
+          example: 20
+        tcp_flags_value:
+          type: integer
+          description: Binary value for tcp flags to match. MSB order (FIN at position 0).
+            // Before tcp-flags-value is compared with tcp flags field of the packet being matched,
+            // tcp-flags-mask is applied to packet field value.
+          example: 10
+    icmp:
+      type: object
+      description: icmp acl data
+      properties:
+        icmpv6:
+          type: boolean
+          description: ICMPv6 flag, if false ICMPv4 will be used
+          example: false
+        icmp_code_range:
+          type: object
+          description: Inclusive range representing icmp codes to be used
+          properties:
+            first:
+              type: integer
+              format: uint32
+              example: 0
+            last:
+              type: integer
+              format: uint32
+              example: 14
+        icmp_type_range:
+          type: object
+          description: Inclusive range representing icmp types to be used
+          properties:
+            first:
+              type: integer
+              format: uint32
+              example: 0
+            last:
+              type: integer
+              format: uint32
+              example: 14
+    udp:
+      type: object
+      description: Inclusive range representing destination ports to be used. When only lower-port is present, it represents a single port.
+      properties:
+        destination_port_range:
+          type: object
+          description: destination lower and upper UDP port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              description: If upper port is set, it must be greater or equal to lower port
+              example: 1150
+        source_port_range:
+          type: object
+          description: source lower and upper port ranges
+          properties:
+            lower_port:
+              type: integer
+              example: 1150
+            upper_port:
+              type: integer
+              example: 1157
+    interfaces:
+      type: object
+      properties:
+        egress:
+          type: array
+          description: egress interfaces where ACL is applied
+          items:
+            type: string
+            example: tap1
+        ingress:
+          type: array
+          description: ingress interfaces where ACL is applied
+          items:
+            type: string
+            example: tap2
+    rules_macip:
+      type: array
+      description: List of access list entries (Rules). Each Access Control Rule has a list of match criteria and a list of actions.
+      items:
+        type: object
+        properties:
+          action:
+            type: string
+            description: action rule value
+            enum:
+              - 0 is "DENY",
+              - 1 is "PERMIT",
+              - 2 is "REFLECT",
+            example: 1
+          mac_rule:
+            type: object
+            properties:
+              source_address:
+                type: string
+                example: 10.0.1.2
+              source_address_prefix:
+                type: integer
+                format: uint32
+                example: 28
+              source_mac_address:
+                type: string
+                description: Before source-mac-address is compared with source mac address field of the packet
+                  // being matched, source-mac-address-mask is applied to packet field value
+                example: 03:11:22:46:17:01
+              source_mac_address_mask:
+                type: string
+                description: Source MAC address mask.
+                  // Applied as logical AND with source mac address field of the packet being matched,
+                  // before it is compared with source-mac-address.
+                example: 03:11:22:46:17:01
+    abf_meta:
+      type: object
+      properties:
+        policy_id:
+          type: integer
+          format: uint32
+          example: 6
+    attached_interfaces:
+      type: array
+      description: List of interfaces attached to the ABF
+      items:
+        type: object
+        properties:
+          input_interface:
+            type: string
+            example: tap1
+          priority:
+            type: integer
+            format: uint32
+            example: 6
+          is_ipv6:
+            type: boolean
+            example: false
+    forwarding_paths:
+      type: array
+      description: List of forwarding paths added to the ABF policy
+      items:
+        type: object
+        properties:
+          next_hop_ip:
+            type: string
+            example: 192.168.11.1
+          interface_name:
+            type: string
+            example: tap3
+          weight:
+            type: integer
+            format: uint32
+            example: 6
+          preference:
+            type: integer
+            format: uint32
+            example: 6
+          dvr:
+            type: boolean
+            example: false
+    id_mappings:
+      type: array
+      description: array with key value pairs
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            description: VRF (table) ID. Non-zero VRF has to be explicitly created
+            example: 1
+          interface:
+            type: string
+            description: Name of the interface to use address from; preferred over ip_address
+            example: tap-vpp
+          ip_address:
+            type: string
+            description: IP address
+            example: 192.168.16.1
+          port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+          protocol:
+            type: string
+            description: Protocol used for identity mapping
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+    st_mappings:
+      type: array
+      description: list of static mappings in DNAT
+      items:
+        type: object
+        description: static mapping data
+        properties:
+          external_interface:
+            type: string
+            description: Interface to use external IP from; preferred over external_ip
+            example: tap1
+          external_ip:
+            type: string
+            description: external IP address
+            example: 10.96.0.1
+          external_port:
+            type: integer
+            format: uint32
+          protocol:
+            type: string
+            description: Protocol
+            enum:
+              - TCP = 0
+              - UDP = 1
+              - ICMP = 2
+            example: 1
+          local_ips:
+            $ref: '#/components/schemas/local_ips'
+          twice_nat:
+            type: integer
+            format: uint32
+            enum:
+              - 0 is "DISABLED
+              - 1 is "ENABLED"
+              - 2 is "SELF"
+            example: 2
+          session_affinity:
+            type: integer
+            format: uint32
+            description: 0 means disabled, otherwise client IP affinity sticky time in seconds
+            example: 0
+    local_ips:
+      type: array
+      description: List of local IP addresses. If there is more than one entry, load-balancing is enabled
+      items:
+        type: object
+        properties:
+          vrf_id:
+            type: integer
+            format: uint32
+            example: 1
+          local_ip:
+            type: string
+            description: local IP address
+            example: 10.20.0.2
+          local_port:
+            type: integer
+            format: uint32
+            description: Port (do not set for address mapping)
+            example: 6443
+          probability:
+            type: integer
+            format: uint32
+    crypto_alg:
+      type: integer
+      format: int32
+      description: Cryptographic algorithm for encryption. See options at proto/ligato/vpp/ipsec/ipsec.pb.go
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+        - 11
+      example: 1
+    integ_alg:
+      type: integer
+      format: int32
+      description: Cryptographic algorithm for authentication. See options at proto/ligato/vpp/ipsec/ipsec.pb.go
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+      example: 1
+    items_telemetry_runtime:
+      type: array
+      description: single runtime item
+      items:
+        type: object
+        properties:
+          index:
+            type: integer
+            format: uint
+            example: 0
+          name:
+            type: string
+            example: null-node
+          state:
+            type: string
+            example:
+          calls:
+            type: integer
+            format: uint64
+            example: 0
+          vectors:
+            type: integer
+            format: uint64
+            example: 0
+          suspends:
+            type: integer
+            format: uint64
+            example: 0
+          clocks:
+            type: number
+            format: float64
+          vectors_per_call:
+            type: number
+            format: float64
+    interface_meta_linux:
+      type: object
+      properties:
+        linux_if_index:
+          type: integer
+          format: uint32
+          example: 6
+        parent_index:
+          type: integer
+          format: uint32
+          example: 0
+        master_index:
+          type: integer
+          format: uint32
+          example: 0
+        oper_state:
+          type: integer
+          format: uint8
+          example: 0
+        flags:
+          type: integer
+          format: uint32
+          example: 69699
+        encapsulation:
+          type: string
+          example: ether
+        num_rx_queue:
+          type: integer
+          format: uint32
+          example: 0
+        num_tx_queue:
+          type: integer
+          format: uint32
+          example: 0
+        tx_queue_len:
+          type: integer
+          format: uint32
+          example: 500
+    tap_link_linux:
+      type: object
+      properties:
+        vppTapIfName:
+          type: string
+          description: Logical name of the VPP TAP interface (mandatory for TAP_TO_VPP)
+          example: tag-vpp2
+    veth_link_linux:
+      type: object
+      properties:
+        peer_if_name:
+          type: string
+          description: Name of the VETH peer, i.e. other end of the linux veth (mandatory for VETH)
+          example: veth2
+        rx_checksum_offloading:
+          $ref: '#/components/schemas/checksum_offloading'
+        tx_checksum_offloading:
+          $ref: '#/components/schemas/checksum_offloading'
+    checksum_offloading:
+      type: string
+      description: checksum offloading, enabled by default on rx and tx sides
+      enum:
+        - CHKSM_OFFLOAD_DEFAULT
+        - CHKSM_OFFLOAD_ENABLED
+        - CHKSM_OFFLOAD_DISABLED
+      example: CHKSM_OFFLOAD_ENABLED

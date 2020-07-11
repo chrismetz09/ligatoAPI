@@ -56,29 +56,33 @@ paths:
                             format: uint32
                             example: 364
                           interfaces:
-                            type: object
-                            description: interface that BD is assigned to
-                            properties:
-                              name:
-                                type: string
-                                example: loop1
-                              bridged_virtual_interface:
-                                type: boolean
-                                example: true
-                              split_horizon_group:
-                                type: integer
-                                format: uint32
-                                example: 22
+                            type: array
+                            items:
+                              type: object
+                              description: interface that BD is assigned to
+                              properties:
+                                name:
+                                  type: string
+                                  example: loop1
+                                bridged_virtual_interface:
+                                  type: boolean
+                                  example: true
+                                split_horizon_group:
+                                  type: integer
+                                  format: uint32
+                                  example: 22
                           arp_termination_table:
-                            type: object
-                            description: ARP entries for tunnel termination
-                            properties:
-                                  ip_address:
-                                    type: string
-                                    example: 192.16.18.01
-                                  phys_address:
-                                    type: string
-                                    example: 03:19:00:00:55:01
+                            type: array
+                            items:
+                              type: object
+                              description: ARP entries for tunnel termination
+                              properties:
+                                ip_address:
+                                  type: string
+                                  example: 192.16.18.01
+                                phys_address:
+                                  type: string
+                                  example: 03:19:00:00:55:01
                     bridge_domain_meta:
                       type: object
                       properties:
