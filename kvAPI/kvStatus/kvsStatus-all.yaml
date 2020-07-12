@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler Status by Key
-  description: Key Value Scheduler GET Status by Key
+  title: KV Scheduler Status
+  description: Key Value Scheduler GET Status
   version: 0.9
   contact: 
     name: Chris Metz
@@ -22,11 +22,18 @@ paths:
       parameters:
         - name: key
           in: query
-          required: true
+          required: false
           schema:
             type: string
             description: key name
             example: config/vpp/v2/interfaces/mem01
+        - name: descriptor
+          in: query
+          required: false
+          schema:
+            type: string
+            description: a desciptor name
+            example: vpp-bridge-domain
       responses:
         '200':
           description:

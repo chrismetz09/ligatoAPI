@@ -15,7 +15,7 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/key-timeline/{key}:
+  /scheduler/key-timeline:
     get:
       tags:
         - Key Timeline
