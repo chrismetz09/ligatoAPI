@@ -17,6 +17,7 @@ tags:
 paths:
   /scheduler/status:
     get:
+      description: value state for all, or by key or descriptor query flags
       tags:
         - Status
       parameters:

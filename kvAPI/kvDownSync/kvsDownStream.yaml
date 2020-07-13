@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler Txn History
-  description: Key Value Scheduler GET Transaction History
+  title: KV Scheduler Downstream Resync
+  description: Key Value Scheduler POST Downstream Resync
   version: 0.9
 servers:
   - url: 'http://{hostServer}:9191'
@@ -12,57 +12,6 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/txn-history:
-    get:
-      tags:
-        - txn history
-      parameters:
-        - name: seq-num
-          in: query
-          required: false
-          description: txn sequence number(SeqNum)
-          schema:
-            type: integer
-            example: 1
-        - name: since
-          in: query
-          required: false
-          description: sinceArg is the name of the argument used to define the start of the time window for the transaction history to display. If undefined, the output starts with the oldest kept record
-          schema:
-            type: timestamp
-            description: data-time prepended to UTC
-            example: 2020-05-28T16:50:52.752025508Z
-        - name: until
-          in: query
-          required: false
-          description: untilArg is the name of the argument used to define the end of the time window for the transaction history to display. If undefined, the output end with the last executed transaction
-          schema:
-            type: timestamp
-            description: data-time prepended to UTC
-            example: 2020-05-28T16:50:52.769882769Z
-      responses:
-        '200':
-          description:
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/txn-data'
-        '404':
-          description: error
-          content:
-            application/json:
-              schema:
-                type: string
-                description: error message
-                example: 404 page not found
-        '500':
-          description: error
-          content:
-            application/json:
-              schema:
-                type: string
-                description: something not working properly in system
-                example: 500 Internal server error
   /scheduler/downstream-resync:
     post:
       tags:

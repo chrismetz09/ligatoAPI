@@ -1,0 +1,1050 @@
+openapi: 3.0.1
+info:
+  title: Ligato KV Scheduler REST APIs
+  description: Describes the REST APIs supported by the Ligato KV Scheduler
+  version: 3.0
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/dump:
+    get:
+      description: list of the descriptors registered with the KV Scheduler, list of the key prefixes under watch in the NB direction, and view options from the perspective of the KV Scheduler
+      tags:
+        - dump
+      responses:
+        '200':
+          description: lists of descriptors, KeyPrefixes and Views
+          content:
+            application/json:
+              schema:
+                type: object
+                description: lists of descriptors, KeyPrefixes and Views
+                properties:
+                  type: object
+                  Descriptors:
+                    type: array
+                    items:
+                      type: string
+                      description: KVS registered descriptor names
+                      example: vpp-interface
+                  KeyPrefixes:
+                    type: array
+                    items:
+                      type: string
+                      description: watched kv prefixes
+                      example: config/vpp/v2/interfaces/
+                  Views:
+                    type: string
+                    description: kvs view perspective
+                    enum:
+                      - SB
+                      - NB
+                      - cached
+                    example: SB
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/dump?:
+    get:
+      description: kv scheduler dump by descriptor, key-prefix and/or view query parameters
+      tags:
+        - dump
+      parameters:
+        - name: view
+          in: query
+          description: kvs view perspective
+          schema:
+            type: string
+            enum:
+              - SB
+              - NB
+              - cached
+            example: SB
+        - name: key-prefix
+          in: query
+          schema:
+            type: string
+            example: config/vpp/v2/interfaces/
+        - name: descriptor
+          in: query
+          description: descriptor name
+          schema:
+            type: string
+            example: vpp-interface
+      responses:
+        '200':
+          description: kv scheduler dump by key-prefix, descriptor and/or view
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    type: object
+                    Key:
+                      type: string
+                      example: vpp-interface
+                    Value:
+                      type: object
+                      properties:
+                        ProtoMsgName:
+                          type: string
+                          example: ligato.vpp.interfaces.Interface
+                        ProtoMsgData:
+                          type: string
+                          example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true ip_addresses:\"192.168.1.1/24\"
+                    Metadata:
+                      type: object
+                      description: see plugins/vpp/ifplugin/ifaceidx/ifaceidx.go
+                      properties:
+                        SwIfIndex:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        Vrf:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        IPAddresses:
+                          type: array
+                          items:
+                            type: string
+                            example: 100.100.100.102/24
+                        TAPHostIfName:
+                          type: string
+                          example: tap1
+                    origin:
+                      type: integer
+                      example: 2
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/txn-history:
+    get:
+      description: all transaction history or by sequence number, since and until query parameters
+      tags:
+        - txn-history
+      parameters:
+        - name: seq-num
+          in: query
+          required: false
+          description: txn sequence number(SeqNum)
+          schema:
+            type: integer
+            example: 1
+        - name: since
+          in: query
+          required: false
+          description: sinceArg is the name of the argument used to define the start of the time window for the transaction history to display. If undefined, the output starts with the oldest kept record
+          schema:
+            type: timestamp
+            description: data-time prepended to UTC
+            example: 2020-05-28T16:50:52.752025508Z
+        - name: until
+          in: query
+          required: false
+          description: untilArg is the name of the argument used to define the end of the time window for the transaction history to display. If undefined, the output end with the last executed transaction
+          schema:
+            type: timestamp
+            description: data-time prepended to UTC
+            example: 2020-05-28T16:50:52.769882769Z
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/txn-data'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/key-timeline:
+    get:
+      description: timeline of value changes for a given key
+      tags:
+        - key-timeline
+      parameters:
+        - name: key
+          in: query
+          required: true
+          schema:
+            type: string
+            example: config/vpp/v2/interfaces/mem01
+      responses:
+        '200':
+          description: timeline of value changes for a given key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kvData'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/graph-snapshot:
+    get:
+      description: internal kv scheduler graph snapshot at a given point in time
+      tags:
+        - graph-snapshot
+      parameters:
+        - name: time
+          in: query
+          required: false
+          description: parameters used to define point in time for a graph snapshot to retrieve. If undefined, current state is returned
+          schema:
+            type: timestamp
+            description: data-time prepended to UTC
+            example: 2020-05-28T16:50:52.752025508Z
+      responses:
+        '200':
+          description: internal snapshot at a given point in time
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kvData'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/status:
+    get:
+      description: value state for all, or by key or descriptor query parameters
+      tags:
+        - status
+      parameters:
+        - name: key
+          in: query
+          required: false
+          schema:
+            type: string
+            description: key name
+            example: config/vpp/v2/interfaces/mem01
+        - name: descriptor
+          in: query
+          required: false
+          schema:
+            type: string
+            description: a desciptor name
+            example: vpp-bridge-domain
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  properties:
+                    value:
+                      $ref: '#/components/schemas/values'
+                    derived_values:
+                      $ref: '#/components/schemas/values'
+
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=descriptor:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=descriptor endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: descriptor
+      responses:
+        '200':
+          description: returns total and per descriptor txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    description: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: a descriptor name and number of instances. Use the /scheduler/dump API to see descriptor names.
+                    properties:
+                      <descriptor name>:
+                        type: integer
+                        format: int32
+                        example: 16
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=last-update:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=last-update endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: last-update
+      responses:
+        '200':
+          description: returns total and per last-update txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    description: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: TXN-0 is notation for txn-seq with seqnum = 0. The number of "TXN-seqnum" property objects coorelates to number of transactions executed in the system
+                    properties:
+                      TXN-<seqnum>:
+                        type: integer
+                        format: int32
+                        example: 16
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=value-state:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=value-state endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: value-state
+      responses:
+        '200':
+          description: returns total and per value-state txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    description: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: see proto/ligato/kvscheduler/value_status.proto for value_status options. Example is "CONFIGURED".
+                    properties:
+                      <value-status-name>:
+                        type: integer
+                        format: int32
+                        example: 8
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=derived:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=derived endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: derived
+      responses:
+        '200':
+          description: returns total and per derived txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    descriptor: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: see plugins/kvscheduler/value_flags.go
+                    properties:
+                      <base-key>:
+                        type: integer
+                        format: int32
+                        example: 16
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=unavailable:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=unavailable endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: unavailable
+      responses:
+        '200':
+          description: returns total and per unavailable txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    descriptor: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: see plugins/kvscheduler/value_flags.go
+                    properties:
+                      <NB Values>:
+                        type: integer
+                        description: count of NB values which should not be considered when resolving dependencies of other values
+                        format: int32
+                        example: 16
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/flag-stats?flag=error:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=error endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: error
+      responses:
+        '200':
+          description: returns total and per error txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    description: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: error and number of instances
+                    properties:
+                      <error description>:
+                        type: integer
+                        format: int32
+                        example: 16
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+  /scheduler/downstream-resync:
+    post:
+      tags:
+        - downstream-resync
+      parameters:
+        - name: retry
+          in: header
+          required: false
+          description: used for "downstream-resync" API to tell whether to retry failed operations or not
+          schema:
+            type: boolean
+            example: false
+        - name: verbose
+          in: header
+          required: false
+          description: argument used for "downstream-resync" API to tell whether the refreshed graph should be printed to stdout or not
+          schema:
+            type: boolean
+            example: false
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/txn-data'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    txn-data:
+      type: array
+      items:
+        type: object
+        description: start at txn_record.goL114
+        properties:
+          PreRecord:
+            type: boolean
+            example: false
+          WithSimulation:
+            type: boolean
+            example: true
+          Start:
+            type: string
+            format: timestamp
+            example: 2020-05-28T18:53:22.246068802Z
+          Stop:
+            type: string
+            format: timestamp
+            example: 2020-05-28T18:53:22.248180185Z
+          SeqNum:
+            type: integer
+            format: uint64
+            example: 5
+          TxnType:
+            type: string
+            description: tx type
+            enum:
+              - SBNotification
+              - NBTransaction
+              - RetryFailedOps
+          ResyncType:
+            type: string
+            description: full, nb or sb resync
+            enum:
+              - Not Resync
+              - Full Resync
+              - NB Sync
+              - SB Sync
+          Values:
+            type: array
+            description: txn_record.goL130, L160
+            items:
+              type: object
+              properties:
+                Key:
+                  type: string
+                  example: config/vpp/v2/interfaces/loop1
+                Value:
+                  type: object
+                  properties:
+                    ProtoMsgName:
+                      type: string
+                      example: ligato.vpp.interfaces.Interface
+                    ProtoMsgData:
+                      type: string
+                      example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true ip_addresses:\"192.168.1.1/24\"
+                Origin:
+                  type: integer
+                  format: int32
+                  example: 2
+          Planned:
+            type: array
+            items:
+              type: object
+              properties:
+                Operation:
+                  type: string
+                  description: see proto/ligato/kvscheduler/value_status.proto
+                  enum:
+                    - UNDEFINED
+                    - VALIDATE
+                    - CREATE
+                    - UPDATE
+                    - DELETE
+                  example: CREATE
+                Key:
+                  type: string
+                  example: config/vpp/v2/interfaces/mem01
+                NewState:
+                  type: string
+                  enum:
+                    - NONEXISTENT
+                    - MISSING
+                    - UNIMPLEMENTED
+                    - REMOVED
+                    - CONFIGURED
+                    - OBTAINED
+                    - DISCOVERED
+                    - PENDING
+                    - INVALID
+                    - FAILED
+                    - RETRYING
+                  example: CONFIGURED
+                NewValue:
+                  type: object
+                  properties:
+                    ProtoMsgName:
+                      type: string
+                      example: ligato.vpp.l3.Route
+                    ProtoMsgData:
+                      type: string
+                      example: type:DROP dst_network:\"255.255.255.255/32\" next_hop_addr:\"0.0.0.0\" weight:1
+                NewErr:
+                  type: object
+                  description: see plugins/kvscheduler/api/errors.go
+                PrevState:
+                  type: string
+                  enum:
+                    - NONEXISTENT
+                    - MISSING
+                    - UNIMPLEMENTED
+                    - REMOVED
+                    - CONFIGURED
+                    - OBTAINED
+                    - DISCOVERED
+                    - PENDING
+                    - INVALID
+                    - FAILED
+                    - RETRYING
+                  example: RETRYING
+                PrevValue:
+                  type: object
+                  properties:
+                    ProtoMsgName:
+                      type: string
+                      example: ligato.vpp.interfaces.Interface
+                    ProtoMsgData:
+                      type: string
+                      example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true phys_address:\"de:ad:00:00:00:00\" ip_addresses:\"192.168.1.1/24\"
+                PrevErr:
+                  type: object
+                  description: see plugins/kvscheduler/api/errors.go
+                NOOP:
+                  type: boolean
+                  example: true
+                IsRetry:
+                  type: boolean
+                IsDerived:
+                  type: boolean
+                  example: true
+                IsProperty:
+                  type: boolean
+                  example: true
+                IsRevert:
+                  type: boolean
+                  example: true
+                IsRetry:
+                  type: boolean
+                  example: true
+                IsRecreate:
+                  type: boolean
+                  example: true
+          Executed:
+            type: array
+            items:
+              type: object
+              properties:
+                Operation:
+                  type: string
+                  description: see proto/ligato/kvscheduler/value_status.proto
+                  enum:
+                    - UNDEFINED
+                    - VALIDATE
+                    - CREATE
+                    - UPDATE
+                    - DELETE
+                  example: CREATE
+                Key:
+                  type: string
+                  example: config/vpp/v2/interfaces/mem01
+                NewState:
+                  type: string
+                  enum:
+                    - NONEXISTENT
+                    - MISSING
+                    - UNIMPLEMENTED
+                    - REMOVED
+                    - CONFIGURED
+                    - OBTAINED
+                    - DISCOVERED
+                    - PENDING
+                    - INVALID
+                    - FAILED
+                    - RETRYING
+                  example: CONFIGURED
+                NewValue:
+                  type: object
+                  properties:
+                    ProtoMsgName:
+                      type: string
+                      example: ligato.vpp.l3.Route
+                    ProtoMsgData:
+                      type: string
+                      example: type:DROP dst_network:\"0.0.0.0/0\" next_hop_addr:\"0.0.0.0\" weight:1
+                NewErr:
+                  type: object
+                  description: see plugins/kvscheduler/api/errors.go
+                PrevState:
+                  type: string
+                  enum:
+                    - NONEXISTENT
+                    - MISSING
+                    - UNIMPLEMENTED
+                    - REMOVED
+                    - CONFIGURED
+                    - OBTAINED
+                    - DISCOVERED
+                    - PENDING
+                    - INVALID
+                    - FAILED
+                    - RETRYING
+                  example: RETRYING
+                PrevValue:
+                  type: object
+                  properties:
+                    ProtoMsgName:
+                      type: string
+                    ProtoMsgData:
+                      type: string
+                PrevErr:
+                  type: object
+                  description: see plugins/kvscheduler/api/errors.go
+                NOOP:
+                  type: boolean
+                  example: true
+                IsRetry:
+                  type: boolean
+                IsDerived:
+                  type: boolean
+                  example: true
+                IsProperty:
+                  type: boolean
+                  example: true
+                IsRevert:
+                  type: boolean
+                  example: true
+                IsRetry:
+                  type: boolean
+                  example: true
+                IsRecreate:
+                  type: boolean
+                  example: true
+    kvData:
+      type: array
+      description: graph snapshot
+      items:
+        type: object
+        properties:
+          Since:
+            type: timestamp
+            example: 2020-05-28T17:05:48.166536476Z
+          Until:
+            type: timestamp
+            example: 2020-05-29T17:05:48.186536476Z
+          Key:
+            type: string
+            example: config/vpp/v2/interfaces/loop1
+          Label:
+            type: string
+            example: loop1
+          Value:
+            type: object
+            properties:
+              ProtoMsgName:
+                type: string
+                example: ligato.vpp.interfaces.Interface
+              ProtoMsgData:
+                type: string
+                example: name:loop1 type:SOFTWARE_LOOPBACK enabled:true ip_addresses:192.168.1.1/24
+          Flags:
+            type: object
+            description: see plugins/kvscheduler/value_flags.go
+            properties:
+              last-update:
+                type: object
+                properties:
+                  TXN-<seqnum>:
+                    type: integer
+                    format: uint64
+              value-state:
+                type: string
+                enum:
+                  - NONEXISTENT
+                  - MISSING
+                  - UNIMPLEMENTED
+                  - REMOVED
+                  - CONFIGURED
+                  - OBTAINED
+                  - DISCOVERED
+                  - PENDING
+                  - INVALID
+                  - FAILED
+                  - RETRYING
+                example: CONFIGURED
+              descriptor:
+                type: string
+                example: vpp-interface
+              derived:
+                type: string
+              error:
+                type: object
+                properties:
+                  err:
+                    type: string
+                  retriable:
+                    type: boolean
+              unavailable:
+                type: string
+          MetadataFields:
+            type: object
+            properties:
+              index:
+                type: array
+                items:
+                  type: string
+                  example: 1
+              ip_addresses:
+                type: array
+                items:
+                  type: string
+                  example: 192.168.1.1/24
+          Targets:
+            type: array
+            items:
+              type: object
+              properties:
+                Relation:
+                  type: string
+                  example: derives
+                Label:
+                  type: string
+                  example: vpp/interface/loop1/address/static/192.168.1.1/24
+                ExpectedKey:
+                  type: string
+                  example: vpp/interface/loop1/address/static/192.168.1.1/24
+                MatchingKeys:
+                  type: array
+                  items:
+                    type: string
+                    example: vpp/interface/loop1/address/static/192.168.1.1/24
+          TargetUpdateOnly:
+            type: boolean
+    values:
+      type: object
+      properties:
+        key:
+          type: string
+          example: config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90
+        state:
+          type: string
+          enum:
+            - NONEXISTENT
+            - MISSING
+            - UNIMPLEMENTED
+            - REMOVED
+            - CONFIGURED
+            - OBTAINED
+            - DISCOVERED
+            - PENDING
+            - INVALID
+            - FAILED
+            - RETRYING
+          example: CONFIGURED
+        error:
+          type: string
+        lastOperation:
+          type: string
+          enum:
+            - UNDEFINED
+            - VALIDATE
+            - CREATE
+            - UPDATE
+            - DELETE
+          example: CREATE
+        details:
+          type: array
+          items:
+            type: string

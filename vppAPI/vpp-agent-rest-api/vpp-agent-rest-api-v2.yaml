@@ -15,6 +15,39 @@ servers:
 tags:
   - name: Ligato VPP Agent
 paths:
+  /dump/vpp/v2/interfaces:
+    get:
+      tags:
+        - Interfaces
+      responses:
+        '200':
+          description: list all interfaces
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/loopbackIf'
+                  - $ref: '#/components/schemas/ethernetIf'
+                  - $ref: '#/components/schemas/vxlanIf'
+                  - $ref: '#/components/schemas/tapIf'
+                  - $ref: '#/components/schemas/memifIf'
+                  - $ref: '#/components/schemas/afpacketIf'
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
   /dump/vpp/v2/interfaces/loopback:
     get:
       summary: Returns a list of Loopback Interfaces
@@ -27,60 +60,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Loopback Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: UNTAGGED-local0
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 00:00:00:00:00:00
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/loopbackIf'
         '404':
           description: error
           content:
@@ -109,60 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Ethernet Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: GigabitEthernet0/8/0
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 00:00:00:00:00:00
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/ethernetIf'
         '404':
           description: error
           content:
@@ -191,62 +118,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Vxlan Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: vxlan-default-2
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 02:fe:1b:0d:d5:29
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          vxlanlink:
-                            $ref: '#/components/schemas/VxlanLink'
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/vxlanIf'
         '404':
           description: error
           content:
@@ -275,62 +147,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Tap Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: tap1
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 00:00:00:00:00:00
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          tap:
-                            $ref: '#/components/schemas/tapLink'
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/tapIf'
         '404':
            description: error
            content:
@@ -359,62 +176,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Memif Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: mem01
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 00:00:00:00:00:00
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          memif:
-                            $ref: '#/components/schemas/memifLink'
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/memifIf'
         '404':
           description: error
           content:
@@ -443,62 +205,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                description: Afpacket Interfaces
-                properties:
-                  sw_if_index value:
-                    type: object
-                    description: sw_if_index value used to index array of interface objects
-                    properties:
-                      interface:
-                        type: object
-                        description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
-                        properties:
-                          name:
-                            type: string
-                            example: afp01
-                            description: logical name for the interface, must be unique across all configured VPP interfaces
-                          type:
-                            $ref: '#/components/schemas/type'
-                          enabled:
-                            type: boolean
-                            description: Enabled controls if the interface should be UP
-                            example: true
-                          physAddress:
-                            type: string
-                            description: interface physical address; random address assigned if left empty
-                            example: 00:00:00:00:00:00
-                          ipAddresses:
-                            $ref: '#/components/schemas/interface_ip_addresses'
-                          vrf:
-                            type: integer
-                            format: uint32
-                            description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
-                            example: 1
-                          set_dhcp_client:
-                            type: boolean
-                            example: false
-                          mtu:
-                            type: integer
-                            format: uint32
-                            example: 1450
-                            description: maximum frame size on wire
-                          unnumbered:
-                            type: object
-                            description: unnumbered interface
-                            properties:
-                              interface_with_ip:
-                                type: string
-                                description: name of interface to borrow IP address from
-                                example: tap1
-                          linkParms:
-                            $ref: '#/components/schemas/afpacketLink'
-                          rxModes:
-                            $ref: '#/components/schemas/rx_modes'
-                          rxPlacements:
-                            $ref: '#/components/schemas/rx_placements'
-                      interface_meta:
-                        $ref: '#/components/schemas/interface_meta'
+                $ref: '#/components/schemas/afpacketIf'
         '404':
           description: error
           content:
@@ -520,7 +227,7 @@ paths:
       summary:
       description:
       tags:
-        - ACL Plugin
+        - ACL
       responses:
         '200':
           description:
@@ -551,7 +258,7 @@ paths:
       summary:
       description:
       tags:
-        - ACL Plugin
+        - ACL
       responses:
         '200':
           description:
@@ -598,7 +305,7 @@ paths:
       summary:
       description:
       tags:
-        - ABF Plugin
+        - ABF
       responses:
         '200':
           description: ABF defines ACL based forwarding
@@ -650,7 +357,7 @@ paths:
       summary: Returns a list of configured L2 Bridge Domains
       description: VPP agent bridge domain info
       tags:
-        - L2 Plugin
+        - L2
       responses:
         '200':
           description: List of configured bridge domains
@@ -743,7 +450,7 @@ paths:
       summary: Returns a list of configured L2FIBs
       description: VPP agent L2FIB info
       tags:
-        - L2 Plugin
+        - L2
       responses:
         '200':
           description: List of configured L2FIBs
@@ -817,7 +524,7 @@ paths:
       summary: Returns a list of configured L2 x-connects
       description: VPP agent xc info
       tags:
-        - L2 Plugin
+        - L2
       responses:
         '200':
           description: List of configured x-connects
@@ -871,7 +578,7 @@ paths:
       summary: Returns a list of configured L3 ARPs
       description: VPP agent L3 ARP info
       tags:
-        - L3 Plugin
+        - L3
       responses:
         '200':
           description: List of configured ARPs
@@ -924,7 +631,7 @@ paths:
       summary: Returns a list of configured L3 routes
       description: VPP agent route info
       tags:
-        - L3 Plugin
+        - L3
       responses:
         '200':
           description: List of Configured L3 routes
@@ -1070,7 +777,7 @@ paths:
       summary: Returns Configured IP Scan Neighbor items
       description: VPP agent L3 IP Scan Neighbor info
       tags:
-        - L3 Plugin
+        - L3
       responses:
         '200':
           description: IP Scan Neighbor Items
@@ -1130,7 +837,7 @@ paths:
       summary: Returns Configured L3 Proxy ARP Interfaces
       description: VPP agent L3 Proxy ARP Interfaces info
       tags:
-        - L3 Plugin
+        - L3
       responses:
         '200':
           description: Proxy ARP Interface Items
@@ -1176,7 +883,7 @@ paths:
       summary: Returns Configured L3 Proxy ARP ranges
       description: VPP agent L3 Proxy ARP ranges info
       tags:
-        - L3 Plugin
+        - L3
       responses:
         '200':
           description: Proxy ARP Ranges Items
@@ -1215,7 +922,7 @@ paths:
       summary:
       description: Returns a list of NAT Interfaces
       tags:
-        - NAT Plugin
+        - NAT
       responses:
         '200':
           description:
@@ -1265,7 +972,7 @@ paths:
       summary:
       description:
       tags:
-        - NAT Plugin
+        - NAT
       responses:
         '200':
           description: nat global parameters
@@ -1321,7 +1028,7 @@ paths:
       summary:
       description:
       tags:
-        - NAT Plugin
+        - NAT
       responses:
         '200':
           description:
@@ -1363,7 +1070,7 @@ paths:
       summary:
       description:
       tags:
-        - NAT Plugin
+        - NAT
       responses:
         '200':
           description:
@@ -1415,7 +1122,7 @@ paths:
       summary: Returns a list of configured IPsec SAs
       description: IPsec Security Associations (SA)
       tags:
-        - IPsec Plugin
+        - IPsec
       responses:
         '200':
           description: IPsec SA data
@@ -1540,7 +1247,7 @@ paths:
       summary: Returns a list of configured IPsec SPDs
       description: IPsec Security Policy Database (SPD)
       tags:
-        - IPsec Plugin
+        - IPsec
       responses:
         '200':
           description: IPsec SPD data
@@ -1652,7 +1359,7 @@ paths:
       summary:
       description:
       tags:
-        - Punt Plugin
+        - Punt
       responses:
         '200':
           description:
@@ -1715,7 +1422,7 @@ paths:
       summary:
       description: contains values returned from 'show runtime'
       tags:
-        - Telemetry Plugin
+        - Telemetry
       responses:
         '200':
           description:
@@ -1799,7 +1506,7 @@ paths:
       summary:
       description: contains values returned from 'show node counters'
       tags:
-        - Telemetry Plugin
+        - Telemetry
       responses:
         '200':
           description:
@@ -1849,7 +1556,7 @@ paths:
       summary:
       description: memory thread values
       tags:
-        - Telemetry Plugin
+        - Telemetry
       responses:
         '200':
           description: memory thread values
@@ -1931,7 +1638,7 @@ paths:
       summary: Returns a list of configured Linux Interfaces
       description: VPP Agent Linux Interfaces info
       tags:
-        - Linux Interfaces Plugin
+        - Linux Interfaces
       responses:
         '200':
           description: Returns a list of configured Linux Interfaces
@@ -2020,7 +1727,7 @@ paths:
     get:
       description: linux interface stats
       tags:
-        - Linux Interfaces Plugin
+        - Linux Interfaces
       responses:
         '200':
           description: linux stats entries
@@ -2100,7 +1807,7 @@ paths:
     get:
       description: linux arp entries
       tags:
-        - Linux L3 Plugin
+        - Linux L3
       responses:
         '200':
           description: linux arp entries
@@ -2159,7 +1866,7 @@ paths:
     get:
       description: linux route entries
       tags:
-        - Linux L3 Plugin
+        - Linux L3
       responses:
         '200':
           description: linux route entries
@@ -3002,3 +2709,341 @@ components:
         - CHKSM_OFFLOAD_ENABLED
         - CHKSM_OFFLOAD_DISABLED
       example: CHKSM_OFFLOAD_ENABLED
+    loopbackIf:
+      type: object
+      description: Loopback Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: UNTAGGED-local0
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 00:00:00:00:00:00
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+    ethernetIf:
+      type: object
+      description: Ethernet Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: GigabitEthernet0/8/0
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 00:00:00:00:00:00
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+    vxlanIf:
+      type: object
+      description: Vxlan Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: vxlan-default-2
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 02:fe:1b:0d:d5:29
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                vxlanlink:
+                  $ref: '#/components/schemas/VxlanLink'
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+    tapIf:
+      type: object
+      description: Tap Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: tap1
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 00:00:00:00:00:00
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                tap:
+                  $ref: '#/components/schemas/tapLink'
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+    memifIf:
+      type: object
+      description: Memif Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: mem01
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 00:00:00:00:00:00
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                memif:
+                  $ref: '#/components/schemas/memifLink'
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
+    afpacketIf:
+      type: object
+      description: Afpacket Interfaces
+      properties:
+        sw_if_index value:
+          type: object
+          description: sw_if_index value used to index array of interface objects
+          properties:
+            interface:
+              type: object
+              description: properties fields defined in proto/ligato/vpp/interfaces/interface.pb.go
+              properties:
+                name:
+                  type: string
+                  example: afp01
+                  description: logical name for the interface, must be unique across all configured VPP interfaces
+                type:
+                  $ref: '#/components/schemas/type'
+                enabled:
+                  type: boolean
+                  description: Enabled controls if the interface should be UP
+                  example: true
+                physAddress:
+                  type: string
+                  description: interface physical address; random address assigned if left empty
+                  example: 00:00:00:00:00:00
+                ipAddresses:
+                  $ref: '#/components/schemas/interface_ip_addresses'
+                vrf:
+                  type: integer
+                  format: uint32
+                  description: vrf defines the ID of VRF table that the interface is assigned to. The VRF table must be explicitly configured (see proto/ligato/vpp/interfaces/interface.proto).When using unnumbered interface, the actual vrf is inherited from the interface referenced by the numbered interface and this field is ignored.
+                  example: 1
+                set_dhcp_client:
+                  type: boolean
+                  example: false
+                mtu:
+                  type: integer
+                  format: uint32
+                  example: 1450
+                  description: maximum frame size on wire
+                unnumbered:
+                  type: object
+                  description: unnumbered interface
+                  properties:
+                    interface_with_ip:
+                      type: string
+                      description: name of interface to borrow IP address from
+                      example: tap1
+                linkParms:
+                  $ref: '#/components/schemas/afpacketLink'
+                rxModes:
+                  $ref: '#/components/schemas/rx_modes'
+                rxPlacements:
+                  $ref: '#/components/schemas/rx_placements'
+            interface_meta:
+              $ref: '#/components/schemas/interface_meta'
