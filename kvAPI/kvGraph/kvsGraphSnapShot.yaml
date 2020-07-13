@@ -17,25 +17,26 @@ tags:
 paths:
   /scheduler/graph-snapshot:
     get:
+      description: internal kv scheduler graph snapshot at a given point in time
       tags:
         - Graph Snapshot
       parameters:
         - name: time
           in: query
           required: false
-          description: parameters used to define point in time for a graph snapshot to retrieve.
+          description: parameters used to define point in time for a graph snapshot to retrieve. If undefined, current state is returned
           schema:
             type: timestamp
             description: data-time prepended to UTC
             example: 2020-05-28T16:50:52.752025508Z
       responses:
         '200':
-          description:
+          description: internal snapshot at a given point in time
           content:
             application/json:
               schema:
                 type: array
-                description:
+                description: graph snapshot
                 items:
                   type: object
                   properties:

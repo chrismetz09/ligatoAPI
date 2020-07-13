@@ -15,8 +15,9 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/flag-stats:
+  /scheduler/flag-stats?flag=unavailable:
     get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
       tags:
         - flag-stats
       parameters:
@@ -25,11 +26,11 @@ paths:
           required: true
           schema:
             type: string
-            description: query parameter is the value flag name contained in ../plugins/kvscheduler/value_flags.go
+            description: /scheduler/flag-stats?flag=unavailable endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
             example: unavailable
       responses:
         '200':
-          description: unavailable flag-stats
+          description: returns total and per unavailable txn counts
           content:
             application/json:
               schema:
@@ -37,7 +38,7 @@ paths:
                 properties:
                   TotalCount:
                     type: integer
-                    descriptor: total count of per-flag instances
+                    descriptor: total txn
                     example: 31
                   PerValueCount:
                     type: object

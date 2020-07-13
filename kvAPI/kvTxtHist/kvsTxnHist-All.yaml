@@ -236,8 +236,10 @@ paths:
                             properties:
                               ProtoMsgName:
                                 type: string
+                                example: ligato.vpp.l3.Route
                               ProtoMsgData:
                                 type: string
+                                example: type:DROP dst_network:\"0.0.0.0/0\" next_hop_addr:\"0.0.0.0\" weight:1
                           NewErr:
                             type: object
                             description: see plugins/kvscheduler/api/errors.go

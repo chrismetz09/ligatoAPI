@@ -46,10 +46,10 @@ paths:
                       - NB
                       - cached
                     example: SB
-  /scheduler/dump:
+  /scheduler/dump?:
     get:
       tags:
-        - dump with parameters
+        - dump
       parameters:
         - name: view
           in: query

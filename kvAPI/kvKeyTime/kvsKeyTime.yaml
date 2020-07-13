@@ -17,6 +17,7 @@ tags:
 paths:
   /scheduler/key-timeline:
     get:
+      description: timeline of value changes for a given key
       tags:
         - Key Timeline
       parameters:
@@ -28,7 +29,7 @@ paths:
             example: config/vpp/v2/interfaces/mem01
       responses:
         '200':
-          description:
+          description: timeline of value changes for a given key
           content:
             application/json:
               schema:

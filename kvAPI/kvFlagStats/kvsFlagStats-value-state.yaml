@@ -15,8 +15,9 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/flag-stats:
+  /scheduler/flag-stats?flag=value-state:
     get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
       tags:
         - flag-stats
       parameters:
@@ -25,11 +26,11 @@ paths:
           required: true
           schema:
             type: string
-            description: query parameter is the value flag name contained in ../plugins/kvscheduler/value_flags.go
+            description: /scheduler/flag-stats?flag=value-state endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
             example: value-state
       responses:
         '200':
-          description: value-state flag-stats
+          description: returns total and per value-state txn counts
           content:
             application/json:
               schema:
@@ -37,16 +38,16 @@ paths:
                 properties:
                   TotalCount:
                     type: integer
-                    descriptor: total count of per-flag instances
+                    description: total txn
                     example: 31
                   PerValueCount:
                     type: object
-                    description: see proto/ligato/kvscheduler/value_status.proto for value-status-name. Example is "CONFIGURED".
+                    description: see proto/ligato/kvscheduler/value_status.proto for value_status options. Example is "CONFIGURED".
                     properties:
                       <value-status-name>:
                         type: integer
                         format: int32
-                        example: 16
+                        example: 8
         '404':
           description: error
           content:

@@ -12,10 +12,10 @@ servers:
 tags:
   - name: Ligato KV Scheduler
 paths:
-  /scheduler/dump:
+  /scheduler/dump?:
     get:
       tags:
-        - Dump with Parameters
+        - dump
       parameters:
         - name: view
           in: query
@@ -32,9 +32,15 @@ paths:
           schema:
             type: string
             example: config/vpp/v2/interfaces/
+        - name: descriptor
+          in: query
+          description: descriptor name
+          schema:
+            type: string
+            example: vpp-interface
       responses:
         '200':
-          description:
+          description: kv scheduler dump by key-prefix, descriptor and/or view
           content:
             application/json:
               schema:
@@ -74,6 +80,9 @@ paths:
                           TAPHostIfName:
                             type: string
                             example: tap1
+                      origin:
+                        type: integer
+                        example: 2
         '404':
           description: error
           content:

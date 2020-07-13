@@ -46,68 +46,9 @@ paths:
                   type: object
                   properties:
                     value:
-                      type: object
-                      properties:
-                        key:
-                          type: string
-                          example: config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90
-                        state:
-                          type: string
-                          enum:
-                            - NONEXISTENT
-                            - MISSING
-                            - UNIMPLEMENTED
-                            - REMOVED
-                            - CONFIGURED
-                            - OBTAINED
-                            - DISCOVERED
-                            - PENDING
-                            - INVALID
-                            - FAILED
-                            - RETRYING
-                          example: CONFIGURED
-                        lastOperation:
-                          type: string
-                          enum:
-                            - UNDEFINED
-                            - VALIDATE
-                            - CREATE
-                            - UPDATE
-                            - DELETE
-                          example: CREATE
+                      $ref: '#/components/schemas/values'
                     derived_values:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          key:
-                            type: string
-                            example: linux/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90/address/static/127.0.0.1/8
-                          state:
-                            type: string
-                            enum:
-                              - NONEXISTENT
-                              - MISSING
-                              - UNIMPLEMENTED
-                              - REMOVED
-                              - CONFIGURED
-                              - OBTAINED
-                              - DISCOVERED
-                              - PENDING
-                              - INVALID
-                              - FAILED
-                              - RETRYING
-                            example: CONFIGURED
-                          lastOperation:
-                            type: string
-                            description: see proto/ligato/kvscheduler/value_status.proto
-                            enum:
-                              - UNDEFINED
-                              - VALIDATE
-                              - CREATE
-                              - UPDATE
-                              - DELETE
-                            example: CREATE
+                      $ref: '#/components/schemas/values'
 
         '404':
           description: error
@@ -125,3 +66,41 @@ paths:
                 type: string
                 description: something not working properly in system
                 example: 500 Internal server error
+components:
+  schemas:
+    values:
+      type: object
+      properties:
+        key:
+          type: string
+          example: config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90
+        state:
+          type: string
+          enum:
+            - NONEXISTENT
+            - MISSING
+            - UNIMPLEMENTED
+            - REMOVED
+            - CONFIGURED
+            - OBTAINED
+            - DISCOVERED
+            - PENDING
+            - INVALID
+            - FAILED
+            - RETRYING
+          example: CONFIGURED
+        error:
+          type: string
+        lastOperation:
+          type: string
+          enum:
+            - UNDEFINED
+            - VALIDATE
+            - CREATE
+            - UPDATE
+            - DELETE
+          example: CREATE
+        details:
+          type: array
+          items:
+            type: string

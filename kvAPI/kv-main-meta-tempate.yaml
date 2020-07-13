@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: KV Scheduler
-  description: Key Value Scheduler GET Scheduler
+  title: Ligato KV Scheduler REST APIs
+  description: Describes the REST APIs supported by the Ligato KV Scheduler
   version: 0.9
   contact:
     name: Chris Metz

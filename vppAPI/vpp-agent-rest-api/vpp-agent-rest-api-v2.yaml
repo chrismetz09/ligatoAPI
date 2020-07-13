@@ -3,6 +3,9 @@ info:
   title: Ligato VPP Agent REST APIs
   description: Describes the REST APIs supported by the Ligato VPP Agent
   version: 3.0
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
 servers:
   - url: 'http://{hostServer}:9191'
     variables:
