@@ -1,0 +1,126 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Dump
+  description: Key Value Scheduler GET Scheduler Dump
+  version: 0.9
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/dump:
+    get:
+      tags:
+        - dump
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: object
+                description: lists of descriptors, KeyPrefixes and Views
+                properties:
+                  type: object
+                  Descriptors:
+                    type: array
+                    items:
+                      type: string
+                      description: KVS registered descriptor names
+                      example: vpp-interface
+                  KeyPrefixes:
+                    type: array
+                    items:
+                      type: string
+                      description: watched kv prefixes
+                      example: config/vpp/v2/interfaces/
+                  Views:
+                    type: string
+                    description: kvs view perspective
+                    enum:
+                      - SB
+                      - NB
+                      - cached
+                    example: SB
+  /scheduler/dump?:
+    get:
+      tags:
+        - dump
+      parameters:
+        - name: view
+          in: query
+          description: kvs view perspective
+          schema:
+            type: string
+            enum:
+              - SB
+              - NB
+              - cached
+            example: SB
+        - name: key-prefix
+          in: query
+          schema:
+            type: string
+            example: config/vpp/v2/interfaces/
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    type: object
+                    Key:
+                      type: string
+                      example: vpp-interface
+                    Value:
+                      type: object
+                      properties:
+                        ProtoMsgName:
+                          type: string
+                          example: ligato.vpp.interfaces.Interface
+                        ProtoMsgData:
+                          type: string
+                          example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true ip_addresses:\"192.168.1.1/24\"
+                    Metadata:
+                      type: object
+                      description: see plugins/vpp/ifplugin/ifaceidx/ifaceidx.go
+                      properties:
+                        SwIfIndex:
+                          type: integer
+                          format: uint32
+                          example: 2
+                        Vrf:
+                          type: integer
+                          format: uint32
+                          example: 0
+                        IPAddresses:
+                          type: array
+                          items:
+                            type: string
+                            example: 100.100.100.102/24
+                        TAPHostIfName:
+                          type: string
+                          example: tap1
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

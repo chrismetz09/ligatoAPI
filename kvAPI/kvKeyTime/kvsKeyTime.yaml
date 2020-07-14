@@ -1,0 +1,150 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Key Timeline
+  description: Key Value Scheduler GET Scheduler Key Timeline
+  version: 0.9
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/key-timeline:
+    get:
+      description: timeline of value changes for a given key
+      tags:
+        - Key Timeline
+      parameters:
+        - name: key
+          in: query
+          required: true
+          schema:
+            type: string
+            example: config/vpp/v2/interfaces/mem01
+      responses:
+        '200':
+          description: timeline of value changes for a given key
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  properties:
+                    Since:
+                      type: timestamp
+                      example: 2020-05-28T17:05:48.166536476Z
+                    Until:
+                      type: timestamp
+                      example: 2020-05-29T17:05:48.186536476Z
+                    Key:
+                      type: string
+                      example: config/vpp/v2/interfaces/loop1
+                    Label:
+                      type: string
+                      example: loop1
+                    Value:
+                      type: object
+                      properties:
+                        ProtoMsgName:
+                          type: string
+                          example: ligato.vpp.interfaces.Interface
+                        ProtoMsgData:
+                          type: string
+                          example: name:loop1 type:SOFTWARE_LOOPBACK enabled:true ip_addresses:192.168.1.1/24
+                    Flags:
+                      type: object
+                      description: see plugins/kvscheduler/value_flags.go
+                      properties:
+                        last-update:
+                          type: object
+                          properties:
+                            TXN-<seqnum>:
+                              type: integer
+                              format: uint64
+                        value-state:
+                          type: string
+                          enum:
+                            - NONEXISTENT
+                            - MISSING
+                            - UNIMPLEMENTED
+                            - REMOVED
+                            - CONFIGURED
+                            - OBTAINED
+                            - DISCOVERED
+                            - PENDING
+                            - INVALID
+                            - FAILED
+                            - RETRYING
+                          example: CONFIGURED
+                        descriptor:
+                          type: string
+                          example: vpp-interface
+                        derived:
+                          type: string
+                        error:
+                          type: object
+                          properties:
+                            err:
+                              type: string
+                            retriable:
+                              type: boolean
+                        unavailable:
+                          type: string
+                    MetadataFields:
+                      type: object
+                      properties:
+                        index:
+                          type: array
+                          items:
+                            type: string
+                            example: 1
+                        ip_addresses:
+                          type: array
+                          items:
+                            type: string
+                            example: 192.168.1.1/24
+                    Targets:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Relation:
+                            type: string
+                            example: derives
+                          Label:
+                            type: string
+                            example: vpp/interface/loop1/address/static/192.168.1.1/24
+                          ExpectedKey:
+                            type: string
+                            example: vpp/interface/loop1/address/static/192.168.1.1/24
+                          MatchingKeys:
+                            type: array
+                            items:
+                              type: string
+                              example: vpp/interface/loop1/address/static/192.168.1.1/24
+                    TargetUpdateOnly:
+                      type: boolean
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

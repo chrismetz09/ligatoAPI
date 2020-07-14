@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Status
+  description: Key Value Scheduler GET Status
+  version: 0.9
+  contact: 
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/status:
+    get:
+      description: value state for all, or by key or descriptor query flags
+      tags:
+        - Status
+      parameters:
+        - name: key
+          in: query
+          required: false
+          schema:
+            type: string
+            description: key name
+            example: config/vpp/v2/interfaces/mem01
+        - name: descriptor
+          in: query
+          required: false
+          schema:
+            type: string
+            description: a desciptor name
+            example: vpp-bridge-domain
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                description:
+                items:
+                  type: object
+                  properties:
+                    value:
+                      $ref: '#/components/schemas/values'
+                    derived_values:
+                      $ref: '#/components/schemas/values'
+
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
+components:
+  schemas:
+    values:
+      type: object
+      properties:
+        key:
+          type: string
+          example: config/linux/interfaces/v2/interface/linux-loop-2e3d26048ca032fe1132b4dd5371ef029d2f80109d0b779adf90
+        state:
+          type: string
+          enum:
+            - NONEXISTENT
+            - MISSING
+            - UNIMPLEMENTED
+            - REMOVED
+            - CONFIGURED
+            - OBTAINED
+            - DISCOVERED
+            - PENDING
+            - INVALID
+            - FAILED
+            - RETRYING
+          example: CONFIGURED
+        error:
+          type: string
+        lastOperation:
+          type: string
+          enum:
+            - UNDEFINED
+            - VALIDATE
+            - CREATE
+            - UPDATE
+            - DELETE
+          example: CREATE
+        details:
+          type: array
+          items:
+            type: string

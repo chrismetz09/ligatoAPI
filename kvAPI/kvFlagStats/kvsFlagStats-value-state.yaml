@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Key Flag Stats Value-State
+  description: Key Value Scheduler GET Scheduler Flag Stats by Value-State
+  version: 0.9
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/flag-stats?flag=value-state:
+    get:
+      description: /scheduler/flag-stats counts transactions based on a value flag encoded as a query parameter
+      tags:
+        - flag-stats
+      parameters:
+        - name: flag
+          in: query
+          required: true
+          schema:
+            type: string
+            description: /scheduler/flag-stats?flag=value-state endpoint includes a query parameter. It is included in the URL endpoint title and the parameters section for documentation purposes.
+            example: value-state
+      responses:
+        '200':
+          description: returns total and per value-state txn counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  TotalCount:
+                    type: integer
+                    description: total txn
+                    example: 31
+                  PerValueCount:
+                    type: object
+                    description: see proto/ligato/kvscheduler/value_status.proto for value_status options. Example is "CONFIGURED".
+                    properties:
+                      <value-status-name>:
+                        type: integer
+                        format: int32
+                        example: 8
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error

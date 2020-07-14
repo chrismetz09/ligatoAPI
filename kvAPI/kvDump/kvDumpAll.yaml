@@ -14,11 +14,12 @@ tags:
 paths:
   /scheduler/dump:
     get:
-      summary:
-      description:
+      description: list of the descriptors registered with the KV Scheduler, list of the key prefixes under watch in the NB direction, and view options from the perspective of the KV Scheduler
+      tags:
+        - dump
       responses:
         '200':
-          description:
+          description: lists of descriptors, KeyPrefixes and Views
           content:
             application/json:
               schema:

@@ -1,0 +1,286 @@
+openapi: 3.0.1
+info:
+  title: KV Scheduler Downstream Rsync
+  description: Key Value Scheduler POST Downstream Resync
+  version: 0.9
+  contact:
+    name: Chris Metz
+    email: cymetz@gmail.com
+servers:
+  - url: 'http://{hostServer}:9191'
+    variables:
+      hostServer:
+        default: locahost
+        description: localhost or VPP agent server IP address
+tags:
+  - name: Ligato KV Scheduler
+paths:
+  /scheduler/downstream-resync:
+    post:
+      tags:
+        - downstream resync
+      parameters:
+        - name:
+      responses:
+        '200':
+          description:
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  description: start at txn_record.goL114
+                  properties:
+                    PreRecord:
+                      type: boolean
+                      example: false
+                    WithSimulation:
+                      type: boolean
+                      example: true
+                    Start:
+                      type: string
+                      format: timestamp
+                      example: 2020-05-28T18:53:22.246068802Z
+                    Stop:
+                      type: string
+                      format: timestamp
+                      example: 2020-05-28T18:53:22.248180185Z
+                    SeqNum:
+                      type: integer
+                      format: uint64
+                      example: 5
+                    TxnType:
+                      type: string
+                      description: tx type
+                      enum:
+                        - SBNotification
+                        - NBTransaction
+                        - RetryFailedOps
+                    ResyncType:
+                      type: string
+                      description: full, nb or sb resync
+                      enum:
+                        - Not Resync
+                        - Full Resync
+                        - NB Sync
+                        - SB Sync
+                    Values:
+                      type: array
+                      description: txn_record.goL130, L160
+                      items:
+                        type: object
+                        properties:
+                          Key:
+                            type: string
+                            example: config/vpp/v2/interfaces/loop1
+                          Value:
+                            type: object
+                            properties:
+                              ProtoMsgName:
+                                type: string
+                                example: ligato.vpp.interfaces.Interface
+                              ProtoMsgData:
+                                type: string
+                                example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true ip_addresses:\"192.168.1.1/24\"
+                          Origin:
+                            type: integer
+                            format: int32
+                            example: 2
+                    Planned:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Operation:
+                            type: string
+                            description: see proto/ligato/kvscheduler/value_status.proto
+                            enum:
+                              - UNDEFINED
+                              - VALIDATE
+                              - CREATE
+                              - UPDATE
+                              - DELETE
+                            example: CREATE
+                          Key:
+                            type: string
+                            example: config/vpp/v2/interfaces/mem01
+                          NewState:
+                            type: string
+                            enum:
+                              - NONEXISTENT
+                              - MISSING
+                              - UNIMPLEMENTED
+                              - REMOVED
+                              - CONFIGURED
+                              - OBTAINED
+                              - DISCOVERED
+                              - PENDING
+                              - INVALID
+                              - FAILED
+                              - RETRYING
+                            example: CONFIGURED
+                          NewValue:
+                            type: object
+                            properties:
+                              ProtoMsgName:
+                                type: string
+                                example: ligato.vpp.l3.Route
+                              ProtoMsgData:
+                                type: string
+                                example: type:DROP dst_network:\"255.255.255.255/32\" next_hop_addr:\"0.0.0.0\" weight:1
+                          NewErr:
+                            type: object
+                            description: see plugins/kvscheduler/api/errors.go
+                          PrevState:
+                            type: string
+                            enum:
+                              - NONEXISTENT
+                              - MISSING
+                              - UNIMPLEMENTED
+                              - REMOVED
+                              - CONFIGURED
+                              - OBTAINED
+                              - DISCOVERED
+                              - PENDING
+                              - INVALID
+                              - FAILED
+                              - RETRYING
+                            example: RETRYING
+                          PrevValue:
+                            type: object
+                            properties:
+                              ProtoMsgName:
+                                type: string
+                                example: ligato.vpp.interfaces.Interface
+                              ProtoMsgData:
+                                type: string
+                                example: name:\"loop1\" type:SOFTWARE_LOOPBACK enabled:true phys_address:\"de:ad:00:00:00:00\" ip_addresses:\"192.168.1.1/24\"
+                          PrevErr:
+                            type: object
+                            description: see plugins/kvscheduler/api/errors.go
+                          NOOP:
+                            type: boolean
+                            example: true
+                          IsRetry:
+                            type: boolean
+                          IsDerived:
+                            type: boolean
+                            example: true
+                          IsProperty:
+                            type: boolean
+                            example: true
+                          IsRevert:
+                            type: boolean
+                            example: true
+                          IsRetry:
+                            type: boolean
+                            example: true
+                          IsRecreate:
+                            type: boolean
+                            example: true
+                    Executed:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          Operation:
+                            type: string
+                            description: see proto/ligato/kvscheduler/value_status.proto
+                            enum:
+                              - UNDEFINED
+                              - VALIDATE
+                              - CREATE
+                              - UPDATE
+                              - DELETE
+                            example: CREATE
+                          Key:
+                            type: string
+                            example: config/vpp/v2/interfaces/mem01
+                          NewState:
+                            type: string
+                            enum:
+                              - NONEXISTENT
+                              - MISSING
+                              - UNIMPLEMENTED
+                              - REMOVED
+                              - CONFIGURED
+                              - OBTAINED
+                              - DISCOVERED
+                              - PENDING
+                              - INVALID
+                              - FAILED
+                              - RETRYING
+                            example: CONFIGURED
+                          NewValue:
+                            type: object
+                            properties:
+                              ProtoMsgName:
+                                type: string
+                              ProtoMsgData:
+                                type: string
+                          NewErr:
+                            type: object
+                            description: see plugins/kvscheduler/api/errors.go
+                          PrevState:
+                            type: string
+                            enum:
+                              - NONEXISTENT
+                              - MISSING
+                              - UNIMPLEMENTED
+                              - REMOVED
+                              - CONFIGURED
+                              - OBTAINED
+                              - DISCOVERED
+                              - PENDING
+                              - INVALID
+                              - FAILED
+                              - RETRYING
+                            example: RETRYING
+                          PrevValue:
+                            type: object
+                            properties:
+                              ProtoMsgName:
+                                type: string
+                              ProtoMsgData:
+                                type: string
+                          PrevErr:
+                            type: object
+                            description: see plugins/kvscheduler/api/errors.go
+                          NOOP:
+                            type: boolean
+                            example: true
+                          IsRetry:
+                            type: boolean
+                          IsDerived:
+                            type: boolean
+                            example: true
+                          IsProperty:
+                            type: boolean
+                            example: true
+                          IsRevert:
+                            type: boolean
+                            example: true
+                          IsRetry:
+                            type: boolean
+                            example: true
+                          IsRecreate:
+                            type: boolean
+                            example: true
+
+        '404':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: error message
+                example: 404 page not found
+        '500':
+          description: error
+          content:
+            application/json:
+              schema:
+                type: string
+                description: something not working properly in system
+                example: 500 Internal server error
