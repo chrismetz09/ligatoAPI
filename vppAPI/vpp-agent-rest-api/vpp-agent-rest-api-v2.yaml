@@ -50,10 +50,8 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/loopback:
     get:
-      summary: Returns a list of Loopback Interfaces
       tags:
         - Interfaces
-      description:
       responses:
         '200':
           description: list of Loopback Interfaces
@@ -79,10 +77,8 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/ethernet:
     get:
-      summary: Returns a list of Ethernet Interfaces
       tags:
         - Interfaces
-      description:
       responses:
         '200':
           description: list of Ethernet Interfaces
@@ -108,10 +104,8 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/vxlan:
     get:
-      summary: Returns a list of Vxlan Interfaces
       tags:
         - Interfaces
-      description:
       responses:
         '200':
           description: list of Vxlan Interfaces
@@ -137,10 +131,8 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/tap:
     get:
-      summary: Returns a list of Tap Interfaces
       tags:
         - Interfaces
-      description: GET TAP interfaces REST API
       responses:
         '200':
           description: list of Tap Interfaces
@@ -166,10 +158,8 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/memif:
     get:
-      summary: Returns a list of Memif Interfaces
       tags:
         - Interfaces
-      description: GET Memif interfaces REST API
       responses:
         '200':
           description: list of Memif Interfaces
@@ -195,7 +185,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/interfaces/afpacket:
     get:
-      summary: Returns a list of Afpacket Interfaces
       tags:
         - Interfaces
       description:
@@ -224,13 +213,11 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/acl/ip:
     get:
-      summary:
-      description:
       tags:
         - ACL
       responses:
         '200':
-          description:
+          description: get ACL data
           content:
             application/json:
               schema:
@@ -255,13 +242,11 @@ paths:
                       $ref: '#/components/schemas/acl_meta'
   /dump/vpp/v2/acl/macip:
     get:
-      summary:
-      description:
       tags:
         - ACL
       responses:
         '200':
-          description:
+          description: get macip ACL data
           content:
             application/json:
               schema:
@@ -302,8 +287,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/abf:
     get:
-      summary:
-      description:
       tags:
         - ABF
       responses:
@@ -354,8 +337,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/bd:
     get:
-      summary: Returns a list of configured L2 Bridge Domains
-      description: VPP agent bridge domain info
       tags:
         - L2
       responses:
@@ -447,8 +428,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/fib:
     get:
-      summary: Returns a list of configured L2FIBs
-      description: VPP agent L2FIB info
       tags:
         - L2
       responses:
@@ -521,8 +500,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/xc:
     get:
-      summary: Returns a list of configured L2 x-connects
-      description: VPP agent xc info
       tags:
         - L2
       responses:
@@ -575,8 +552,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/arps:
     get:
-      summary: Returns a list of configured L3 ARPs
-      description: VPP agent L3 ARP info
       tags:
         - L3
       responses:
@@ -628,8 +603,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/routes:
     get:
-      summary: Returns a list of configured L3 routes
-      description: VPP agent route info
       tags:
         - L3
       responses:
@@ -774,8 +747,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/ipscanneigh:
     get:
-      summary: Returns Configured IP Scan Neighbor items
-      description: VPP agent L3 IP Scan Neighbor info
       tags:
         - L3
       responses:
@@ -834,8 +805,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/proxyarp/interfaces:
     get:
-      summary: Returns Configured L3 Proxy ARP Interfaces
-      description: VPP agent L3 Proxy ARP Interfaces info
       tags:
         - L3
       responses:
@@ -880,8 +849,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/proxyarp/ranges:
     get:
-      summary: Returns Configured L3 Proxy ARP ranges
-      description: VPP agent L3 Proxy ARP ranges info
       tags:
         - L3
       responses:
@@ -919,13 +886,11 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/nat/interfaces:
     get:
-      summary:
-      description: Returns a list of NAT Interfaces
       tags:
         - NAT
       responses:
         '200':
-          description:
+          description: get NAT interface
           content:
             application/json:
               schema:
@@ -969,8 +934,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/nat/global:
     get:
-      summary:
-      description:
       tags:
         - NAT
       responses:
@@ -1025,13 +988,11 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/nat/dnat:
     get:
-      summary:
-      description:
       tags:
         - NAT
       responses:
         '200':
-          description:
+          description: get dnat entries
           content:
             application/json:
               schema:
@@ -1067,13 +1028,11 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/nat/pools:
     get:
-      summary:
-      description:
       tags:
         - NAT
       responses:
         '200':
-          description:
+          description: get NAT pools data
           content:
             application/json:
               schema:
@@ -1119,8 +1078,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/ipsec/sas:
     get:
-      summary: Returns a list of configured IPsec SAs
-      description: IPsec Security Associations (SA)
       tags:
         - IPsec
       responses:
@@ -1244,8 +1201,6 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/ipsec/spds:
     get:
-      summary: Returns a list of configured IPsec SPDs
-      description: IPsec Security Policy Database (SPD)
       tags:
         - IPsec
       responses:
@@ -1356,13 +1311,11 @@ paths:
                 example: 500 Internal server error
   /dump/vpp/v2/punt/sockets:
     get:
-      summary:
-      description:
       tags:
         - Punt
       responses:
         '200':
-          description:
+          description: punt to host
           content:
             application/json:
               schema:
@@ -1419,13 +1372,11 @@ paths:
                 example: 500 Internal server error
   /vpp/telemetry/runtime:
     get:
-      summary:
-      description: contains values returned from 'show runtime'
       tags:
         - Telemetry
       responses:
         '200':
-          description:
+          description: show runtime
           content:
             application/json:
               schema:
@@ -1503,13 +1454,11 @@ paths:
                 example: 500 Internal server error
   /vpp/telemetry/nodecount:
     get:
-      summary:
-      description: contains values returned from 'show node counters'
       tags:
         - Telemetry
       responses:
         '200':
-          description:
+          description: show counters
           content:
             application/json:
               schema:
@@ -1553,8 +1502,6 @@ paths:
                 example: 500 Internal server error
   /vpp/telemetry/memory:
     get:
-      summary:
-      description: memory thread values
       tags:
         - Telemetry
       responses:
@@ -1635,8 +1582,6 @@ paths:
                 example: 500 Internal server error
   /dump/linux/v2/interfaces:
     get:
-      summary: Returns a list of configured Linux Interfaces
-      description: VPP Agent Linux Interfaces info
       tags:
         - Linux Interfaces
       responses:
@@ -1941,7 +1886,6 @@ paths:
                 example: 500 Internal server error
   /info/version:
     get:
-      summary: Returns VPP Agent version info
       tags:
         - Version
       responses:
@@ -2121,7 +2065,7 @@ components:
             example: true
     memifLink:
       type: object
-      description:  MemifLink defines configuration for interface type MEMIF. See /proto/ligato/vpp/interfaces/interface.proto
+      description: MemifLink defines configuration for interface type MEMIF. See /proto/ligato/vpp/interfaces/interface.proto
       properties:
         mode:
           type: string

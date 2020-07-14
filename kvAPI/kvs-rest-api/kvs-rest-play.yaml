@@ -1,4 +1,4 @@
-openapi: "3.0.1"
+openapi: 3.0.1
 info:
   title: Ligato KV Scheduler REST APIs
   description: Describes the REST APIsa supported by the Ligato KV Scheduler
@@ -100,8 +100,8 @@ paths:
               schema:
                 type: array
                 items:
+                  type: object
                   properties:
-                    type: object
                     Key:
                       type: string
                       example: vpp-interface
@@ -299,7 +299,7 @@ paths:
             example: vpp-bridge-domain
       responses:
         '200':
-          description:
+          description: values
           content:
             application/json:
               schema:
